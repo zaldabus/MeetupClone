@@ -4,8 +4,15 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_authenticity_token
 
-  validates :name, :email, :password_digest, :authenticity_token, presence: true, uniqueness: true
+  validates :name,
+            :email,
+            :password_digest,
+            :authenticity_token,
+            presence: true, uniqueness: true
+
   validates :password, length: { minimum: 6, allow_nil: true }
+
+  has_many :addresses, as: :addressable, inverse_of: :addressable
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
