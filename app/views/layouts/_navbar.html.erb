@@ -1,0 +1,9 @@
+<!-- Eventually this will be fleshed out to include various navbar links and buttons -->
+
+<% if logged_in? %>
+  <%= current_user.name %>
+  <%= button_to "logout", session_url, method: :delete %>
+<% else %>
+  <%= link_to "login", new_session_url %>
+  <%= link_to "sign up", new_user_url %>
+<% end %>
