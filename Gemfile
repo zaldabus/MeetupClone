@@ -15,7 +15,8 @@ gem 'bcrypt-ruby', require: 'bcrypt'
 
 gem 'figaro'
 
-gem 'paperclip', "~> 3.0"
+gem 'paperclip'
+gem 'aws-sdk'
 
 
 # Gems used only for assets and not required

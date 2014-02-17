@@ -29,6 +29,10 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     arel (3.0.3)
+    aws-sdk (1.34.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     backbone-on-rails (1.1.0.0)
       eco
       ejs
@@ -96,7 +100,10 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.2)
     mime-types (1.25.1)
+    mini_portile (0.5.2)
     multi_json (1.8.4)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
     paperclip (3.5.4)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -173,11 +180,13 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uuidtools (2.1.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk
   backbone-on-rails
   bcrypt-ruby
   better_errors
@@ -186,7 +195,7 @@ DEPENDENCIES
   figaro
   guard-rspec
   jquery-rails
-  paperclip (~> 3.0)
+  paperclip
   pg
   rails (= 3.2.15)
   rspec-rails
