@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_many :interests
   has_many :addresses, as: :addressable, inverse_of: :addressable
 
   has_attached_file :avatar, styles: {
