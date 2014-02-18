@@ -10,7 +10,7 @@ class Group < ActiveRecord::Base
            class_name: "GroupMembership",
            foreign_key: :group_id
 
-  has_many :users, through: :group_memberships
+  has_many :members, through: :group_memberships
   has_many :events
 
   has_many :addresses, as: :addressable, inverse_of: :addressable
@@ -20,5 +20,5 @@ class Group < ActiveRecord::Base
     big: "600x600>",
     small: "50x50>"
   },
-  default_url: "/images/noPhoto_80.png"
+  default_url: "/assets/noPhoto_80.png"
 end

@@ -15,5 +15,29 @@
 <div class="group_column">
   <%= @group.avatar.url(:big) %>
   <%= city_state(@group) %>
+  Founded <%= @group.created_at.strftime("%B %d, %Y") %>
+
+  Members <%= @members.count %>
+  Upcoming Meetups <%= @upcoming_events.count %>
+  Past Meetups <%= @past_events.count %>
+  Our calendar <!-- add a calendar here -->
+
+  Organizers: <%= @group.owner.name %>
+  <%= image_tag @group.owner.avatar.url(:small) %>
+  <%= link_to "Contact", @group.owner.email %>
+</div>
+
+<div class="events">
+  <%= @group.description %>
+
+  <!-- This is causing some sort of syntax error with the conditional, fix it -->
+  <%# unless logged_in? && @members.include?(current_user) %>
+
+    <% @member_short_list.each do |member| %>
+      <%= image_tag member.avatar.url(:small) %>
+    <% end %>
+
+    <%= link_to "Join us!", join_group_url(@group) %>
+  <%# end %>
 </div>
 

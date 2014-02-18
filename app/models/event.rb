@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
-  attr_accessible :title, :description, :date, :time, :group_id
+  attr_accessible :title, :description, :date, :group_id
 
-  validates :title, :description, :date, :time, :group_id, presence: true
+  validates :title, :description, :date, :group_id, presence: true
 
   belongs_to :group
 
@@ -16,5 +16,5 @@ class Event < ActiveRecord::Base
     big: "600x600>",
     small: "50x50>"
   },
-  default_url: "/images/noPhoto_80.png"
+  default_url: "/assets/noPhoto_80.png"
 end

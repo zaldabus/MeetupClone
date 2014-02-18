@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     big: "600x600>",
     small: "50x50>"
   },
-  default_url: "/images/noPhoto_80.png"
+  default_url: "/assets/noPhoto_80.png"
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
