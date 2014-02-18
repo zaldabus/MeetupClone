@@ -19,7 +19,7 @@ Hi <%= @user.name %>! Welcome to your account page!
   <ul>
 
   <% @user.interests.each do |interest| %>
-    <li><%= interest %></li>
+    <li><%= interest.title %></li>
   <% end %>
 
   </ul>

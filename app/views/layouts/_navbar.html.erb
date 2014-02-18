@@ -9,7 +9,7 @@
 <% if logged_in? %>
   <%= current_user.name %>
   <!-- Need to create groups controller -->
-  <%= link_to "My Groups", user_groups_url(current_user) %>
+  <%= link_to "My Groups", user_url(current_user) %>
   <%= link_to "Account", account_url %>
   <%= button_to "logout", session_url, method: :delete %>
 

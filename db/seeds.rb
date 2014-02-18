@@ -5,6 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+# If you want to add new data, comment out previous seeded data then
+# run rake db:seed again
 
 5.times do |i|
   user = User.new(name: "User ##{i + 1}", email: "Email ##{i + 1}", password: 123456)
@@ -17,7 +20,9 @@ end
 end
 
 12.times do |i|
-  Group.create(title: "Group ##{i + 1}", description: "This is a group", owner_id: 1)
+  group = Group.new(title: "Group ##{i + 1}", description: "This is a group", owner_id: 1)
+  group.addresses.new(address_line: "Someplace", city: "New York", state: "NY", zip_code: 10003)
+  group.save
 end
 
 12.times do |i|

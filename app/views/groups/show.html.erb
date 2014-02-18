@@ -1,0 +1,19 @@
+<div class="group_bar">
+  <%= @group.title %>
+
+  <%= link_to "Home", group_url(@group) %>
+  <%= link_to "Members", members_group_url(@group) %>
+
+  <% if logged_in? %>
+    <%= image_tag current_user.avatar.url(:small) %>
+    <%= link_to "My profile", account_url %>
+  <% else %>
+    <%= link_to "Join us!", join_group_url(@group) %>
+  <% end %>
+</div>
+
+<div class="group_column">
+  <%= @group.avatar.url(:big) %>
+  <%= city_state(@group) %>
+</div>
+

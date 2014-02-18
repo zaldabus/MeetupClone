@@ -15,9 +15,10 @@ class Group < ActiveRecord::Base
 
   has_many :addresses, as: :addressable, inverse_of: :addressable
 
-  has_attached_file :avatar, styles: {
+  has_attached_file :avatar,
+  styles: {
     big: "600x600>",
     small: "50x50>"
-  }
-
+  },
+  default_url: "/images/noPhoto_80.png"
 end

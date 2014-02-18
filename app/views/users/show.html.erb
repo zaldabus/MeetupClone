@@ -8,7 +8,7 @@ Meetup member since:
 
 <%= @user.avatar.url(:big) %>
 
-<% if logged_in? && @user == current %>
+<% if logged_in? && @user == current_user %>
   <%= photo_change(@user) %>
 <% end %>
 
