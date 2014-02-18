@@ -71,7 +71,7 @@ MeetupClone::Application.configure do
       bucket: ENV["PROD_BUCKET"],
       access_key_id: ENV["ACCESS_KEY_ID"],
       secret_access_key: ENV["SECRET_ACCESS_KEY"],
-      s3_host_name: #reference amazon account and paperclip reading for host name
+      s3_host_name: 's3-us-west-2.amazonaws.com/'
     }
   }
 end

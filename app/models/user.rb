@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password
+  attr_accessible :name, :email, :avatar, :password
   attr_reader :password
 
   before_validation :ensure_authenticity_token
@@ -13,6 +13,11 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
 
   has_many :addresses, as: :addressable, inverse_of: :addressable
+
+  has_attached_file :avatar, styles: {
+    big: "600x600>",
+    small: "50x50>"
+  }
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)

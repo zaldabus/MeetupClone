@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140217230929) do
+ActiveRecord::Schema.define(:version => 20140217234729) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line",     :null => false
@@ -27,13 +27,17 @@ ActiveRecord::Schema.define(:version => 20140217230929) do
   add_index "addresses", ["zip_code"], :name => "index_addresses_on_zip_code"
 
   create_table "users", :force => true do |t|
-    t.string   "email",              :null => false
-    t.string   "password_digest",    :null => false
-    t.string   "name",               :null => false
+    t.string   "email",               :null => false
+    t.string   "password_digest",     :null => false
+    t.string   "name",                :null => false
     t.date     "birthday"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "authenticity_token", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "authenticity_token",  :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end
