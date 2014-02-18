@@ -13,6 +13,19 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
 
   has_many :interests
+  has_many :owned_groups, class_name: "Group", foreign_key: :owner_id
+
+  has_many :event_signups,
+           class_name: "EventSignup",
+           foreign_key: :attendee_id
+
+  has_many :group_memberships,
+           class_name: "GroupMembership",
+           foreign_key: :member_id
+
+  has_many :groups, through: :group_memberships
+  has_many :events, through: :event_signups
+
   has_many :addresses, as: :addressable, inverse_of: :addressable
 
   has_attached_file :avatar, styles: {

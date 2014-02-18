@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140218150109) do
+ActiveRecord::Schema.define(:version => 20140218165509) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line",     :null => false
@@ -25,6 +25,50 @@ ActiveRecord::Schema.define(:version => 20140218150109) do
   end
 
   add_index "addresses", ["zip_code"], :name => "index_addresses_on_zip_code"
+
+  create_table "event_signups", :force => true do |t|
+    t.integer  "attendee_id", :null => false
+    t.integer  "event_id",    :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "event_signups", ["attendee_id", "event_id"], :name => "index_event_signups_on_attendee_id_and_event_id", :unique => true
+
+  create_table "events", :force => true do |t|
+    t.string   "title",               :null => false
+    t.string   "description",         :null => false
+    t.datetime "date",                :null => false
+    t.datetime "time",                :null => false
+    t.integer  "group_id",            :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+
+  add_index "events", ["group_id"], :name => "index_events_on_group_id"
+
+  create_table "group_memberships", :force => true do |t|
+    t.integer  "member_id",  :null => false
+    t.integer  "group_id",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "group_memberships", ["member_id", "group_id"], :name => "index_group_memberships_on_member_id_and_group_id", :unique => true
+
+  create_table "groups", :force => true do |t|
+    t.string   "title",       :null => false
+    t.string   "description", :null => false
+    t.integer  "owner_id",    :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "groups", ["owner_id"], :name => "index_groups_on_owner_id", :unique => true
 
   create_table "interests", :force => true do |t|
     t.string   "title",      :null => false
