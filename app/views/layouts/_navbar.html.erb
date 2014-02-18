@@ -1,9 +1,21 @@
 <!-- Eventually this will be fleshed out to include various navbar links and buttons -->
 
+<%= link_to (image_tag "MeetUp-logo.png", size: "80x80"), root_url %>
+
+<%= link_to "Find Meetup", find_url %>
+<!-- Need to create groups controller -->
+<%= link_to "Start Meetup", new_group_url %>
+
 <% if logged_in? %>
   <%= current_user.name %>
+  <!-- Need to create groups controller -->
+  <%= link_to "My Groups", user_groups_url(current_user) %>
+  <%= link_to "Account", account_url %>
   <%= button_to "logout", session_url, method: :delete %>
+
 <% else %>
-  <%= link_to "login", new_session_url %>
-  <%= link_to "sign up", new_user_url %>
+  <%= link_to "Log in", new_session_url %>
+  <%= link_to "Sign up", new_user_url %>
 <% end %>
+
+<input type="search" name="search">

@@ -1,10 +1,17 @@
 MeetupClone::Application.routes.draw do
-  root to: "roots#index"
+  root to: 'roots#index'
 
-  # get '/account' => 'roots#account', as: 'account'
-  resources :users, only: [:new, :create]
+  resources :roots, only: :index
+  get 'find', to: 'roots#find'
+
+  resources :users, only: [:new, :create] do
+      resources :groups, only: :index
+  end
+
   resource :session, only: [:new, :create, :destroy]
 
   resource :account, only: [:show, :edit, :update]
+
+  resources :groups, except: [:index, :destroy]
 
 end
