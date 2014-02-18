@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :require_current_user, only: :account
+
   def new
     @user = User.new
   end
@@ -14,5 +16,9 @@ class UsersController < ApplicationController
       flash.now[:errors] = @user.errors.full_messages
       render :new
     end
+  end
+
+  def account
+    @user = current_user
   end
 end

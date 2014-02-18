@@ -17,4 +17,8 @@ module ApplicationHelper
     current_user.reset_authenticity_token! if logged_in?
     session[:token] = nil
   end
+
+  def require_current_user
+    redirect_to root_url unless logged_in?
+  end
 end
