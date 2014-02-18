@@ -28,10 +28,12 @@ class User < ActiveRecord::Base
 
   has_many :addresses, as: :addressable, inverse_of: :addressable
 
-  has_attached_file :avatar, styles: {
+  has_attached_file :avatar,
+  styles: {
     big: "600x600>",
     small: "50x50>"
-  }
+  },
+  default_url: "/images/noPhoto_80.png"
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)

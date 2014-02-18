@@ -21,4 +21,12 @@ module ApplicationHelper
   def require_current_user
     redirect_to root_url unless logged_in?
   end
+
+  def city(user)
+    user.addresses.first.city
+  end
+
+  def state(user)
+    user.addresses.first.state
+  end
 end

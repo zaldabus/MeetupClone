@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140218165509) do
+ActiveRecord::Schema.define(:version => 20140218191336) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line",     :null => false
@@ -67,8 +67,6 @@ ActiveRecord::Schema.define(:version => 20140218165509) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
-
-  add_index "groups", ["owner_id"], :name => "index_groups_on_owner_id", :unique => true
 
   create_table "interests", :force => true do |t|
     t.string   "title",      :null => false

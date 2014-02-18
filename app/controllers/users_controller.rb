@@ -16,4 +16,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    @groups = @user.groups.limit(10)
+    @interests = @user.interests
+  end
+
 end

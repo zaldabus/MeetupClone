@@ -4,7 +4,7 @@ MeetupClone::Application.routes.draw do
   resources :roots, only: :index
   get 'find', to: 'roots#find'
 
-  resources :users, only: [:new, :create] do
+  resources :users, only: [:new, :create, :show] do
       resources :groups, only: :index
   end
 
