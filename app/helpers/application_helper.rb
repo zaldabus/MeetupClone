@@ -22,14 +22,6 @@ module ApplicationHelper
     redirect_to root_url unless logged_in?
   end
 
-  def city(object)
-    object.addresses.first.city
-  end
-
-  def state(object)
-    object.addresses.first.state
-  end
-
   def city_state(object)
     "#{object.addresses.first.city}, #{object.addresses.first.state}"
   end

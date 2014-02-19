@@ -5,6 +5,9 @@ class GroupsController < ApplicationController
   end
 
   def show
+    # Seems verbose and makes a lot of calls to database
+    # Can we optimize it?
+
     @group = Group.find(params[:id])
     @members = @group.members
     @member_short_list = @members.limit(10)

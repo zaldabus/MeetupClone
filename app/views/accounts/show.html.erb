@@ -7,7 +7,7 @@ Hi <%= @user.name %>! Welcome to your account page!
   Email address: <%= @user.email %>
   Password: (Hidden)
 
-  Location: <%= city(@user) %>, <%= state(@user) %>
+  Location: <%= city_state(@user) %>
   Birthday: <%= birthday(@user) %>
 
   <%= image_tag @user.avatar.url(:big) %>

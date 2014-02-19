@@ -4,11 +4,11 @@
   <%= link_to "Home", group_url(@group) %>
   <%= link_to "Members", members_group_url(@group) %>
 
-  <% if logged_in? %>
+  <% unless logged_in? && @members.include?(current_user) %>
+    <%= link_to "Join us!", join_group_url(@group) %>
+  <% else %>
     <%= image_tag current_user.avatar.url(:small) %>
     <%= link_to "My profile", account_url %>
-  <% else %>
-    <%= link_to "Join us!", join_group_url(@group) %>
   <% end %>
 </div>
 
@@ -23,21 +23,19 @@
   Our calendar <!-- add a calendar here -->
 
   Organizers: <%= @group.owner.name %>
-  <%= image_tag @group.owner.avatar.url(:small) %>
+  <%= image_tag @group.owner.avatar.url(:small), size: "40x40" %>
   <%= link_to "Contact", @group.owner.email %>
 </div>
 
 <div class="events">
   <%= @group.description %>
 
-  <!-- This is causing some sort of syntax error with the conditional, fix it -->
-  <%# unless logged_in? && @members.include?(current_user) %>
+  <% unless logged_in? && @members.include?(current_user) %>
 
     <% @member_short_list.each do |member| %>
-      <%= image_tag member.avatar.url(:small) %>
+      <%= (image_tag member.avatar.url(:small), size: "40x40") %>
     <% end %>
 
     <%= link_to "Join us!", join_group_url(@group) %>
-  <%# end %>
+  <% end %>
 </div>
-

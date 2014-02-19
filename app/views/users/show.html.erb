@@ -1,12 +1,12 @@
 <%= @user.name %>
 
 Location:
-<%= city(@user) %>, <%= state(@user) %>
+<%= city_state(@user) %>
 
 Meetup member since:
 <%= @user.created_at.strftime("%B %d, %Y") %>
 
-<%= @user.avatar.url(:big) %>
+<%= image_tag @user.avatar.url(:big) %>
 
 <% if logged_in? && @user == current_user %>
   <%= photo_change(@user) %>
