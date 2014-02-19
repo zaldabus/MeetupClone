@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140219140725) do
+ActiveRecord::Schema.define(:version => 20140219205800) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line",     :null => false
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(:version => 20140219140725) do
   end
 
   add_index "events", ["group_id"], :name => "index_events_on_group_id"
+
+  create_table "group_members", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "email",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id",    :null => false
+    t.integer  "group_id",   :null => false
+  end
 
   create_table "group_memberships", :force => true do |t|
     t.integer  "member_id",  :null => false

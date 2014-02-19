@@ -35,7 +35,7 @@
     <% if logged_in? && !@event.attendees.include?(current_user) %>
       <li>
         <h3>Won't you attend?</h3>
-        <%= button_to "Attend", group_event_event_signups_url(@group, @event)%>
+        <%= button_to "Attend", event_signup_group_event_url(@group, @event)%>
       </li>
     <% end %>
 

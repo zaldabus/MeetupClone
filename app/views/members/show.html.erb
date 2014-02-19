@@ -7,3 +7,44 @@
                                       past_events: @past_events
                                       }
 %>
+
+<%= @member.name %>
+
+Location:
+<%= city_state(@member) %>
+
+Meetup member since:
+<%= @member.created_at.strftime("%B %d, %Y") %>
+
+<%= image_tag @member.user.avatar.url(:big) %>
+
+<% if logged_in? && @member.user == current_user %>
+  <%= photo_change(@member.user) %>
+<% end %>
+
+<br>
+<br>
+
+Member of <%= @member.groups.count - 1 %> other Meetups
+<ul>
+<% @member.groups.each do |group| %>
+  <% next if group == @group %>
+  <li><%= link_to group.title, group_url(group) %></li>
+<% end %>
+</ul>
+
+<!-- Create user's groups page -->
+<%= link_to "SEE ALL MY MEETUP GROUPS", user_groups_url(@member.user) %>
+<br>
+<br>
+
+Greetings
+<!-- Need to include greeting logic here -->
+
+Interests
+<ul>
+<% @member.interests.each do |interest| %>
+<!-- Will need to create some sort of link here, save for later -->
+  <li><%= interest.title %></li>
+<% end %>
+</ul>

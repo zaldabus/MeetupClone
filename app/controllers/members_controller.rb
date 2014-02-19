@@ -4,7 +4,7 @@ class MembersController < ApplicationController
   end
 
   def show
-    @member = User.find(params[:id])
+    @member = GroupMember.find_by_group_id(params[:group_id])
 
     @group = Group.find(params[:group_id])
 

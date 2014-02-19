@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
            class_name: "EventSignup",
            foreign_key: :attendee_id
 
+  has_many :group_members
+
   has_many :group_memberships,
            class_name: "GroupMembership",
            foreign_key: :member_id
