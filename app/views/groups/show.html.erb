@@ -22,6 +22,8 @@
 
   <!-- upcoming events -->
   <ul>
+    <h2> Upcoming Meetups</h2>
+
     <% @upcoming_short_list.each do |event| %>
       <li>
         <!-- left side -->
@@ -46,7 +48,9 @@
       </li>
     <% end %>
 
-    <%= link_to "MORE MEETUPS", group_events_url(@group) %>
+    <% if @upcoming_events.count > @upcoming_short_list.count %>
+      <%= link_to "MORE MEETUPS", group_events_url(@group) %>
+    <% end %>
   </ul>
 
   <!-- past events -->
@@ -71,7 +75,9 @@
       </li>
     <% end %>
 
-    <%= link_to "SEE ALL PAST MEETUPS", past_group_events_url(@group) %>
+    <% if @upcoming_events.count > @upcoming_short_list.count %>
+      <%= link_to "SEE ALL PAST MEETUPS", past_group_events_url(@group) %>
+    <% end %>
   </ul>
 </div>
 

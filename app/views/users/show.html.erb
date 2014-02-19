@@ -18,12 +18,10 @@ Meetup member since:
 Member of <%= @user.groups.count %> Meetups
 <ul>
 <% @groups.each do |group| %>
-<!-- Create group page -->
   <li><%= link_to group.title, group_url(group) %></li>
 <% end %>
 </ul>
 
-<!-- Create user's groups page -->
 <%= link_to "SEE ALL MY MEETUP GROUPS", user_groups_url(@user) %>
 <br>
 <br>

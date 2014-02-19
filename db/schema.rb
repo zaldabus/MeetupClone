@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140219205800) do
+ActiveRecord::Schema.define(:version => 20140219225746) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line",     :null => false
@@ -70,11 +70,15 @@ ActiveRecord::Schema.define(:version => 20140219205800) do
   add_index "group_memberships", ["member_id", "group_id"], :name => "index_group_memberships_on_member_id_and_group_id", :unique => true
 
   create_table "groups", :force => true do |t|
-    t.string   "title",       :null => false
-    t.string   "description", :null => false
-    t.integer  "owner_id",    :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "title",               :null => false
+    t.string   "description",         :null => false
+    t.integer  "owner_id",            :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "interests", :force => true do |t|

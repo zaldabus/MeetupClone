@@ -1,7 +1,29 @@
 class GroupsController < ApplicationController
+  before_filter :require_current_user, only: [:new, :create, :join]
+
   def index
     @user = User.find(params[:user_id])
     @groups = @user.groups
+  end
+
+  def new
+    @group = Group.new
+    @address = @group.addresses.new
+  end
+
+  def create
+    @group = Group.new(params[:group])
+    @group.owner_id = current_user.id
+    @group.addresses.new(params[:address])
+
+    if @group.save
+      flash[:notice] = "New Meetup Group Created!"
+      GroupMembership.create(member_id: current_user.id, group_id: @group.id)
+      redirect_to group_url(@group)
+    else
+      flash.now[:errors] = @group.errors.full_messages
+      render :new
+    end
   end
 
   def show
@@ -27,7 +49,6 @@ class GroupsController < ApplicationController
                           )
 
     if @group_membership.save
-      #Write model methods for associations
       GroupMember.create(
         name: current_user.name,
         email: current_user.email,

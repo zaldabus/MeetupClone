@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  attr_accessible :title, :description, :owner_id
+  attr_accessible :title, :description, :avatar, :owner_id
 
   validates :title, :description, :owner_id, presence: true
   validates :title, uniqueness: true
