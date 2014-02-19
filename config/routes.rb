@@ -13,11 +13,15 @@ MeetupClone::Application.routes.draw do
   resource :account, only: [:show, :edit, :update]
 
   resources :groups, except: [:index, :destroy] do
-    get 'members', on: :member
+    resources :members, only: [:index, :show]
     post 'join', on: :member
+
     resources :events, only: [:index, :show] do
       get 'past', on: :collection
+      resources :event_signups, only: :create
     end
   end
+
+
 
 end

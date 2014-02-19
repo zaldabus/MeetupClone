@@ -1,4 +1,6 @@
 module ApplicationHelper
+  require 'addressable/uri'
+
   def current_user
     return nil unless session[:token]
 
@@ -28,5 +30,18 @@ module ApplicationHelper
 
   def full_address(object)
     "#{object.addresses.first.address_line}, #{object.addresses.first.city}, #{object.addresses.first.state}"
+  end
+
+  def google_map(object)
+    Addressable::URI.new(
+      :scheme => "http",
+      :host => "maps.google.com",
+      :path => "maps",
+      :query_values => { "q" => "#{object.addresses.first.address_line} " +
+                                 "#{object.addresses.first.city} " +
+                                 "#{object.addresses.first.state} " +
+                                 "#{object.addresses.first.zip_code}"
+                                 }
+    ).to_s
   end
 end

@@ -9,43 +9,49 @@
 %>
 
 <div class="events">
-  <h2><%= @event.title %></h2>
-
-  <% unless logged_in? && @members.include?(current_user) %>
-
-    <% @member_short_list.each do |member| %>
-      <%= (image_tag member.avatar.url(:small), size: "40x40") %>
-    <% end %>
-
-    <%= link_to "Join us!", join_group_url(@group) %>
-  <% end %>
-
-  <!-- upcoming events -->
   <ul>
-    <% @upcoming_short_list.each do |event| %>
+    <li><h2><%= @event.title %></h2></li>
+
+    <li>
+      <%= @event.date.strftime("%A, %B %d, %Y") %>
+      <%= @event.date.to_s(:time) %>
+    </li>
+
+
+    <li>
+      <%= @event.addresses.first.address_line %>
+      <%= city_state(@event) %>
+      <%= link_to "(map)", google_map(@event) %>
+    </li>
+
+    <li><%= @event.description %></li>
+
+    <!-- comments will go here -->
+  </ul>
+</div>
+
+<div class="events_right_column">
+  <ul>
+    <% if logged_in? && !@event.attendees.include?(current_user) %>
       <li>
-        <!-- left side -->
-        <%= link_to event.title, group_event_url(@group, event) %>
-        <%= link_to event.location, group_event_url(@group, event) %>
-        <%= full_address(event) %>
-        <!-- map link will go here -->
-
-        <% event.attendees.limit(10).each do |attendee| %>
-          <%= (image_tag attendee.avatar.url(:small), size: "30x30") %>
-        <% end %>
-
-        <%= event.description %>
-        <%= link_to "LEARN MORE", group_event_url(@group, event) %>
-
-        <!-- right side -->
-        <%= event.date.strftime("%a %b %d") %>
-        <%= event.date.to_s(:time) %>
-        <%= link_to "RSVP", group_event_url(@group, event) %>
-        <%= event.attendees.count %> attending
-        <!-- comments count will go here -->
+        <h3>Won't you attend?</h3>
+        <%= button_to "Attend", group_event_event_signups_url(@group, @event)%>
       </li>
     <% end %>
 
-    <%= link_to "MORE MEETUPS", group_events_url(@group) %>
+    <li><%= @event.attendees.count %> attending</li>
+
+    <% @event.attendees.limit(15).each do |attendee| %>
+      <li>
+        <%= link_to (image_tag attendee.avatar.url(:small), size: "40x40"),
+                     group_member_url(@event.group, attendee
+                     )
+        %>
+        <%= link_to attendee.name, group_member_url(@event.group, attendee) %>
+
+        <!-- Maybe add something for a user to write a description -->
+        <%#= attendee.description %>
+      </li>
+    <% end %>
   </ul>
 </div>

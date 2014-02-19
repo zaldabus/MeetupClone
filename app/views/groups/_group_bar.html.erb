@@ -2,7 +2,7 @@
   <h1><%= group.title %></h1>
 
   <%= link_to "Home", group_url(group) %>
-  <%= link_to "Members", members_group_url(group) %>
+  <%= link_to "Members", group_members_url(group) %>
 
   <% unless logged_in? && members.include?(current_user) %>
     <%= link_to "Join us!", join_group_url(group) %>

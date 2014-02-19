@@ -18,6 +18,8 @@ gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk'
 
+gem 'addressable'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
