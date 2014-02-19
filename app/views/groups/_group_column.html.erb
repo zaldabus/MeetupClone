@@ -1,0 +1,14 @@
+<div class="group_column">
+  <%= image_tag group.avatar.url(:big) %>
+  <%= city_state(group) %>
+  Founded <%= group.created_at.strftime("%B %d, %Y") %>
+
+  Members <%= members.count %>
+  Upcoming Meetups <%= upcoming_events.count %>
+  Past Meetups <%= past_events.count %>
+  Our calendar <!-- add a calendar here -->
+
+  Organizers: <%= group.owner.name %>
+  <%= image_tag group.owner.avatar.url(:small), size: "40x40" %>
+  <%= link_to "Contact", group.owner.email %>
+</div>

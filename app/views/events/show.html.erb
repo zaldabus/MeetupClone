@@ -1,6 +1,6 @@
-<%= render partial: "group_bar", locals: { group: @group, members: @members } %>
+<%= render partial: "groups/group_bar", locals: { group: @group, members: @members } %>
 
-<%= render partial: 'group_column', locals: {
+<%= render partial: "groups/group_column", locals: {
                                       group: @group,
                                       members: @members,
                                       upcoming_events: @upcoming_events,
@@ -9,7 +9,7 @@
 %>
 
 <div class="events">
-  <h2><%= @group.description %></h2>
+  <h2><%= @event.title %></h2>
 
   <% unless logged_in? && @members.include?(current_user) %>
 
@@ -48,33 +48,4 @@
 
     <%= link_to "MORE MEETUPS", group_events_url(@group) %>
   </ul>
-
-  <!-- past events -->
-  <ul>
-    <h2> Recent Meetups </h2>
-
-    <% @past_short_list.each do |event| %>
-      <li>
-        <!-- left side -->
-        <%= time_since(event.date) %>
-        <%= event.date.to_s(:time) %>
-
-        <%= link_to event.title, group_event_url(@group, event) %>
-
-        <% event.attendees.limit(10).each do |attendee| %>
-          <%= (image_tag attendee.avatar.url(:small), size: "30x30") %>
-        <% end %>
-        <%= event.attendees.count %> attendees
-
-        <%= event.description %>
-        <%= link_to "LEARN MORE", group_event_url(@group, event) %>
-      </li>
-    <% end %>
-
-    <%= link_to "SEE ALL PAST MEETUPS", past_group_events_url(@group) %>
-  </ul>
-</div>
-
-<div class="whats_new">
-
 </div>

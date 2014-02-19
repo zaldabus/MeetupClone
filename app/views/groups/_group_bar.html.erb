@@ -1,0 +1,13 @@
+<div class="group_bar">
+  <h1><%= group.title %></h1>
+
+  <%= link_to "Home", group_url(group) %>
+  <%= link_to "Members", members_group_url(group) %>
+
+  <% unless logged_in? && members.include?(current_user) %>
+    <%= link_to "Join us!", join_group_url(group) %>
+  <% else %>
+    <%= image_tag current_user.avatar.url(:small) %>
+    <%= link_to "My profile", account_url %>
+  <% end %>
+</div>

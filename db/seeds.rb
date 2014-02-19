@@ -1,3 +1,4 @@
+# <<<<<<< Local Changes
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -5,6 +6,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+# <<<<<<< Local Changes
 #
 # If you want to add new data, comment out previous seeded data then
 # run rake db:seed again
@@ -44,10 +46,10 @@
 # # Previous Events
 #
 12.times do |i|
-#   event = Event.new(title: "Event ##{i + 1}", description: "This is an event", date: "2013/4/1 7:00", group_id: (i + 1))
-#   event.addresses.new(address_line: "Someplace", city: "New York", state: "NY", zip_code: 10003)
-#   event.save
-#
+  event = Event.new(title: "Event ##{i + 1}", description: "This is an event", date: "2013/4/1 7:00", group_id: (i + 1))
+  event.addresses.new(address_line: "Someplace", city: "New York", state: "NY", zip_code: 10003)
+  event.save
+
   event2 = Event.new(title: "Event ##{i + 1}", description: "This is an event", date: "2013/4/1 7:00", group_id: (i + 1))
   event2.addresses.new(address_line: "Someplace", city: "New York", state: "NY", zip_code: 10003)
   event2.save
@@ -92,4 +94,7 @@ end
 #  end
 #
 #  i += 1
-#end
+#end=======
+# >>>>>>> External Changes
+# =======
+# >>>>>>> External Changes
