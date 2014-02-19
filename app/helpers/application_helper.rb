@@ -25,4 +25,8 @@ module ApplicationHelper
   def city_state(object)
     "#{object.addresses.first.city}, #{object.addresses.first.state}"
   end
+
+  def full_address(object)
+    "#{object.addresses.first.address_line}, #{object.addresses.first.city}, #{object.addresses.first.state}"
+  end
 end

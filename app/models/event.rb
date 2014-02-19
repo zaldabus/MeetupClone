@@ -1,13 +1,13 @@
 class Event < ActiveRecord::Base
-  attr_accessible :title, :description, :date, :group_id
+  attr_accessible :title, :description, :date, :location, :group_id
 
-  validates :title, :description, :date, :group_id, presence: true
+  validates :title, :description, :date, :location, :group_id, presence: true
 
   belongs_to :group
 
   has_many :event_signups, class_name: "EventSignup", foreign_key: :event_id
 
-  has_many :attendees, through: :event_signups
+  has_many :attendees, through: :event_signups, source: :attendee
 
   has_many :addresses, as: :addressable, inverse_of: :addressable
 

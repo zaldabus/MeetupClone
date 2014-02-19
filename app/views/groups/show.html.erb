@@ -1,5 +1,5 @@
 <div class="group_bar">
-  <%= @group.title %>
+  <h1><%= @group.title %></h1>
 
   <%= link_to "Home", group_url(@group) %>
   <%= link_to "Members", members_group_url(@group) %>
@@ -13,7 +13,7 @@
 </div>
 
 <div class="group_column">
-  <%= @group.avatar.url(:big) %>
+  <%= image_tag @group.avatar.url(:big) %>
   <%= city_state(@group) %>
   Founded <%= @group.created_at.strftime("%B %d, %Y") %>
 
@@ -28,7 +28,7 @@
 </div>
 
 <div class="events">
-  <%= @group.description %>
+  <h2><%= @group.description %></h2>
 
   <% unless logged_in? && @members.include?(current_user) %>
 
@@ -38,4 +38,62 @@
 
     <%= link_to "Join us!", join_group_url(@group) %>
   <% end %>
+
+  <!-- upcoming events -->
+  <ul>
+    <% @upcoming_short_list.each do |event| %>
+      <li>
+        <!-- left side -->
+        <%= link_to event.title, group_event_url(@group, event) %>
+        <%= link_to event.location, group_event_url(@group, event) %>
+        <%= full_address(event) %>
+        <!-- map link will go here -->
+
+        <% event.attendees.limit(10).each do |attendee| %>
+          <%= (image_tag attendee.avatar.url(:small), size: "30x30") %>
+        <% end %>
+
+        <%= event.description %>
+        <%= link_to "LEARN MORE", group_event_url(@group, event) %>
+
+        <!-- right side -->
+        <%= event.date.strftime("%a %b %d") %>
+        <%= event.date.to_s(:time) %>
+        <%= link_to "RSVP", group_event_url(@group, event) %>
+        <%= event.attendees.count %> attending
+        <!-- comments count will go here -->
+      </li>
+    <% end %>
+
+    <%= link_to "MORE MEETUPS", group_events_url(@group) %>
+  </ul>
+
+  <!-- past events -->
+  <ul>
+    <h2> Recent Meetups </h2>
+
+    <% @past_short_list.each do |event| %>
+      <li>
+        <!-- left side -->
+        <%= time_since(event.date) %>
+        <%= event.date.to_s(:time) %>
+
+        <%= link_to event.title, group_event_url(@group, event) %>
+
+        <% event.attendees.limit(10).each do |attendee| %>
+          <%= (image_tag attendee.avatar.url(:small), size: "30x30") %>
+        <% end %>
+        <%= event.attendees.count %> attendees
+
+        <%= event.description %>
+        <%= link_to "LEARN MORE", group_event_url(@group, event) %>
+      </li>
+    <% end %>
+
+    <%= link_to "SEE ALL PAST MEETUPS", past_group_events_url(@group) %>
+  </ul>
+</div>
+
+<div class="whats_new">
+
 </div>

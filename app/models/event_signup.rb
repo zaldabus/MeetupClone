@@ -4,13 +4,7 @@ class EventSignup < ActiveRecord::Base
   validates :attendee_id, :event_id, presence: true
   validates :attendee_id, uniqueness: { scope: :event_id }
 
-  belongs_to :attendee
+  belongs_to :attendee, class_name: "User", foreign_key: :attendee_id
   belongs_to :event
 
-  has_many :addresses, as: :addressable, inverse_of: :addressable
-
-  has_attached_file :avatar, styles: {
-    big: "600x600>",
-    small: "50x50>"
-  }
 end
