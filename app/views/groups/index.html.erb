@@ -1,1 +1,25 @@
-This will be the user's groups page
+<%= @user.name %>
+
+Location:
+<%= city_state(@user) %>
+
+Meetup member since:
+<%= @user.created_at.strftime("%B %d, %Y") %>
+
+<%= image_tag @user.avatar.url(:big) %>
+
+<% if logged_in? && @user == current_user %>
+  <%= photo_change(@user) %>
+<% end %>
+
+<br>
+<br>
+
+<div="user_groups">
+  Member of <%= @user.groups.count %> Meetups
+  <ul>
+  <% @groups.each do |group| %>
+    <li><%= link_to group.title, group_url(group) %></li>
+  <% end %>
+  </ul>
+</div>
