@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
       params[:invitees].each do |id|
         next if id == ""
         @user = User.find(id)
-        GroupMailer.invite_email(@user, @group).deliver!
+        GroupMailer.delay(run_at: 10.seconds.from_now).invite_email(@user, @group)
       end
 
       redirect_to group_url(@group)

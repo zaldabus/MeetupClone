@@ -20,6 +20,8 @@ gem 'aws-sdk'
 
 gem 'addressable'
 
+gem 'delayed_job_active_record'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
