@@ -22,6 +22,4 @@ MeetupClone::Application.routes.draw do
     end
   end
 
-
-
 end

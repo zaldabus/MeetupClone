@@ -1,7 +1,7 @@
 <h1>Create a Dumb Meetup Event!</h1>
 
 <!-- Seems to be causing an error when I perform the create action with "events path" -->
-<%= form_for [@group, @event], url: group_events_url(@group) do |f| %>
+<%= form_for [@group, @event] do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <br>
