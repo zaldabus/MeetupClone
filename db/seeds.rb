@@ -34,11 +34,11 @@ end
 # Upcoming Events
 
 12.times do |i|
-  event = Event.new(title: "Event ##{i + 1}", description: "This is an event", date: "2014/4/1", time: "7:00pm", location: "Here", group_id: (i + 1))
+  event = Event.new(title: "Event ##{i + 1}", description: "This is an event", date: "2014/4/1", time: "7:00pm", group_id: (i + 1))
   event.addresses.new(address_line: "Someplace", city: "New York", state: "NY", zip_code: 10003)
   event.save
 
-  event2 = Event.new(title: "Event ##{i + 1}", description: "This is an event", date: "2014/4/1", time: "7:00pm",location: "Here", group_id: (i + 1))
+  event2 = Event.new(title: "Event ##{i + 1}", description: "This is an event", date: "2014/4/1", time: "7:00pm", group_id: (i + 1))
   event2.addresses.new(address_line: "Someplace", city: "New York", state: "NY", zip_code: 10003)
   event2.save
 end

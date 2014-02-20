@@ -1,6 +1,8 @@
 class Group < ActiveRecord::Base
   attr_accessible :title, :description, :avatar, :owner_id
 
+  before_validation :ensure_group_token
+
   validates :title, :description, :owner_id, presence: true
   validates :title, uniqueness: true
 
@@ -21,4 +23,8 @@ class Group < ActiveRecord::Base
     small: "50x50>"
   },
   default_url: "/assets/noPhoto_80.png"
+
+  def ensure_group_token
+    self.group_token = SecureRandom::urlsafe_base64(16)
+  end
 end

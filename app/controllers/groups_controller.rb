@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
   def new
     @group = Group.new
     @address = @group.addresses.new
+    @invitees = User.all
   end
 
   def create
@@ -16,9 +17,20 @@ class GroupsController < ApplicationController
     @group.owner_id = current_user.id
     @group.addresses.new(params[:address])
 
+    @invitees = User.all
+
     if @group.save
       flash[:notice] = "New Meetup Group Created!"
+
       GroupMembership.create(member_id: current_user.id, group_id: @group.id)
+
+      #Sends out invite to each user who was checked on form
+      params[:invitees].each do |id|
+        next if id == ""
+        @user = User.find(id)
+        GroupMailer.invite_email(@user, @group).deliver!
+      end
+
       redirect_to group_url(@group)
     else
       flash.now[:errors] = @group.errors.full_messages
@@ -62,4 +74,30 @@ class GroupsController < ApplicationController
       redirect_to group_url(params[:id])
     end
   end
+
+  def email_join
+
+    @user = User.find(params[:user_id])
+    @group = Group.find_by_group_token(params[:group_token])
+
+    if @user && @group
+      GroupMembership.create(
+        member_id: @user.id,
+        group_id: @group.id
+        )
+
+      GroupMember.create(
+        name: @user.name,
+        email: @user.email,
+        user_id: @user.id,
+        group_id: @group.id
+        )
+
+        redirect_to group_url(@group)
+    else
+      flash[:errors] = ["User or Group not found!"]
+      redirect_to root_url
+    end
+  end
+
 end

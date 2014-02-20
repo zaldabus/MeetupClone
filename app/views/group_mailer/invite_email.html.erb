@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi there, <%= @user.name %>!</h1>
+    <p>
+      You're just so popular! You've gotten another invite to a group!
+      To join the group, just click this link:
+      <%= link_to "Join this Dumb Meetup!", @url %>
+    </p>
+
+    <p>
+      If you can't click the link, copy and paste this URL into your browser:
+      <%= @url %>
+    </p>
+
+    <p>
+      Thanks for being part of Dumb Meetup and have a great day!
+    </p>
+  </body>
+</html>

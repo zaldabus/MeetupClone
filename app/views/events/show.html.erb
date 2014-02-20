@@ -14,7 +14,7 @@
 
     <li>
       <%= @event.date.strftime("%A, %B %d, %Y") %>
-      <%= @event.date.to_s(:time) %>
+      <%= @event.time.strftime("%I:%m %p") %>
     </li>
 
 
@@ -49,7 +49,7 @@
         %>
         <%= link_to attendee.name, group_member_url(@event.group, attendee) %>
 
-        <!-- Maybe add something for a user to write a description -->
+        <!-- Maybe add something for a group member to write a description -->
         <%#= attendee.description %>
       </li>
     <% end %>

@@ -31,6 +31,21 @@
     <br>
   <% end %>
 
+  <h4>Invite users to your group!</h4>
+  <input type="hidden" name="invitees[]">
+  <% @invitees.each do |invitee| %>
+    <% next if invitee == current_user %>
+    <label for="invitee_<%= invitee.id %>"><%= invitee.email %></label>
+    <input
+      type="checkbox"
+      name="invitees[]"
+      value="<%= invitee.id %>"
+      id="invitee_<%= invitee.id %>">
+      <br>
+
+  <% end %>
+  <br>
+
   <%= f.label :avatar %>
   <%= f.file_field :avatar %>
   <br>
