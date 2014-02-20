@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
-  attr_accessible :title, :description, :date, :time, :location, :avatar, :group_id
+  attr_accessible :title, :description, :date, :time, :avatar, :group_id
 
-  validates :title, :description, :date, :time, :location, :avatar, :group_id, presence: true
+  validates :title, :description, :date, :time, :group_id, presence: true
 
   belongs_to :group
 
@@ -11,6 +11,8 @@ class Event < ActiveRecord::Base
 
   has_many :addresses, as: :addressable, inverse_of: :addressable
 
+  #Avatar currently not being used with events, consider
+  #removing from form
   has_attached_file :avatar,
   styles: {
     big: "600x600>",

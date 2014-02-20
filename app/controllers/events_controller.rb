@@ -2,17 +2,20 @@ class EventsController < ApplicationController
   def new
     @group = Group.find(params[:group_id])
     @event = Event.new
-    @address = @event.addresses.new
+    # @address = @event.addresses.new
   end
 
   def create
+    @group = Group.find(params[:group_id])
+
     @event = Event.new(params[:event])
     @event.group_id = params[:group_id]
     @event.addresses.new(params[:address])
 
     # Put in extra code to check for events on same day but later time
-    if Time.new(params[:event][:date]) < Time.now
-      flash.now[:errors] = ["Event must be after today!"]
+    if check_time(params[:event][:date], params[:event][:time]) < Time.now
+
+      flash.now[:errors] = ["Event must be later than now!"]
       render :new
     elsif @event.save
       flash[:notice] = "New Meetup Event Created!"
@@ -48,5 +51,16 @@ class EventsController < ApplicationController
       flash[:errors] = ["Already signed up for event!"]
       redirect_to group_event_url(params[:group_id], params[:event_id])
     end
+  end
+
+  private
+  def check_time(date, time)
+    full_time = []
+
+    date = date.split("-").map(&:to_i)
+    time = time.split(":").map(&:to_i)
+    full_time.concat(date).concat(time)
+
+    DateTime.new(full_time[0], full_time[1], full_time[2], full_time[3], full_time[4])
   end
 end

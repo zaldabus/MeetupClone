@@ -48,4 +48,14 @@ module ApplicationHelper
                                  }
     ).to_s
   end
+
+  def check_time(date, time)
+    full_time = []
+
+    date = date.split("-").map(&:to_i)
+    time = time.split(":").map(&:to_i)
+    full_time.concat(date).concat(time)
+
+    DateTime.new(full_time[0], full_time[1], full_time[2], full_time[3], full_time[4])
+  end
 end
