@@ -1,7 +1,5 @@
-Welcome to root!
-
 <% if logged_in? %>
-  <%= render 'userpage' %>
+  <%= render 'userpage', events: @events %>
 <% else %>
-  <%= render 'findmeetups' %>
+  <%= render 'findmeetups', groups: @groups %>
 <% end %>

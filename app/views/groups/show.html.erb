@@ -28,7 +28,7 @@
       <li>
         <!-- left side -->
         <%= link_to event.title, group_event_url(@group, event) %>
-        <%= link_to event.location, group_event_url(@group, event) %>
+        <%= link_to full_address(event), group_event_url(@group, event) %>
         <%= full_address(event) %>
         <!-- map link will go here -->
 
@@ -41,7 +41,7 @@
 
         <!-- right side -->
         <%= event.date.strftime("%a %b %d") %>
-        <%= event.date.to_s(:time) %>
+        <%= event.time.strftime("%I:%m %p") %>
         <%= link_to "RSVP", group_event_url(@group, event) %>
         <%= event.attendees.count %> attending
         <!-- comments count will go here -->
@@ -61,7 +61,6 @@
       <li>
         <!-- left side -->
         <%= time_since(event.date) %>
-        <%= event.date.to_s(:time) %>
 
         <%= link_to event.title, group_event_url(@group, event) %>
 
