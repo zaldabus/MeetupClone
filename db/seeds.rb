@@ -35,10 +35,10 @@ end
 
 12.times do |i|
   event = Event.new(title: "Event ##{i + 1}", description: "This is an event", date: "2014/4/1", time: "7:00pm", group_id: (i + 1))
-  event.addresses.new(address_line: "Someplace", city: "New York", state: "NY", zip_code: 10003)
+  event.addresses.new(address_line: "Thisplace", city: "New York", state: "NY", zip_code: 10003)
   event.save
 
-  event2 = Event.new(title: "Event ##{i + 1}", description: "This is an event", date: "2014/4/1", time: "7:00pm", group_id: (i + 1))
+  event2 = Event.new(title: "Event ##{i + 20}", description: "This is also an event", date: "2014/4/1", time: "7:00pm", group_id: (i + 1))
   event2.addresses.new(address_line: "Someplace", city: "New York", state: "NY", zip_code: 10003)
   event2.save
 end
@@ -50,7 +50,7 @@ end
   event.addresses.new(address_line: "Someplace", city: "New York", state: "NY", zip_code: 10003)
   event.save
 
-  event2 = Event.new(title: "Event ##{i + 1}", description: "This is an event", date: "2013/4/1", time: "7:00pm", group_id: (i + 1))
+  event2 = Event.new(title: "Event ##{i + 20}", description: "This is an event", date: "2013/4/1", time: "7:00pm", group_id: (i + 1))
   event2.addresses.new(address_line: "Someplace", city: "New York", state: "NY", zip_code: 10003)
   event2.save
 end
