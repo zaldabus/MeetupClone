@@ -11,4 +11,8 @@
   Organizers: <%= group.owner.name %>
   <%= image_tag group.owner.avatar.url(:small), size: "40x40" %>
   <%= link_to "Contact", group.owner.email %>
+
+  <% if group.owner == current_user %>
+    <%= link_to "Create Event", new_group_event_url(group) %>
+  <% end %>
 </div>

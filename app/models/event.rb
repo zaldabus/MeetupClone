@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
-  attr_accessible :title, :description, :date, :location, :group_id
+  attr_accessible :title, :description, :date, :time, :location, :avatar, :group_id
 
-  validates :title, :description, :date, :location, :group_id, presence: true
+  validates :title, :description, :date, :time, :location, :avatar, :group_id, presence: true
 
   belongs_to :group
 
