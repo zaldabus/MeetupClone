@@ -39,10 +39,17 @@ class EventsController < ApplicationController
   end
 
   def event_signup
-    @event_signup = EventSignup.new(
-                  event_id: params[:id],
-                  attendee_id: current_user.id
-                  )
+    @group = Group.find(params[:group_id])
+
+    if @group.members.include?(current_user)
+      @event_signup = EventSignup.new(
+                    event_id: params[:id],
+                    attendee_id: current_user.id
+                    )
+    else
+      flash[:errors] = ["Must be a member to join event!"]
+      redirect_to group_event_url(params[:group_id], params[:id])
+    end
 
     if @event_signup.save
       redirect_to group_event_url(params[:group_id], params[:id])

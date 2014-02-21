@@ -35,7 +35,7 @@
 
       <div class="events-right-column pull-left">
         <ul>
-          <% if logged_in? && !@event.attendees.include?(current_user) %>
+          <% if logged_in? && @group.members.include?(current_user) && !@event.attendees.include?(current_user) %>
             <li>
               <h3>Won't you attend?</h3>
               <%= button_to "Attend", event_signup_group_event_url(@group, @event)%>
