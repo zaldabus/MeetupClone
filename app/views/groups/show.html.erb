@@ -1,7 +1,7 @@
-<div class="group-page">
-  ><%= render partial: "group_bar", locals: { group: @group, members: @members } %>
 
-  <div class="main-content row">
+  <%= render partial: "group_bar", locals: { group: @group, members: @members } %>
+
+  <div class="group-content">
     <%= render partial: 'group_column', locals: {
                                           group: @group,
                                           members: @members,
@@ -102,4 +102,3 @@
 
     </div>
   </div>
-</div>

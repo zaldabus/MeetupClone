@@ -1,7 +1,7 @@
 <div class="group-page">
   <%= render partial: "groups/group_bar", locals: { group: @group, members: @members } %>
 
-  <div class="main-content row">
+  <div class="event-content">
     <%= render partial: "groups/group_column", locals: {
                                           group: @group,
                                           members: @members,
@@ -10,8 +10,8 @@
                                           }
     %>
 
-    <div class="events span9 pull-left">
-      <div class="events-left-column pull-left">
+    <div class="events pull-left">
+      <div class="events-middle-column pull-left">
         <ul>
           <li><h2><%= @event.title %></h2></li>
 

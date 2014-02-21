@@ -64,13 +64,16 @@ li {
 
 .group-bar-title > h1 {
   text-align: center;
+  font-size: 40pt;
+  color: #fff;
+  margin-bottom: 20px;
 }
 
 .group-bar-links {
   background: #fff;
   margin: 0 0 10px 0;
   padding: 10px;
-  border-radius: 5px;
+  border-bottom: 10px solid #c82635;
 }
 
 .bar_link {
@@ -84,11 +87,15 @@ li {
 }
 
 .group-column {
+  width: 200px;
   background: #fff;
   padding: 10px;
   border-radius: 5px;
 }
 
+.group-column > ul {
+  border-bottom: none;
+}
 .group-column > li {
   padding: 10px;
   border-bottom: 1px solid lightgrey;
@@ -145,14 +152,17 @@ li {
   width: 100px;
 }
 
-.events-left-column {
+.events-middle-column {
   background: #fff;
+  width: 340px;
+  margin-left: 15px;
   padding: 10px;
   border-radius: 5px;
 }
 
 .events-right-column {
   background: #fff;
+  width: 240px;
   padding: 10px;
   border-radius: 5px;
   margin-left: 15px;

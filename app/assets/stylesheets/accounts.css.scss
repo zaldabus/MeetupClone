@@ -1,3 +1,71 @@
 // Place all the styles related to the accounts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.account {
+  width: 540px;
+  margin: 20px auto;
+}
+
+.account:after{
+  content: "";
+  display: table;
+  clear: both;
+};
+
+.account > h1 {
+  background: white;
+  width: 500px;
+  padding: 20px;
+  margin: 20px auto 0 auto;
+  border: 2px grey;
+  border-radius: 5px;
+}
+
+.general {
+  width: 500px;
+  margin: 20px auto 20px auto;
+  padding: 20px;
+  background: white;
+  border: 2px grey;
+  border-radius: 5px;
+}
+
+.general > h2 {
+  padding-bottom: 20px;
+}
+
+.general-info {
+  width: 300px;
+  border-collapse: collapse;
+}
+
+.general > img {
+  margin: 0 auto;
+  float: left;
+}
+
+td {
+  padding: 20px;
+  border: 1px solid lightgrey;
+  border-left: 0;
+  border-right: 0;
+}
+
+.general > img {
+  display: block;
+  float: right;
+}
+
+.interests {
+  width: 500px;
+  margin: 0 auto 20px auto;
+  padding: 20px;
+  background: white;
+  border: 2px grey;
+  border-radius: 5px;
+}
+
+.edit {
+  float: right;
+}

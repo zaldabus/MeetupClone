@@ -1,28 +1,49 @@
-Hi <%= @user.name %>! Welcome to your account page!
+<div class="account">
+  <h1 class="pull-left"><%= @user.name %>'s Account Page</h1>
 
-<div class="general">
-  General
+  <div class="general pull-left">
+    <h2>General</h2>
 
-  Name: <%= @user.name %>
-  Email address: <%= @user.email %>
-  Password: (Hidden)
+    <table class="general-info pull-left">
+      <tr>
+        <td>Name:</td>
+        <td><%= @user.name %></td>
+      </tr>
 
-  Location: <%= city_state(@user) %>
-  Birthday: <%= birthday(@user) %>
+      <tr>
+        <td>Email address:</td>
+        <td><%= @user.email %></td>
 
-  <%= image_tag @user.avatar.url(:big) %>
+      <tr>
+        <td>Password:</td>
+        <td>(Hidden)</td>
+      </tr>
+
+      <tr>
+        <td>Location:</td>
+        <td><%= city_state(@user) %></td>
+
+      <tr>
+        <td>Birthday:</td>
+        <td><%= birthday(@user) %></td>
+      </tr>
+
+    </table>
+
+    <%= image_tag @user.avatar.url(:big) %>
+  </div>
+
+  <div class="interests pull-left">
+    Your interests
+
+    <ul>
+
+    <% @user.interests.each do |interest| %>
+      <li><%= interest.title %></li>
+    <% end %>
+
+    </ul>
+  </div>
+
+  <%= link_to "Edit Account", edit_account_url, class: "btn edit" %>
 </div>
-
-<div class="interests">
-  Your interests
-
-  <ul>
-
-  <% @user.interests.each do |interest| %>
-    <li><%= interest.title %></li>
-  <% end %>
-
-  </ul>
-</div>
-
-<%= link_to "Edit Account", edit_account_url %>

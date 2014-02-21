@@ -39,17 +39,16 @@ class EventsController < ApplicationController
   end
 
   def event_signup
-    fail
     @event_signup = EventSignup.new(
                   event_id: params[:id],
-                  attendee_id: current_user
+                  attendee_id: current_user.id
                   )
 
     if @event_signup.save
-      redirect_to group_event_url(params[:group_id], params[:event_id])
+      redirect_to group_event_url(params[:group_id], params[:id])
     else
       flash[:errors] = ["Already signed up for event!"]
-      redirect_to group_event_url(params[:group_id], params[:event_id])
+      redirect_to group_event_url(params[:group_id], params[:id])
     end
   end
 

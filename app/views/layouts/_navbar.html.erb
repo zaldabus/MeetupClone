@@ -12,7 +12,7 @@
         <li><%= current_user.name %></li>
         <li><%= link_to "My Groups", user_url(current_user) %></li>
         <li><%= link_to "Account", account_url %></li>
-        <li><%= button_to "logout", session_url, method: :delete, class: :logout %></li>
+        <li><%= button_to "logout", session_url, method: :delete, class: "logout btn" %></li>
 
       <% else %>
         <li><%= link_to "Log in", new_session_url %></li>

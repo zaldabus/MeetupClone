@@ -26,3 +26,9 @@
   width: 385px;
   height: 175px;
 }
+
+.event-content:after {
+  content: "";
+  display: table;
+  clear: both;
+}

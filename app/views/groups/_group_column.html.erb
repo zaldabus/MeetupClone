@@ -1,8 +1,12 @@
-<ul class="group-column pull-left span3">
+<ul class="group-column pull-left">
   <li><%= image_tag group.avatar.url(:big) %></li>
-  <li>
-    <%= city_state(group) %>
-    Founded <%= group.created_at.strftime("%B %d, %Y") %>
+  <li class="pull-left">
+    <div class="pull-left">
+      <%= city_state(group) %>
+    </div>
+    <div class="pull-left">
+      Founded <%= group.created_at.strftime("%B %d, %Y") %>
+    </div>
   </li>
 
   <li>Members <%= members.count %></li>
