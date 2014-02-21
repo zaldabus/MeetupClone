@@ -1,85 +1,105 @@
-<%= render partial: "group_bar", locals: { group: @group, members: @members } %>
+<div class="group-page">
+  ><%= render partial: "group_bar", locals: { group: @group, members: @members } %>
 
-<%= render partial: 'group_column', locals: {
-                                      group: @group,
-                                      members: @members,
-                                      upcoming_events: @upcoming_events,
-                                      past_events: @past_events
-                                      }
-%>
+  <div class="main-content row">
+    <%= render partial: 'group_column', locals: {
+                                          group: @group,
+                                          members: @members,
+                                          upcoming_events: @upcoming_events,
+                                          past_events: @past_events
+                                          }
+    %>
 
-<div class="events">
-  <h2><%= @group.description %></h2>
+    <div class="event-header span6">
+      <li><h2><%= @group.description %></h2></li>
 
-  <% unless logged_in? && @members.include?(current_user) %>
+      <% unless logged_in? && @members.include?(current_user) %>
 
-    <% @member_short_list.each do |member| %>
-      <%= (image_tag member.avatar.url(:small), size: "40x40") %>
-    <% end %>
-
-    <%= link_to "Join us!", join_group_url(@group) %>
-  <% end %>
-
-  <!-- upcoming events -->
-  <ul>
-    <h2> Upcoming Meetups</h2>
-
-    <% @upcoming_short_list.each do |event| %>
       <li>
-        <!-- left side -->
-        <%= link_to event.title, group_event_url(@group, event) %>
-        <%= link_to full_address(event), group_event_url(@group, event) %>
-        <%= full_address(event) %>
-        <!-- map link will go here -->
-
-        <% event.attendees.limit(10).each do |attendee| %>
-          <%= (image_tag attendee.avatar.url(:small), size: "30x30") %>
+        <% @member_short_list.each do |member| %>
+          <%= (image_tag member.avatar.url(:small), size: "40x40") %>
         <% end %>
 
-        <%= event.description %>
-        <%= link_to "LEARN MORE", group_event_url(@group, event) %>
-
-        <!-- right side -->
-        <%= event.date.strftime("%a %b %d") %>
-        <%= event.time.strftime("%I:%m %p") %>
-        <%= link_to "RSVP", group_event_url(@group, event) %>
-        <%= event.attendees.count %> attending
-        <!-- comments count will go here -->
+        <%= link_to "Join us!", join_group_url(@group) %>
       </li>
-    <% end %>
 
-    <% if @upcoming_events.count > @upcoming_short_list.count %>
-      <%= link_to "MORE MEETUPS", group_events_url(@group) %>
-    <% end %>
-  </ul>
+      <% end %>
+    </div>
 
-  <!-- past events -->
-  <ul>
-    <h2> Recent Meetups </h2>
+    <div class="events span6">
 
-    <% @past_short_list.each do |event| %>
-      <li>
-        <!-- left side -->
-        <%= time_since(event.date) %>
+      <ul class="upcoming-events pull-left">
+        <h2> Upcoming Meetups</h2>
 
-        <%= link_to event.title, group_event_url(@group, event) %>
+        <% @upcoming_short_list.each do |event| %>
+          <li class="pull-left">
+            <!-- left side -->
+            <h3><%= link_to event.title, group_event_url(@group, event) %></h3>
 
-        <% event.attendees.limit(10).each do |attendee| %>
-          <%= (image_tag attendee.avatar.url(:small), size: "30x30") %>
+            <div class="event-left pull-left">
+              <!-- this is where a link to the site location will go -->
+              <ul>
+                <li>
+                  <%= full_address(event) %>
+                  <%= link_to "(map)", google_map(event) %>
+                </li>
+
+
+                <li>
+                  <% event.attendees.limit(10).each do |attendee| %>
+                    <%= (image_tag attendee.avatar.url(:small), size: "30x30") %>
+                  <% end %>
+                </li>
+
+                <li><%= event.description %></li>
+                <li><%= link_to "LEARN MORE", group_event_url(@group, event) %></li>
+              </ul>
+            </div>
+
+            <!-- right side -->
+            <div class="event-right pull-right">
+              <%= event.date.strftime("%a %b %d") %>
+              <%= event.time.strftime("%I:%m %p") %>
+              <%= link_to "RSVP", group_event_url(@group, event) %>
+              <%= event.attendees.count %> attending
+              <!-- comments count will go here -->
+            </div>
+          </li>
         <% end %>
-        <%= event.attendees.count %> attendees
 
-        <%= event.description %>
-        <%= link_to "LEARN MORE", group_event_url(@group, event) %>
-      </li>
-    <% end %>
+        <% if @upcoming_events.count > @upcoming_short_list.count %>
+          <%= link_to "MORE MEETUPS", group_events_url(@group) %>
+        <% end %>
+      </ul>
 
-    <% if @upcoming_events.count > @upcoming_short_list.count %>
-      <%= link_to "SEE ALL PAST MEETUPS", past_group_events_url(@group) %>
-    <% end %>
-  </ul>
-</div>
+      <ul class="past-events pull-left">
+        <h2> Recent Meetups </h2>
 
-<div class="whats_new">
+        <% @past_short_list.each do |event| %>
+          <li class="pull-left">
+            <!-- left side -->
+            <%= time_since(event.date) %>
 
+            <h3><%= link_to event.title, group_event_url(@group, event) %></h3>
+
+            <% event.attendees.limit(10).each do |attendee| %>
+              <%= (image_tag attendee.avatar.url(:small), size: "30x30") %>
+            <% end %>
+            <%= event.attendees.count %> attendees
+
+            <%= event.description %>
+            <%= link_to "LEARN MORE", group_event_url(@group, event) %>
+          </li>
+        <% end %>
+
+        <% if @upcoming_events.count > @upcoming_short_list.count %>
+          <%= link_to "SEE ALL PAST MEETUPS", past_group_events_url(@group) %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="whats_new">
+
+    </div>
+  </div>
 </div>

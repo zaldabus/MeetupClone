@@ -1,0 +1,139 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+
+li {
+  list-style: none;
+}
+
+.brand {
+  border-right: 1px solid lightgrey;
+
+}
+
+.logo {
+  padding: 10px 0 10px 20px;
+}
+
+.navbar {
+  margin-bottom: -20px;
+}
+.nav-left > li {
+  border-right: 1px solid lightgrey;
+  padding: 21px 0 25px 0;
+}
+
+.nav-right {
+  width: 330px;
+}
+
+.group-page {
+  background: #e51938;
+}
+
+.group-bar-title {
+  background: #e51938;
+  border-bottom: 10px solid #c82635;
+  padding: 50px 0 10px 0;
+  margin: auto;
+}
+
+.group-bar-title > h1 {
+  text-align: center;
+}
+
+.group-bar-links {
+  background: #fff;
+  margin: 0 0 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.bar_link {
+  padding: 20px;
+}
+
+.main-content {
+  background: #e51938;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.group-column {
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.group-column > li {
+  padding: 10px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.events {
+  background: #e51938;
+  border-radius: 5px;
+}
+
+.event-header {
+  background: #fff;
+
+  margin-bottom: 10px;
+
+  border-radius: 5px;
+}
+
+.event-header > li > h2 {
+  display: block;
+  text-align: center;
+}
+
+.upcoming-events {
+  background: #fff;
+  margin-left: 0;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.upcoming-events > li {
+  border-top: 1px solid lightgrey;
+}
+
+.past-events {
+  background: #fff;
+  margin-left: 0;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.past-events > li {
+  width: 440px;
+  border-top: 1px solid lightgrey;
+}
+
+.event-left {
+  width: 340px;
+}
+
+.event-right {
+  width: 100px;
+}
+
+.events-left-column {
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.events-right-column {
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 15px;
+}

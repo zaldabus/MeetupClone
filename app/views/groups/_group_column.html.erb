@@ -1,18 +1,22 @@
-<div class="group_column">
-  <%= image_tag group.avatar.url(:big) %>
-  <%= city_state(group) %>
-  Founded <%= group.created_at.strftime("%B %d, %Y") %>
+<ul class="group-column pull-left span3">
+  <li><%= image_tag group.avatar.url(:big) %></li>
+  <li>
+    <%= city_state(group) %>
+    Founded <%= group.created_at.strftime("%B %d, %Y") %>
+  </li>
 
-  Members <%= members.count %>
-  Upcoming Meetups <%= upcoming_events.count %>
-  Past Meetups <%= past_events.count %>
-  Our calendar <!-- add a calendar here -->
+  <li>Members <%= members.count %></li>
+  <li>Upcoming Meetups <%= upcoming_events.count %></li>
+  <li>Past Meetups <%= past_events.count %></li>
+  <li>Our calendar</li> <!-- add a calendar here -->
 
-  Organizers: <%= group.owner.name %>
-  <%= image_tag group.owner.avatar.url(:small), size: "40x40" %>
-  <%= link_to "Contact", group.owner.email %>
+  <li>
+    Organizers: <%= group.owner.name %>
+    <%= image_tag group.owner.avatar.url(:small), size: "40x40" %>
+    <%= link_to "Contact", group.owner.email %>
 
-  <% if group.owner == current_user %>
-    <%= link_to "Create Event", new_group_event_url(group) %>
-  <% end %>
-</div>
+    <% if group.owner == current_user %>
+      <%= link_to "Create Event", new_group_event_url(group) %>
+    <% end %>
+  </li>
+</ul>

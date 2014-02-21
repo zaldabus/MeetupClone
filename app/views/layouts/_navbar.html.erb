@@ -1,17 +1,26 @@
-<%= link_to (image_tag "MeetUp-logo.png", size: "66x45"), root_url %>
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#"><%= image_tag "MeetUp-logo.png", class: :logo %></a>
 
-<%= link_to "Find Meetup", find_url %>
-<%= link_to "Start Meetup", new_group_url %>
+    <ul class="nav pull-left nav-left">
+      <li><%= link_to "Find Meetup", find_url %></li>
+      <li><%= link_to "Start Meetup", new_group_url %></li>
+    </ul>
 
-<% if logged_in? %>
-  <%= current_user.name %>
-  <%= link_to "My Groups", user_url(current_user) %>
-  <%= link_to "Account", account_url %>
-  <%= button_to "logout", session_url, method: :delete %>
+    <ul class="nav pull-right nav-right">
+      <% if logged_in? %>
+        <li><%= current_user.name %></li>
+        <li><%= link_to "My Groups", user_url(current_user) %></li>
+        <li><%= link_to "Account", account_url %></li>
+        <li><%= button_to "logout", session_url, method: :delete, class: :logout %></li>
 
-<% else %>
-  <%= link_to "Log in", new_session_url %>
-  <%= link_to "Sign up", new_user_url %>
-<% end %>
+      <% else %>
+        <li><%= link_to "Log in", new_session_url %></li>
+        <li><%= link_to "Sign up", new_user_url %></li>
+      <% end %>
 
-<input type="search" name="search">
+      <input class="span4" type="text" name="search" placeholder="Search">
+    </ul>
+
+  </div>
+</div>

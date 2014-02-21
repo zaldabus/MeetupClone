@@ -1,13 +1,21 @@
-<div class="group_bar">
-  <h1><%= group.title %></h1>
+<div class="group-bar">
+  <div class="group-bar-title row">
+    <h1><%= group.title %></h1>
+  </div>
 
-  <%= link_to "Home", group_url(group) %>
-  <%= link_to "Members", group_members_url(group) %>
+  <div class="group-bar-links row">
+    <div class="group-bar-links-left pull-left">
+      <%= link_to "Home", group_url(group), class: :bar_link %>
+      <%= link_to "Members", group_members_url(group), class: :bar_link %>
+    </div>
 
-  <% unless logged_in? && members.include?(current_user) %>
-    <%= link_to "Join us!", join_group_url(group) %>
-  <% else %>
-    <%= image_tag current_user.avatar.url(:small) %>
-    <%= link_to "My profile", account_url %>
-  <% end %>
+    <div class="group-bar-links-right pull-right">
+      <% unless logged_in? && members.include?(current_user) %>
+        <%= link_to "Join us!", join_group_url(group) %>
+      <% else %>
+        <%= image_tag current_user.avatar.url(:small), size: "20x20" %>
+        <%= link_to "My profile", account_url %>
+      <% end %>
+    </div>
+  </div>
 </div>

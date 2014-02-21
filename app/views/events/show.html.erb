@@ -1,57 +1,63 @@
-<%= render partial: "groups/group_bar", locals: { group: @group, members: @members } %>
+<div class="group-page">
+  <%= render partial: "groups/group_bar", locals: { group: @group, members: @members } %>
 
-<%= render partial: "groups/group_column", locals: {
-                                      group: @group,
-                                      members: @members,
-                                      upcoming_events: @upcoming_events,
-                                      past_events: @past_events
-                                      }
-%>
+  <div class="main-content row">
+    <%= render partial: "groups/group_column", locals: {
+                                          group: @group,
+                                          members: @members,
+                                          upcoming_events: @upcoming_events,
+                                          past_events: @past_events
+                                          }
+    %>
 
-<div class="events">
-  <ul>
-    <li><h2><%= @event.title %></h2></li>
+    <div class="events span9 pull-left">
+      <div class="events-left-column pull-left">
+        <ul>
+          <li><h2><%= @event.title %></h2></li>
 
-    <li>
-      <%= @event.date.strftime("%A, %B %d, %Y") %>
-      <%= @event.time.strftime("%I:%m %p") %>
-    </li>
+          <li>
+            <%= @event.date.strftime("%A, %B %d, %Y") %>
+            <%= @event.time.strftime("%I:%m %p") %>
+          </li>
 
 
-    <li>
-      <%= @event.addresses.first.address_line %>
-      <%= city_state(@event) %>
-      <%= link_to "(map)", google_map(@event) %>
-    </li>
+          <li>
+            <%= @event.addresses.first.address_line %>
+            <%= city_state(@event) %>
+            <%= link_to "(map)", google_map(@event) %>
+          </li>
 
-    <li><%= @event.description %></li>
+          <li><%= @event.description %></li>
 
-    <!-- comments will go here -->
-  </ul>
-</div>
+          <!-- comments will go here -->
+        </ul>
+      </div>
 
-<div class="events_right_column">
-  <ul>
-    <% if logged_in? && !@event.attendees.include?(current_user) %>
-      <li>
-        <h3>Won't you attend?</h3>
-        <%= button_to "Attend", event_signup_group_event_url(@group, @event)%>
-      </li>
-    <% end %>
+      <div class="events-right-column pull-left">
+        <ul>
+          <% if logged_in? && !@event.attendees.include?(current_user) %>
+            <li>
+              <h3>Won't you attend?</h3>
+              <%= button_to "Attend", event_signup_group_event_url(@group, @event)%>
+            </li>
+          <% end %>
 
-    <li><%= @event.attendees.count %> attending</li>
+          <li><%= @event.attendees.count %> attending</li>
 
-    <% @event.attendees.limit(15).each do |attendee| %>
-      <li>
-        <%= link_to (image_tag attendee.avatar.url(:small), size: "40x40"),
-                     group_member_url(@event.group, attendee
-                     )
-        %>
-        <%= link_to attendee.name, group_member_url(@event.group, attendee) %>
+          <% @event.attendees.limit(15).each do |attendee| %>
+            <li>
+              <%= link_to (image_tag attendee.avatar.url(:small), size: "40x40"),
+                           group_member_url(@event.group, attendee
+                           )
+              %>
+              <%= link_to attendee.name, group_member_url(@event.group, attendee) %>
 
-        <!-- Maybe add something for a group member to write a description -->
-        <%#= attendee.description %>
-      </li>
-    <% end %>
-  </ul>
+              <!-- Maybe add something for a group member to write a description -->
+              <%#= attendee.description %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
