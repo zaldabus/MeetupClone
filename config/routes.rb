@@ -16,7 +16,7 @@ MeetupClone::Application.routes.draw do
 
   resources :groups, except: [:index, :destroy] do
     resources :members, only: [:index, :show]
-    post 'join', on: :member
+    get 'join', on: :member
 
     resources :events, only: [:index, :show, :new, :create] do
       get 'past', on: :collection

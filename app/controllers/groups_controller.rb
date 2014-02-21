@@ -56,7 +56,7 @@ class GroupsController < ApplicationController
 
   def join
     @group_membership = GroupMembership.new(
-                          member_id: current_user,
+                          member_id: current_user.id,
                           group_id: params[:id]
                           )
 

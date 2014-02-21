@@ -8,12 +8,13 @@
 
 body {
   background: #f4f4f4;
+  margin: 0;
 }
 
 .main-content {
   width: 900px;
   height: 100%;
-  margin: 0 auto;
+  margin: 0 auto 0 auto;
   box-shadow: 2px 0 2px black, -2px 0 4px black;
 }
 

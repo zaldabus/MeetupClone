@@ -52,7 +52,7 @@ MeetupClone::Application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   ## Need to put heroku path for this to work correctly
-  config.action_mailer.default_url_options = { host: 'heroku path goes here' }
+  config.action_mailer.default_url_options = { host: 'meetup-clone.herokuapp.com' }
 
   # Enable threaded mode
   # config.threadsafe!
