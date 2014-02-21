@@ -47,7 +47,8 @@
 
                 <li>
                   <% event.attendees.limit(10).each do |attendee| %>
-                    <%= (image_tag attendee.avatar.url(:small), size: "30x30") %>
+                    <!-- This eventually needs to be changed to link to the group member, not the user -->
+                    <%= link_to (image_tag attendee.avatar.url(:small), size: "30x30"), user_url(attendee) %>
                   <% end %>
                 </li>
 
