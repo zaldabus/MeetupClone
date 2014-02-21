@@ -1,49 +1,42 @@
-<h1>Create a Dumb Meetup Event!</h1>
+<div class="new-event-title-bar">
+  <%= image_tag "new_event_bar.jpg", class: :new_event_title_bar_pic %>
+</div>
 
-<!-- Seems to be causing an error when I perform the create action with "events path" -->
-<%= form_for [@group, @event] do |f| %>
+<%= form_for [@group, @event], class: "pull-left" do |f| %>
+  <h1>Create a New Event!</h1>
+
   <%= f.label :title %>
   <%= f.text_field :title %>
-  <br>
-
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <br>
 
   <%= f.label :date %>
   <input type="date" name="event[date]">
-  <br>
+
 
   <%= f.label :time %>
   <input type="time" name="event[time]">
-  <br>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
   <br>
 
-  <%= f.label :address %>
-  <br>
+  <h4>Address</h4>
+
   <%= fields_for :address do |address_form| %>
     <%= address_form.label :address_line %>
     <%= address_form.text_field :address_line %>
-    <br>
 
     <%= address_form.label :city %>
     <%= address_form.text_field :city %>
-    <br>
 
     <%= address_form.label :state %>
     <%= address_form.text_field :state %>
-    <br>
 
     <%= address_form.label :zip_code %>
     <%= address_form.text_field :zip_code %>
-    <br>
-    <br>
   <% end %>
 
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar %>
   <br>
   <br>
 
-  <%= f.submit "Create" %>
+  <%= f.submit "Create New Event!", class: "btn-block" %>
 <% end %>

@@ -1,6 +1,11 @@
-<h1>Welcome to Dumb Meetup!</h1>
+<div class="new-user-title-bar">
+  <%= image_tag "new_user_bar.jpg", class: :new_user_title_bar_pic %>
+</div>
+
 
 <%= form_for @user do |f| %>
+  <h1>Create a new user!</h1>
+
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br>
@@ -10,7 +15,7 @@
   <br>
   <br>
 
-  <%= f.label :address %>
+  <h4>Address</h4>
   <br>
   <%= fields_for :address do |address_form| %>
     <%= address_form.label :address_line %>
@@ -41,5 +46,5 @@
   <br>
 
 
-  <%= f.submit "Create" %>
+  <%= f.submit "Create", class: "btn-block" %>
 <% end %>

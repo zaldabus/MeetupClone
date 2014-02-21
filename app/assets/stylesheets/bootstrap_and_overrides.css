@@ -6,6 +6,17 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
+body {
+  background: #f4f4f4;
+}
+
+.main-content {
+  width: 900px;
+  height: 100%;
+  margin: 0 auto;
+  box-shadow: 2px 0 2px black, -2px 0 4px black;
+}
+
 li {
   list-style: none;
 }
@@ -22,6 +33,15 @@ li {
 .navbar {
   margin-bottom: -20px;
 }
+
+.navbar-inner {
+
+}
+
+.brand {
+  width: 83px;
+}
+
 .nav-left > li {
   border-right: 1px solid lightgrey;
   padding: 21px 0 25px 0;

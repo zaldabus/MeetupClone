@@ -3,7 +3,8 @@
 <head>
   <title>MeetupClone</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <!-- Need to add Backbone stuff to get this to work -->
+  <%#= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,15 +12,17 @@
 <%= render "layouts/navbar" %>
 <br>
 
-<% if flash[:errors] %>
-  <% flash[:errors].each do |error| %>
-    <%= error %>
+<div class="main-content">
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <%= error %>
+    <% end %>
   <% end %>
-<% end %>
 
-<%= flash[:notice] %>
+  <%= flash[:notice] %>
 
-<%= yield %>
+  <%= yield %>
+</div>
 
 </body>
 </html>

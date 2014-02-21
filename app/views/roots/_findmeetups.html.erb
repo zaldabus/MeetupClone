@@ -1,6 +1,22 @@
-<h1>Dumb Meetup Groups</h1>
+<div class="find-title-bar">
+  <div class="title-text">
+    <h1>Meetups are</h1>
+    <p>neighbors getting together to learn something,</p>
+    <p>do something, share something...</p>
+  </div>
 
-<% groups.each do |group| %>
-  <%= link_to group.title, group_url(group) %>
-  <br>
-<% end %>
+  <%= image_tag "find_title_bar.jpg", class: :find_title_bar_pic %>
+</div>
+
+<div class="find-groups">
+  <ul class="thumbnails">
+    <% groups.each do |group| %>
+      <li>
+        <div class="thumbnail">
+          <%= link_to (image_tag group.avatar.url), group_url(group) %>
+          <%= link_to group.title, group_url(group) %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,16 +1,20 @@
-<h1>Create a Dumb Meetup Group!</h1>
+<div class="new-user-title-bar">
+  <%= image_tag "new_group_bar.jpg", class: :new_group_title_bar_pic %>
+</div>
 
 <%= form_for @group do |f| %>
+  <h1>Create a Meetup Group!</h1>
+
   <%= f.label :title %>
   <%= f.text_field :title %>
   <br>
 
   <%= f.label :description %>
-  <%= f.text_field :description %>
+  <%= f.text_area :description %>
   <br>
   <br>
 
-  <%= f.label :address %>
+  <h4>Address</h4>
   <br>
   <%= fields_for :address do |address_form| %>
     <%= address_form.label :address_line %>
@@ -32,18 +36,21 @@
   <% end %>
 
   <h4>Invite users to your group!</h4>
-  <input type="hidden" name="invitees[]">
-  <% @invitees.each do |invitee| %>
-    <% next if invitee == current_user %>
-    <label for="invitee_<%= invitee.id %>"><%= invitee.email %></label>
-    <input
-      type="checkbox"
-      name="invitees[]"
-      value="<%= invitee.id %>"
-      id="invitee_<%= invitee.id %>">
-      <br>
+  <div class="invitees">
+    <input type="hidden" name="invitees[]">
+    <% @invitees.each do |invitee| %>
+      <% next if invitee == current_user %>
+      <div class="invitee">
+        <label for="invitee_<%= invitee.id %>"><%= image_tag invitee.avatar.url %><%= invitee.email %></label>
+        <input
+          type="checkbox"
+          name="invitees[]"
+          value="<%= invitee.id %>"
+          id="invitee_<%= invitee.id %>">
+      </div>
 
-  <% end %>
+    <% end %>
+  </div>
   <br>
 
   <%= f.label :avatar %>
@@ -51,5 +58,5 @@
   <br>
   <br>
 
-  <%= f.submit "Create" %>
+  <%= f.submit "Create", class: "btn-block" %>
 <% end %>
