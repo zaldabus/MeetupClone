@@ -5,9 +5,11 @@ MeetupClone::Application.routes.draw do
   get 'find', to: 'roots#find'
 
   resources :users, only: [:new, :create, :show] do
-      resources :groups, only: :index do
-        get 'email_join', on: :collection
-      end
+    post 'comment', on: :member
+
+    resources :groups, only: :index do
+      get 'email_join', on: :collection
+    end
   end
 
   resource :session, only: [:new, :create, :destroy]

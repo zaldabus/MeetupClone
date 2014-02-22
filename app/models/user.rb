@@ -28,6 +28,12 @@ class User < ActiveRecord::Base
   has_many :groups, through: :group_memberships
   has_many :events, through: :event_signups
 
+  has_many :made_comments,
+           class_name: "Comment",
+           foreign_key: :user_id
+
+  has_many :comments, as: :commentable
+
   has_many :addresses, as: :addressable, inverse_of: :addressable
 
   has_attached_file :avatar,

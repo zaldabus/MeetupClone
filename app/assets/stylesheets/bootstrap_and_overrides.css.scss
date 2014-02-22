@@ -168,3 +168,64 @@ li {
   border-radius: 5px;
   margin-left: 15px;
 }
+
+//Can be used for all comment box sections
+.comments {
+  background: white;
+  width: 100%;
+  margin-top: 10px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.post-box-container {
+  background: #f4f4f4;
+  padding: 3px 5px 10px 8px;
+  width: 98%;
+}
+
+.post-box-container:after {
+  display: table;
+  clear: both;
+  content: "";
+};
+
+.post-box {
+  width: 95%;
+}
+
+.post {
+  display: block;
+  width: 100%;
+  float: left;
+  border-bottom: 1px dotted #efefef;
+}
+
+.post-thumbnail {
+  float: left;
+  padding: 0 20px 20px 20px;
+  width: 50px;
+}
+
+.post-info {
+  float: left;
+}
+
+.post-info > h5 {
+  display: block;
+  font-weight: bold;
+
+  margin: 0;
+}
+
+.post-info > p {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.post-info > time {
+  display: block;
+  font-size: 8pt;
+  color: #bdbdbf;
+}
+//End of comment section css

@@ -39,11 +39,6 @@
     <%= link_to "SEE ALL MY MEETUP GROUPS", user_groups_url(@user) %>
   </div>
 
-  <br>
-  <br>
-
-  <!-- Greetings -->
-  <!-- Need to include greeting logic here -->
   <div class="interests pull-left">
     <h3>Interests</h3>
     <ul>
@@ -53,4 +48,48 @@
     <% end %>
     </ul>
   </div>
+
+  <div class="comments pull-left">
+    <h3>Greetings</h3>
+
+    <% if logged_in? && current_user != @user %>
+      <form action="<%= comment_user_url(@user) %>" method="post">
+        <input
+          type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+
+        <div class="post-box-container">
+          <label for="body"></label>
+          <textarea
+            name="comment[body]"
+            placeholder="Post a greeting for <%= @user.name %>"
+            id="body"
+            rows="2"
+            class="post-box"></textarea>
+
+          <input type="submit" value="Post" class="btn pull-right">
+        </div>
+
+      </form>
+    <% end %>
+
+    <section class="posts">
+      <% @comments.each do |comment| %>
+        <article class="post">
+          <div class="post-thumbnail">
+            <%= link_to image_tag(comment.user.avatar.url, size: "50x50"),
+                user_url(comment.user)%>
+          </div>
+
+          <div class="post-info">
+            <h5><%= link_to comment.user.name, user_url(comment.user) %></h5>
+            <p><%= comment.body %></p>
+            <time><%= comment.created_at.strftime("%b, %d %I:%m %p") %></time>
+          </div>
+        </article>
+      <% end %>
+    </section>
+  </div>
+
 </div>
