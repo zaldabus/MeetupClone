@@ -32,3 +32,39 @@
   display: table;
   clear: both;
 }
+
+.event-right {
+  width: 100px;
+}
+
+.events-middle-column {
+  background: #fff;
+  width: 360px;
+  margin-left: 15px;
+  border-radius: 5px;
+}
+
+.events-middle-column > h2 {
+  margin-left: 20px;
+}
+
+.events-middle-column > time {
+  margin-left: 20px;
+}
+
+.events-middle-column > address {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.events-middle-column > p {
+  margin-left: 20px;
+}
+
+.events-right-column {
+  background: #fff;
+  width: 240px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 15px;
+}

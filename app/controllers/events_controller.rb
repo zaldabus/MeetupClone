@@ -36,6 +36,8 @@ class EventsController < ApplicationController
 
     @upcoming_events = @group.events.where(date: Time.now..Time.now + 1.year)
     @past_events = @group.events.where(date: Time.now - 1.year..Time.now)
+
+    @comments = @event.comments
   end
 
   def event_signup
@@ -56,6 +58,19 @@ class EventsController < ApplicationController
     else
       flash[:errors] = ["Already signed up for event!"]
       redirect_to group_event_url(params[:group_id], params[:id])
+    end
+  end
+
+  def comment
+    @event = Event.find(params[:id])
+    @comment = @event.comments.new(params[:comment])
+    @comment.user_id = current_user.id
+
+    if @comment.save
+      redirect_to :back
+    else
+      flash.now[:errors] = ["Must be logged in to post!"]
+      redirect_to :back
     end
   end
 

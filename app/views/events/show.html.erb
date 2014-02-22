@@ -12,25 +12,66 @@
 
     <div class="events pull-left">
       <div class="events-middle-column pull-left">
-        <ul>
-          <li><h2><%= @event.title %></h2></li>
+        <h2><%= @event.title %></h2>
 
-          <li>
-            <%= @event.date.strftime("%A, %B %d, %Y") %>
-            <%= @event.time.strftime("%I:%m %p") %>
-          </li>
+        <time>
+          <%= @event.date.strftime("%A, %B %d, %Y") %>
+          <%= @event.time.strftime("%I:%m %p") %>
+        </time>
 
 
-          <li>
-            <%= @event.addresses.first.address_line %>
-            <%= city_state(@event) %>
-            <%= link_to "(map)", google_map(@event) %>
-          </li>
+        <address>
+          <%= @event.addresses.first.address_line %>
+          <%= city_state(@event) %>
+          <%= link_to "(map)", google_map(@event) %>
+        </address>
 
-          <li><%= @event.description %></li>
 
-          <!-- comments will go here -->
-        </ul>
+        <p><%= @event.description %></p>
+
+        <div class="comments pull-left">
+          <h3>Greetings</h3>
+
+          <% if logged_in? && @event.attendees.include?(current_user) %>
+            <form action="<%= comment_group_event_url(@group, @event) %>" method="post">
+              <input
+                type="hidden"
+                name="authenticity_token"
+                value="<%= form_authenticity_token %>">
+
+              <div class="post-box-container">
+                <label for="body"></label>
+                <textarea
+                  name="comment[body]"
+                  placeholder='Post a comment for "<%= @event.title %>"'
+                  id="body"
+                  rows="2"
+                  class="post-box"></textarea>
+
+                <input type="submit" value="Post" class="btn pull-right">
+              </div>
+
+            </form>
+          <% end %>
+
+          <section class="posts">
+            <% @comments.each do |comment| %>
+              <article class="post">
+                <div class="post-thumbnail">
+                  <%= link_to image_tag(comment.user.avatar.url, size: "50x50"),
+                      user_url(comment.user)%>
+                </div>
+
+                <div class="post-info">
+                  <h5><%= link_to comment.user.name, user_url(comment.user) %></h5>
+                  <p><%= comment.body %></p>
+                  <time><%= comment.created_at.strftime("%b, %d %I:%m %p") %></time>
+                </div>
+              </article>
+            <% end %>
+          </section>
+        </div>
+
       </div>
 
       <div class="events-right-column pull-left">

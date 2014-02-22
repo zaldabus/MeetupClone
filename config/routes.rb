@@ -23,6 +23,7 @@ MeetupClone::Application.routes.draw do
     resources :events, only: [:index, :show, :new, :create] do
       get 'past', on: :collection
       post 'event_signup', on: :member
+      post 'comment', on: :member
     end
   end
 
