@@ -1,14 +1,19 @@
 class MembersController < ApplicationController
   def index
+    @group = Group.find(params[:group_id])
 
+    @members = @group.group_members
+
+    @upcoming_events = @group.events.where(date: Time.now..Time.now + 1.year)
+    @past_events = @group.events.where(date: Time.now - 1.year..Time.now)
   end
 
   def show
-    @member = User.find(params[:id]).group_members.find_by_group_id(params[:group_id])
+    @member = GroupMember.find(params[:id])
 
     @group = Group.find(params[:group_id])
 
-    @members = @group.members
+    @members = @group.group_members
 
     @upcoming_events = @group.events.where(date: Time.now..Time.now + 1.year)
     @past_events = @group.events.where(date: Time.now - 1.year..Time.now)

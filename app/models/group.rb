@@ -8,11 +8,13 @@ class Group < ActiveRecord::Base
 
   belongs_to :owner, class_name: "User", foreign_key: :owner_id
 
+  has_many :group_members
+
   has_many :group_memberships,
            class_name: "GroupMembership",
            foreign_key: :group_id
 
-  has_many :members, through: :group_memberships
+  has_many :members, through: :group_members
   has_many :events
 
   has_many :addresses, as: :addressable, inverse_of: :addressable

@@ -3,7 +3,14 @@ class GroupMember < ActiveRecord::Base
 
   validates :name, :email, :user_id, :group_id, presence: true
 
-  belongs_to :user
+  belongs_to :user, class_name: "User", foreign_key: :user_id
+  belongs_to :group
+
+  has_many :event_signups,
+           class_name: "EventSignup",
+           foreign_key: :attendee_id
+
+  has_many :events, through: :event_signups
 
   has_many :comments, as: :commentable
 

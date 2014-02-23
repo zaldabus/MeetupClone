@@ -1,0 +1,43 @@
+<div class"members-page">
+  <%= render partial: "groups/group_bar", locals: { group: @group, members: @members } %>
+
+  <div class"members-content">
+    <%= render partial: "groups/group_column", locals: {
+                                          group: @group,
+                                          members: @members,
+                                          upcoming_events: @upcoming_events,
+                                          past_events: @past_events
+                                          }
+    %>
+
+    <div class="members-page pull-left">
+      <div class="members-header pull-left">
+        <h1>Members</h1>
+      </div>
+
+      <div class="members-search pull-left">
+        <!-- If there's time add an extra search for group members -->
+      </div>
+
+      <div class="members-list pull-left">
+
+        <% @members.each do |member| %>
+          <div class="members-member">
+            <div class="members-thumbnail pull-left">
+              <%= link_to (image_tag member.avatar.url(:small), size: "60x60"),
+                           group_member_url(@group, member
+                           )
+              %>
+            </div>
+
+            <div class="members-info pull-left">
+              <%= link_to member.name, group_member_url(@event.group, member) %>
+            </div>
+
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
