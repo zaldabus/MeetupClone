@@ -20,4 +20,8 @@ class Event < ActiveRecord::Base
     small: "50x50>"
   },
   default_url: "/assets/noPhoto_80.png"
+
+  include PgSearch
+  multisearchable against: [:title, :date]
+
 end

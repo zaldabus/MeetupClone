@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140222180637) do
+ActiveRecord::Schema.define(:version => 20140223030004) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line",     :null => false
@@ -117,6 +117,14 @@ ActiveRecord::Schema.define(:version => 20140222180637) do
   end
 
   add_index "interests", ["user_id"], :name => "index_interests_on_user_id"
+
+  create_table "pg_search_documents", :force => true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",               :null => false

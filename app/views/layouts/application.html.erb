@@ -13,13 +13,13 @@
 <br>
 
 <div class="main-content">
-  <% if flash[:errors] %>
-    <% flash[:errors].each do |error| %>
-      <%= error %>
-    <% end %>
-  <% end %>
 
-  <%= flash[:notice] %>
+  <% flash.each do |name, msg| %>
+    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+      <a class="close" data-dismiss="alert">x</a>
+      <%= msg %>
+    </div>
+  <% end %>
 
   <%= yield %>
 </div>

@@ -43,6 +43,9 @@ class User < ActiveRecord::Base
   },
   default_url: "/assets/noPhoto_80.png"
 
+  include PgSearch
+  multisearchable against: [:name, :email]
+
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
 

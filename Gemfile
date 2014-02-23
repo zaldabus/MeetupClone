@@ -24,7 +24,9 @@ gem 'addressable'
 
 gem 'delayed_job_active_record'
 
+gem 'pg_search'
 
+gem 'simple_form'
 
 
 # Gems used only for assets and not required

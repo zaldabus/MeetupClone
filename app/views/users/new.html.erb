@@ -2,49 +2,29 @@
   <%= image_tag "new_user_bar.jpg", class: :new_user_title_bar_pic %>
 </div>
 
-
-<%= form_for @user do |f| %>
+<%= simple_form_for @user, html: { class: 'form-inline new_user' } do |f| %>
   <h1>Create a new user!</h1>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
-
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <br>
+  <%= f.input :name %>
+  <%= f.input :email %>
   <br>
 
   <h4>Address</h4>
-  <br>
-  <%= fields_for :address do |address_form| %>
-    <%= address_form.label :address_line %>
-    <%= address_form.text_field :address_line %>
-    <br>
 
-    <%= address_form.label :city %>
-    <%= address_form.text_field :city %>
-    <br>
+  <%= simple_fields_for :address do |address_form| %>
+    <%= address_form.input :address_line %>
 
-    <%= address_form.label :state %>
-    <%= address_form.text_field :state %>
-    <br>
+    <%= address_form.input :city %>
 
-    <%= address_form.label :zip_code %>
-    <%= address_form.text_field :zip_code %>
-    <br>
-    <br>
+    <%= address_form.input :state %>
+
+    <%= address_form.input :zip_code %>
   <% end %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br>
+  <%= f.input :password %>
 
   <%= f.label :avatar %>
   <%= f.file_field :avatar %>
-  <br>
-  <br>
-
 
   <%= f.submit "Create", class: "btn-block" %>
 <% end %>

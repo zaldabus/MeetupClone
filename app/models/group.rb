@@ -24,6 +24,9 @@ class Group < ActiveRecord::Base
   },
   default_url: "/assets/noPhoto_80.png"
 
+  include PgSearch
+  multisearchable against: [:title]
+
   def ensure_group_token
     self.group_token = SecureRandom::urlsafe_base64(16)
   end
