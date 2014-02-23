@@ -1,50 +1,99 @@
-<%= render partial: "groups/group_bar", locals: { group: @group, members: @members } %>
+<div class="member-page">
+  <%= render partial: "groups/group_bar", locals: { group: @group, members: @members } %>
+  <div class="member-content">
+    <%= render partial: "groups/group_column", locals: {
+                                          group: @group,
+                                          members: @members,
+                                          upcoming_events: @upcoming_events,
+                                          past_events: @past_events
+                                          }
+    %>
 
-<%= render partial: "groups/group_column", locals: {
-                                      group: @group,
-                                      members: @members,
-                                      upcoming_events: @upcoming_events,
-                                      past_events: @past_events
-                                      }
-%>
+    <div class="member-main-content pull-left">
+      <%= @member.name %>
 
-<%= @member.name %>
+      Location:
+      <%= city_state(@member) %>
 
-Location:
-<%= city_state(@member) %>
+      Meetup member since:
+      <%= @member.created_at.strftime("%B %d, %Y") %>
 
-Meetup member since:
-<%= @member.created_at.strftime("%B %d, %Y") %>
+      <%= image_tag @member.user.avatar.url(:big) %>
 
-<%= image_tag @member.user.avatar.url(:big) %>
+      <% if logged_in? && @member.user == current_user %>
+        <%= photo_change(@member.user) %>
+      <% end %>
 
-<% if logged_in? && @member.user == current_user %>
-  <%= photo_change(@member.user) %>
-<% end %>
+      <br>
+      <br>
 
-<br>
-<br>
+      Member of <%= @member.groups.count - 1 %> other Meetups
+      <ul>
+      <% @member.groups.each do |group| %>
+        <% next if group == @group %>
+        <li><%= link_to group.title, group_url(group) %></li>
+      <% end %>
+      </ul>
 
-Member of <%= @member.groups.count - 1 %> other Meetups
-<ul>
-<% @member.groups.each do |group| %>
-  <% next if group == @group %>
-  <li><%= link_to group.title, group_url(group) %></li>
-<% end %>
-</ul>
+      <%= link_to "SEE ALL MY MEETUP GROUPS", user_groups_url(@member.user) %>
+      <br>
+      <br>
 
-<!-- Create user's groups page -->
-<%= link_to "SEE ALL MY MEETUP GROUPS", user_groups_url(@member.user) %>
-<br>
-<br>
+      Interests
+      <ul>
+        <% @member.interests.each do |interest| %>
+        <!-- Will need to create some sort of link here, save for later -->
+          <li><%= interest.title %></li>
+        <% end %>
+      </ul>
 
-Greetings
-<!-- Need to include greeting logic here -->
+      <div class="comments pull-left">
+        <h3>Greetings</h3>
 
-Interests
-<ul>
-<% @member.interests.each do |interest| %>
-<!-- Will need to create some sort of link here, save for later -->
-  <li><%= interest.title %></li>
-<% end %>
-</ul>
+        <% if logged_in? &&
+              current_user.groups.include?(@group) &&
+              !current_user.group_members.include?(@member) %>
+
+          <form action="<%= comment_group_member_url(@group, @member) %>" method="post">
+            <input
+              type="hidden"
+              name="authenticity_token"
+              value="<%= form_authenticity_token %>">
+
+            <div class="post-box-container">
+              <label for="body"></label>
+              <textarea
+                name="comment[body]"
+                placeholder="Post a greeting for <%= @user.name %>"
+                id="body"
+                rows="2"
+                class="post-box"></textarea>
+
+              <input type="submit" value="Post" class="btn pull-right">
+            </div>
+
+          </form>
+        <% end %>
+
+        <section class="posts">
+          <% @comments.each do |comment| %>
+            <article class="post">
+              <div class="post-thumbnail">
+                <%= link_to image_tag(comment.user.avatar.url, size: "50x50"),
+                    user_url(comment.user)%>
+              </div>
+
+              <div class="post-info">
+                <h5><%= link_to comment.user.name, user_url(comment.user) %></h5>
+                <p><%= comment.body %></p>
+                <time><%= comment.created_at.strftime("%b, %d %I:%m %p") %></time>
+              </div>
+            </article>
+          <% end %>
+        </section>
+      </div>
+
+    </div>
+
+  </div>
+</div>

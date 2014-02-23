@@ -5,6 +5,8 @@ class GroupMember < ActiveRecord::Base
 
   belongs_to :user
 
+  has_many :comments, as: :commentable
+
   def addresses
     self.user.addresses
   end
@@ -21,8 +23,4 @@ class GroupMember < ActiveRecord::Base
     self.user.groups
   end
 
-  # Add this in later
-  # def comments
-  #   self.user.comments
-  # end
 end
