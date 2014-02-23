@@ -27,17 +27,22 @@
       <br>
       <br>
 
-      Member of <%= @member.groups.count - 1 %> other Meetups
-      <ul>
-      <% @member.groups.each do |group| %>
-        <% next if group == @group %>
-        <li><%= link_to group.title, group_url(group) %></li>
-      <% end %>
-      </ul>
+      <% if @member.groups.count == 0 %>
+        <p>Currently not a member of any other group</p>
+      <% else %>
+        Member of <%= @member.groups.count - 1 %> other Meetups
 
-      <%= link_to "SEE ALL MY MEETUP GROUPS", user_groups_url(@member.user) %>
-      <br>
-      <br>
+        <ul>
+          <% @member.groups.each do |group| %>
+            <% next if group == @group %>
+            <li><%= link_to group.title, group_url(group) %></li>
+          <% end %>
+        </ul>
+
+        <%= link_to "SEE ALL MY MEETUP GROUPS", user_groups_url(@member.user) %>
+        <br>
+        <br>
+      <% end %>
 
       Interests
       <ul>

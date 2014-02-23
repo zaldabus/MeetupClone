@@ -24,14 +24,14 @@
         <% @members.each do |member| %>
           <div class="members-member">
             <div class="members-thumbnail pull-left">
-              <%= link_to (image_tag member.avatar.url(:small), size: "60x60"),
+              <%= link_to (image_tag member.avatar_url, size: "60x60"),
                            group_member_url(@group, member
                            )
               %>
             </div>
 
             <div class="members-info pull-left">
-              <%= link_to member.name, group_member_url(@event.group, member) %>
+              <%= link_to member.name, group_member_url(@group, member) %>
             </div>
 
           </div>

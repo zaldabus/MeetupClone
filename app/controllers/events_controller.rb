@@ -42,11 +42,12 @@ class EventsController < ApplicationController
 
   def event_signup
     @group = Group.find(params[:group_id])
+    @group_member = current_user.group_members.find_by_group_id(@group)
 
-    if @group.members.include?(current_user)
+    if @group_member
       @event_signup = EventSignup.new(
                     event_id: params[:id],
-                    attendee_id: current_user.id
+                    attendee_id: @group_member.id
                     )
     else
       flash[:errors] = ["Must be a member to join event!"]

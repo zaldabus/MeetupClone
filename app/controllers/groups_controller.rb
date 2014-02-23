@@ -44,7 +44,7 @@ class GroupsController < ApplicationController
 
     @group = Group.find(params[:id])
 
-    @members = @group.members
+    @members = @group.group_members
     @member_short_list = @members.limit(10)
 
     @upcoming_events = @group.events.where(date: Time.now..Time.now + 1.year)
@@ -55,19 +55,14 @@ class GroupsController < ApplicationController
   end
 
   def join
-    @group_membership = GroupMembership.new(
-                          member_id: current_user.id,
-                          group_id: params[:id]
+    @group_membership = GroupMember.new(
+                          user_id: current_user.id,
+                          group_id: params[:id],
+                          name: current_user.name,
+                          email: current_user.email
                           )
 
     if @group_membership.save
-      GroupMember.create(
-        name: current_user.name,
-        email: current_user.email,
-        user_id: current_user.id,
-        group_id: params[:id]
-        )
-
       redirect_to group_url(params[:id])
     else
       flash[:errors] = ["Already a member of this group!"]

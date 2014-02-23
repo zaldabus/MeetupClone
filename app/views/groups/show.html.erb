@@ -17,7 +17,7 @@
 
       <li>
         <% @member_short_list.each do |member| %>
-          <%= (image_tag member.avatar.url(:small), size: "40x40") %>
+          <%= (image_tag member.avatar_url, size: "40x40") %>
         <% end %>
 
         <%= link_to "Join us!", join_group_url(@group) %>
@@ -48,7 +48,7 @@
                 <li>
                   <% event.attendees.limit(10).each do |attendee| %>
                     <!-- This eventually needs to be changed to link to the group member, not the user -->
-                    <%= link_to (image_tag attendee.avatar.url(:small), size: "30x30"), group_member_url(@group, attendee) %>
+                    <%= link_to (image_tag attendee.avatar_url, size: "30x30"), group_member_url(@group, attendee) %>
                   <% end %>
                 </li>
 

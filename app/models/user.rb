@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
 
   has_many :group_members
 
+  # Can probably be deleted
   has_many :group_memberships,
            class_name: "GroupMembership",
            foreign_key: :member_id

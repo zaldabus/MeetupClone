@@ -28,7 +28,7 @@ end
 end
 
 12.times do |i|
-  GroupMembership.create(member_id: 1, group_id: (i + 1))
+  GroupMember.create(user_id: 1, group_id: (i + 1), name: "Tom", email: "Email")
 end
 
 # Upcoming Events
@@ -56,7 +56,7 @@ end
 end
 
 24.times do |i|
-  EventSignup.create(event_id: (i + 1), attendee_id: (i + 1))
+  EventSignup.create(event_id: (i + 1), attendee_id: 1)
 end
 
 
