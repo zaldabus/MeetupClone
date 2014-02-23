@@ -2,41 +2,29 @@
   <%= image_tag "new_event_bar.jpg", class: :new_event_title_bar_pic %>
 </div>
 
-<%= form_for [@group, @event], class: "pull-left" do |f| %>
+<%= simple_form_for [@group, @event], class: "form-inline new_event pull-left" do |f| %>
   <h1>Create a New Event!</h1>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.input :title %>
 
   <%= f.label :date %>
-  <%= f.text_field :date %>
+  <%= f.text_field :date%>
 
+  <%= f.input :time%>
 
-  <%= f.label :time %>
-  <input type="time" name="event[time]">
-
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  <br>
+  <%= f.input :description %>
 
   <h4>Address</h4>
 
-  <%= fields_for :address do |address_form| %>
-    <%= address_form.label :address_line %>
-    <%= address_form.text_field :address_line %>
+  <%= simple_fields_for :address do |address_form| %>
+    <%= address_form.input :address_line %>
 
-    <%= address_form.label :city %>
-    <%= address_form.text_field :city %>
+    <%= address_form.input :city %>
 
-    <%= address_form.label :state %>
-    <%= address_form.text_field :state %>
+    <%= address_form.input :state %>
 
-    <%= address_form.label :zip_code %>
-    <%= address_form.text_field :zip_code %>
+    <%= address_form.input :zip_code %>
   <% end %>
-
-  <br>
-  <br>
 
   <%= f.submit "Create New Event!", class: "btn-block" %>
 <% end %>

@@ -2,37 +2,24 @@
   <%= image_tag "new_group_bar.jpg", class: :new_group_title_bar_pic %>
 </div>
 
-<%= form_for @group do |f| %>
+<%= simple_form_for @group, html: { class: 'form-inline new_user' } do |f| %>
   <h1>Create a Meetup Group!</h1>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <br>
+  <%= f.input :title %>
 
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  <br>
+  <%= f.input :description %>
   <br>
 
   <h4>Address</h4>
-  <br>
-  <%= fields_for :address do |address_form| %>
-    <%= address_form.label :address_line %>
-    <%= address_form.text_field :address_line %>
-    <br>
 
-    <%= address_form.label :city %>
-    <%= address_form.text_field :city %>
-    <br>
+  <%= simple_fields_for :address do |address_form| %>
+    <%= address_form.input :address_line %>
 
-    <%= address_form.label :state %>
-    <%= address_form.text_field :state %>
-    <br>
+    <%= address_form.input :city %>
 
-    <%= address_form.label :zip_code %>
-    <%= address_form.text_field :zip_code %>
-    <br>
-    <br>
+    <%= address_form.input :state %>
+
+    <%= address_form.input :zip_code %>
   <% end %>
 
   <h4>Invite users to your group!</h4>
