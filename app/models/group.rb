@@ -20,7 +20,7 @@ class Group < ActiveRecord::Base
     big: "600x600>",
     small: "50x50>"
   },
-  default_url: "/assets/noPhoto_80.png"
+  default_url: "/assets/noPhoto_group.png"
 
   include PgSearch
   multisearchable against: [:title]
