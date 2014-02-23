@@ -1,7 +1,5 @@
 class RootsController < ApplicationController
   def index
-
-
     if logged_in?
       events = []
       groups = current_user.groups.includes(:events).where("events.date BETWEEN ? AND ?", Time.now, (Time.now + 1.year) )
@@ -15,6 +13,13 @@ class RootsController < ApplicationController
   end
 
   def find
-    @groups = Group.all
+    if params[:query]
+      @results = PgSearch.multisearch(params[:query])
+    else
+      @results = PgSearch::Document
+    end
+
+    @results = @results.includes(:searchable)
+    # @groups = Group.all
   end
 end
