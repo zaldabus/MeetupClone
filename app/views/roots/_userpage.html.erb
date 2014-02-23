@@ -1,29 +1,41 @@
-<% date = "" %>
+<div class="event-list pull-left">
+  <% date = "" %>
 
-<% events.each do |event| %>
+  <% events.each do |event| %>
 
-  <% next if date == event.date %>
-  <% date = event.date %>
-  <% events_on_date = events.select { |event| event.date == date } %>
+    <% next if date == event.date %>
+    <% date = event.date %>
+    <% events_on_date = events.select { |event| event.date == date } %>
 
 
-  <ul>
-  <%= date.strftime("%A, %b %d") %>
-  <% events_on_date.each do |event_on_date| %>
-    <li>
-      <%= link_to event_on_date.time.strftime("%I:%m %p"),
-          group_event_url(event_on_date.group, event_on_date) %>
+    <section class="event-listings">
+      <time><%= date.strftime("%A, %b %d") %></time>
+      <% events_on_date.each do |event_on_date| %>
+        <div class="event-listing">
+          <time>
+            <%= link_to event_on_date.time.strftime("%I:%m %p"),
+            group_event_url(event_on_date.group, event_on_date) %>
+          </time>
 
-      <%= link_to event_on_date.group.title,
-          group_url(event_on_date.group) %>
+          <header>
+            <%= link_to event_on_date.group.title,
+                group_url(event_on_date.group) %>
+          </header>
 
-      <%= link_to event_on_date.title,
-          group_event_url(event_on_date.group, event_on_date.id) %>
+          <main>
+            <%= link_to event_on_date.title,
+                group_event_url(event_on_date.group, event_on_date.id) %>
+          </main>
 
-      <%= event_on_date.attendees.count %>
-      <%= "Member".pluralize(event_on_date.attendees.count) %> attending
-    </li>
+          <footer>
+            <%= event_on_date.attendees.count %>
+            <%= "Member".pluralize(event_on_date.attendees.count) %> attending
+          </footer>
+        </div>
+      <% end %>
+
+    </section>
   <% end %>
+</div>
 
-  </ul>
-<% end %>
+<div class="datepicker pull-right"></div>

@@ -46,3 +46,56 @@
   margin-left: 20px;
   color: white;
 }
+
+//Events
+.event-list {
+  background: white;
+  margin: 20px;
+  padding: 20px;
+  width: 55%;
+  border-radius: 5px;
+}
+
+.event-listings {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.event-listings:after {
+  display: table;
+  content: "";
+  clear: both;
+}
+
+.event-listings > time {
+  display: block;
+  border-bottom: 1px solid lightgrey;
+}
+
+.event-listing {
+  display: block;
+  border-bottom: 1px solid lightgrey;
+}
+
+.event-listing > time {
+  display: block;
+  float: left;
+}
+
+.event-listing > header {
+
+}
+
+.event-listing > main {
+
+}
+
+.event-listing > footer {
+
+}
+
+//Calendar
+.datepicker {
+  margin: 20px 20px;
+}
