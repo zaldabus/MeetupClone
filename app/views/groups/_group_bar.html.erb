@@ -10,7 +10,7 @@
     </div>
 
     <div class="group-bar-links-right pull-right">
-      <% unless logged_in? && members.include?(current_user) %>
+      <% unless logged_in? && @members.find_by_user_id(current_user.id) %>
         <%= link_to "Join us!", join_group_url(group) %>
       <% else %>
         <%= image_tag current_user.avatar.url(:small), size: "20x20" %>

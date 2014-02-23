@@ -13,15 +13,15 @@
     <div class="event-header span6">
       <li><h2><%= @group.description %></h2></li>
 
-      <% unless logged_in? && @members.include?(current_user) %>
+      <% unless logged_in? && @members.find_by_user_id(current_user.id) %>
 
-      <li>
-        <% @member_short_list.each do |member| %>
-          <%= (image_tag member.avatar_url, size: "40x40") %>
-        <% end %>
+        <li>
+          <% @member_short_list.each do |member| %>
+            <%= (image_tag member.avatar_url, size: "40x40") %>
+          <% end %>
 
-        <%= link_to "Join us!", join_group_url(@group) %>
-      </li>
+          <%= link_to "Join us!", join_group_url(@group) %>
+        </li>
 
       <% end %>
     </div>

@@ -14,3 +14,33 @@
   border-radius: 5px;
   padding: 20px;
 }
+.members-page {
+  width: 70%;
+  background: white;
+  margin-left: 15px;
+  border-radius: 5px;
+}
+
+.members-header {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+
+.members-header > h1 {
+  margin-left: 20px;
+}
+
+.members-list {
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.members-member {
+  padding: 20px;
+//  Some weird styling things going on here
+//  border-bottom: 1px solid #ddd;
+}
+
+.members-info {
+  margin-left: 20px;
+}
