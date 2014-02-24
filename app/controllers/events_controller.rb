@@ -72,7 +72,11 @@ class EventsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      redirect_to :back
+      if request.xhr?
+        render partial: "roots/comment", locals: { comment: @comment }
+      else
+        redirect_to :back
+      end
     else
       flash.now[:errors] = ["Must be logged in to post!"]
       redirect_to :back

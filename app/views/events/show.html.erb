@@ -27,13 +27,20 @@
         </address>
 
 
+
+
         <p><%= @event.description %></p>
 
         <div class="comments pull-left">
-          <h3>Greetings</h3>
+          <h3>Comments</h3>
 
           <% if logged_in? && @event.attendees.include?(@member) %>
-            <form action="<%= comment_group_event_url(@group, @event) %>" method="post">
+            <form
+              action="<%= comment_group_event_url(@group, @event) %>"
+              method="post"
+              class="new-post"
+              data-remote="true">
+
               <input
                 type="hidden"
                 name="authenticity_token"
@@ -55,20 +62,7 @@
           <% end %>
 
           <section class="posts">
-            <% @comments.each do |comment| %>
-              <article class="post">
-                <div class="post-thumbnail">
-                  <%= link_to image_tag(comment.user.avatar.url, size: "50x50"),
-                      user_url(comment.user)%>
-                </div>
-
-                <div class="post-info">
-                  <h5><%= link_to comment.user.name, user_url(comment.user) %></h5>
-                  <p><%= comment.body %></p>
-                  <time><%= comment.created_at.strftime("%b, %d %I:%m %p") %></time>
-                </div>
-              </article>
-            <% end %>
+            <%= render partial: "roots/comment", collection: @comments %>
           </section>
         </div>
 
