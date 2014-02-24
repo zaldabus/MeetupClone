@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
     if @group.save
       flash[:notice] = "New Meetup Group Created!"
 
-      GroupMembership.create(member_id: current_user.id, group_id: @group.id)
+      GroupMember.create(name: current_user.name, email: current_user.email, user_id: current_user.id, group_id: @group.id)
 
       #Sends out invite to each user who was checked on form
       params[:invitees].each do |id|

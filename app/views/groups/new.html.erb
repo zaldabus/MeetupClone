@@ -28,7 +28,7 @@
     <% @invitees.each do |invitee| %>
       <% next if invitee == current_user %>
       <div class="invitee">
-        <label for="invitee_<%= invitee.id %>"><%= image_tag invitee.avatar.url %><%= invitee.email %></label>
+        <label for="invitee_<%= invitee.id %>"><%= (image_tag invitee.avatar.url, size: "80x80") %><%= invitee.email %></label>
         <input
           type="checkbox"
           name="invitees[]"
