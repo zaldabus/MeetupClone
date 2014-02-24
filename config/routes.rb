@@ -34,6 +34,6 @@ MeetupClone::Application.routes.draw do
     end
   end
 
-  resources :notifications, only: :destroy
+  resources :notifications, only: [:destroy, :show]
 
 end

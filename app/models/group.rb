@@ -13,7 +13,7 @@ class Group < ActiveRecord::Base
 
   has_many :members, through: :group_members
 
-  has_many :notifications, as: :notificationable
+  has_many :notifications, as: :notificationable, dependent: :destroy
   has_many :addresses, as: :addressable, inverse_of: :addressable
 
   has_attached_file :avatar,

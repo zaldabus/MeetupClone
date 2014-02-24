@@ -9,4 +9,9 @@ module AccountsHelper
       link_to("#{group.title} wants you to join their group!", join_group_url(group))
     end
   end
+
+  def group_notification(notification)
+    group = Group.find(notification.notificationable_id)
+    link_to("#{group.title} wants you to join their group!", notification_url(notification))
+  end
 end
