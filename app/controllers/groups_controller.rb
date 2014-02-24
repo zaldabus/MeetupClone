@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
       params[:invitees].each do |id|
         next if id == ""
         @user = User.find(id)
-        @group.notification.create(user_id: @user.id)
+        @group.notifications.create(user_id: @user.id)
         GroupMailer.delay(run_at: 10.seconds.from_now).invite_email(@user, @group)
       end
 
@@ -64,6 +64,12 @@ class GroupsController < ApplicationController
                           )
 
     if @group_member.save
+      @group = Group.find(params[:id])
+
+      @group.group_members.each do |member|
+        @group_member.notifications.create(user_id: member.user.id)
+      end
+
       redirect_to group_url(params[:id])
     else
       flash[:errors] = "Already a member of this group!"

@@ -13,6 +13,7 @@ class GroupMember < ActiveRecord::Base
   has_many :events, through: :event_signups
 
   has_many :comments, as: :commentable
+  has_many :notifications, as: :notificationable, dependent: :destroy
 
   def addresses
     self.user.addresses

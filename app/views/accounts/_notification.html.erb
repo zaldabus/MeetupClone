@@ -1,4 +1,4 @@
 <div class="notification">
-  <%= group_notification(notification) %>
+  <%= link_to(notification.message, notification_url(notification)) %>
   <%= button_to "Delete", notification_url(notification), method: :delete %>
 </div>
