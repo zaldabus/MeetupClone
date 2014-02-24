@@ -11,3 +11,5 @@ jQuery ->
 
     # Eventually I will add logic that allows a user to click on the calendar
     # and that will rerender the page to show that date at the top of the list
+
+$('.dropdown-toggle').dropdown()
