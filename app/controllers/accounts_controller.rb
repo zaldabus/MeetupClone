@@ -19,4 +19,8 @@ class AccountsController < ApplicationController
       render :edit
     end
   end
+
+  def notifications
+    @notifications = current_user.notifications
+  end
 end

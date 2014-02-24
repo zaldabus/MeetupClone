@@ -3,7 +3,6 @@
 <head>
   <title>MeetupClone</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <!-- Need to add Backbone stuff to get this to work -->
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -13,7 +12,8 @@
 <br>
 
 <div class="main-content">
-
+  <br>
+  <br>
   <% flash.each do |name, msg| %>
     <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
       <a class="close" data-dismiss="alert">x</a>

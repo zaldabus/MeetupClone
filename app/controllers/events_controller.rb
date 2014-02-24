@@ -2,7 +2,6 @@ class EventsController < ApplicationController
   def new
     @group = Group.find(params[:group_id])
     @event = Event.new
-    # @address = @event.addresses.new
   end
 
   def create
@@ -12,10 +11,9 @@ class EventsController < ApplicationController
     @event.group_id = params[:group_id]
     @event.addresses.new(params[:address])
 
-    # Put in extra code to check for events on same day but later time
     if check_time(params[:event][:date], params[:event][:time]) < Time.now
 
-      flash.now[:errors] = ["Event must be later than now!"]
+      flash.now[:errors] = "Event must be later than now!"
       render :new
     elsif @event.save
       flash[:notice] = "New Meetup Event Created!"
@@ -54,14 +52,14 @@ class EventsController < ApplicationController
                     attendee_id: @group_member.id
                     )
     else
-      flash[:errors] = ["Must be a member to join event!"]
+      flash[:errors] = "Must be a member to join event!"
       redirect_to group_event_url(params[:group_id], params[:id])
     end
 
     if @event_signup.save
       redirect_to group_event_url(params[:group_id], params[:id])
     else
-      flash[:errors] = ["Already signed up for event!"]
+      flash[:errors] = "Already signed up for event!"
       redirect_to group_event_url(params[:group_id], params[:id])
     end
   end
@@ -78,7 +76,7 @@ class EventsController < ApplicationController
         redirect_to :back
       end
     else
-      flash.now[:errors] = ["Must be logged in to post!"]
+      flash.now[:errors] = "Must be logged in to post!"
       redirect_to :back
     end
   end

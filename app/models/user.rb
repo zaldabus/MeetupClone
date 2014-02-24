@@ -13,16 +13,13 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
 
   has_many :interests
+
   has_many :owned_groups, class_name: "Group", foreign_key: :owner_id
 
   has_many :group_members
-
-  # Can probably be deleted
-  has_many :group_memberships,
-           class_name: "GroupMembership",
-           foreign_key: :member_id
-
   has_many :groups, through: :group_members
+
+  has_many :notifications
 
   has_many :made_comments,
            class_name: "Comment",

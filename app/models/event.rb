@@ -12,8 +12,6 @@ class Event < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :addresses, as: :addressable, inverse_of: :addressable
 
-  #Avatar currently not being used with events, consider
-  #removing from model
   has_attached_file :avatar,
   styles: {
     big: "600x600>",
