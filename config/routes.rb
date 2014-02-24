@@ -14,7 +14,10 @@ MeetupClone::Application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
-  resource :account, only: [:show, :edit, :update]
+  resource :account, only: [:show, :edit, :update] do
+    get 'change_password', on: :collection
+    get 'change_address', on: :collection
+  end
 
   resources :groups, except: [:index, :destroy] do
     get 'join', on: :member

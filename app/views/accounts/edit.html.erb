@@ -1,0 +1,57 @@
+<div class="account">
+  <h1 >Update your Account</h1>
+
+  <div class="general pull-left">
+    <h2>General</h2>
+
+    <%= simple_form_for @user, url: account_url do |f| %>
+      <table class="general-info pull-left">
+        <tr>
+          <td>Name:</td>
+          <td><%= f.text_field :name, value: @user.name %></td>
+        </tr>
+
+        <tr>
+          <td>Email address:</td>
+          <td><%= f.text_field :email, value: @user.email %></td>
+
+        <!-- Needs to be edited to actually change something -->
+        <tr>
+          <td>Password:</td>
+          <td>(Hidden) <%=link_to "Change Password", change_password_account_url %></td>
+        </tr>
+
+        <!-- Needs to be edited to actually change something -->
+        <tr>
+          <td>Location:</td>
+          <td><%= city_state(@user) %> <%=link_to "Change Location", change_address_account_url %></td>
+
+        <tr>
+          <td>Birthday:</td>
+          <td><%= f.text_field :birthday, value: @user.birthday %></td>
+        </tr>
+
+      </table>
+
+      <div class="avatar">
+        <%= image_tag @user.avatar.url(:big), size: "200x200" %>
+        <%= f.file_field :avatar %>
+      </div>
+    </div>
+
+
+    <div class="interests pull-left">
+      Your interests
+
+      <ul>
+
+      <% @user.interests.each do |interest| %>
+        <li><%= interest.title %></li>
+      <% end %>
+
+      </ul>
+    </div>
+
+    <%= f.submit "Update Account", class: "btn edit" %>
+  <% end %>
+</div>

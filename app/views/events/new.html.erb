@@ -26,5 +26,8 @@
     <%= address_form.input :zip_code %>
   <% end %>
 
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %>
+
   <%= f.submit "Create New Event!", class: "btn-block" %>
 <% end %>

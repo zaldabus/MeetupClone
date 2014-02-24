@@ -30,7 +30,10 @@
 
     </table>
 
-    <%= image_tag @user.avatar.url(:big) %>
+    <div class="avatar">
+      <%= image_tag @user.avatar.url(:big), size: "200x200" %>
+      <%= photo_change(@user) %>
+    </div>
   </div>
 
   <div class="interests pull-left">

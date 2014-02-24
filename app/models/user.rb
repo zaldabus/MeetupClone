@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :avatar, :password
+  attr_accessible :name, :email, :avatar, :birthday, :password
   attr_reader :password
 
   before_validation :ensure_authenticity_token
@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar,
   styles: {
-    big: "600x600>",
+    big: "200x200>",
     small: "40x40>"
   },
   default_url: "/assets/noPhoto_80.png"
@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   end
 
   def ensure_authenticity_token
-    self.authenticity_token = User.generate_token
+    self.authenticity_token = User.generate_token if self.authenticity_token.nil?
   end
 
   def reset_authenticity_token!

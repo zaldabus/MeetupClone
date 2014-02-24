@@ -4,4 +4,19 @@ class AccountsController < ApplicationController
   def show
     @user = current_user
   end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+
+    if @user.update_attributes(params[:user])
+      redirect_to account_url
+    else
+      flash[:errors] = @user.errors.full_messages
+      render :edit
+    end
+  end
 end

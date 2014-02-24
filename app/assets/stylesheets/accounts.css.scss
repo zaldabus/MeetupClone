@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .account {
-  width: 540px;
+  width: 600px;
   margin: 20px auto;
 }
 
@@ -15,9 +15,9 @@
 
 .account > h1 {
   background: white;
-  width: 500px;
+  width: 600px;
   padding: 20px;
-  margin: 20px auto 0 auto;
+  margin: 0 auto 0 auto;
   border: 2px grey;
   border-radius: 5px;
 }
@@ -52,7 +52,35 @@ td {
   border-right: 0;
 }
 
-.general > img {
+.avatar {
+  width: 200px;
+  display: block;
+  float: right;
+}
+
+.avatar > img {
+  display: block;
+  float: left;
+  border: 3px solid black;
+  margin-bottom: 10px;
+}
+
+.avatar > a {
+  float: right;
+  color: white;
+  padding: 10px 20px;
+  background: blue;
+}
+
+//Needs to be changed to look better
+.avatar > a:hover {
+  background: darkblue;
+  text-decoration: none;
+};
+
+#user_avatar {
+  margin-top: 10px;
+  width: 180px;
   display: block;
   float: right;
 }
@@ -68,4 +96,5 @@ td {
 
 .edit {
   float: right;
+  margin-top: 20px;
 }
