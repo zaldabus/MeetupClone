@@ -98,3 +98,33 @@ td {
   float: right;
   margin-top: 20px;
 }
+
+//Notification Page
+.notifications {
+  background: white;
+  display: block;
+  width: 700px;
+  padding: 20px;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.notifications:after {
+  content: "";
+  display: block;
+  clear: both;
+};
+
+.notification {
+  float: left;
+  width: 100%;
+}
+
+.notification > a {
+  float: left;
+  padding-right: 20px;
+}
+
+.notification > .button_to {
+  float: left;
+}
