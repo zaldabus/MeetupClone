@@ -76,7 +76,7 @@
 
       <div class="events-right-column pull-left">
         <ul>
-          <% if logged_in? && @group.members.include?(current_user) && !@event.attendees.include?(current_user) %>
+          <% if logged_in? && @member && !@event.attendees.include?(@member) %>
             <li>
               <h3>Won't you attend?</h3>
               <%= button_to "Attend", event_signup_group_event_url(@group, @event)%>
@@ -87,7 +87,7 @@
 
           <% @event.attendees.limit(15).each do |attendee| %>
             <li>
-              <%= link_to (image_tag attendee.avatar.url(:small), size: "40x40"),
+              <%= link_to (image_tag attendee.avatar_url, size: "40x40"),
                            group_member_url(@event.group, attendee
                            )
               %>

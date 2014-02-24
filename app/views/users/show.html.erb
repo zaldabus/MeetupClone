@@ -24,7 +24,7 @@
   </div>
 
   <div class="find-groups meetups pull-left">
-    <h3>Member of <%= @user.groups.count %> Meetups</h3>
+    <h3>Member of <%= @user.group_members.count %> Meetups</h3>
     <ul class="thumbnails">
       <% @groups.each do |group| %>
         <li>

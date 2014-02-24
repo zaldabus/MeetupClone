@@ -32,7 +32,11 @@ class EventsController < ApplicationController
 
     @group = @event.group
 
-    @members = @group.members
+    @members = @group.group_members
+
+    if logged_in?
+      @member = @members.find_by_user_id(current_user.id)
+    end
 
     @upcoming_events = @group.events.where(date: Time.now..Time.now + 1.year)
     @past_events = @group.events.where(date: Time.now - 1.year..Time.now)

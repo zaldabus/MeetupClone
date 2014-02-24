@@ -28,15 +28,11 @@ li {
 }
 
 .logo {
-  padding: 10px 0 10px 20px;
+  padding: 10px 0 20px 20px;
 }
 
 .navbar {
   margin-bottom: -20px;
-}
-
-.navbar-inner {
-
 }
 
 .brand {
@@ -45,11 +41,26 @@ li {
 
 .nav-left > li {
   border-right: 1px solid lightgrey;
-  padding: 21px 0 25px 0;
+}
+
+.find-link {
+  background:transparent url('/assets/find_meetup.png') center top no-repeat;
+}
+
+.find-link:hover {
+  background-image: url('/assets/find_meetup_hover.png') center top no-repeat;
 }
 
 .nav-right {
   width: 300px;
+}
+
+.nav-right > form {
+  margin-bottom: 0;
+}
+
+.nav-right > ul > li > form {
+  margin-bottom: 10px;
 }
 
 .group-page {

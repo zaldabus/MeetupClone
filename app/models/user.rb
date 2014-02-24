@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
            class_name: "GroupMembership",
            foreign_key: :member_id
 
-  has_many :groups, through: :group_memberships
+  has_many :groups, through: :group_members
 
   has_many :made_comments,
            class_name: "Comment",
