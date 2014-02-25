@@ -79,7 +79,6 @@ class GroupsController < ApplicationController
   end
 
   def email_join
-
     @user = User.find(params[:user_id])
     @group = Group.find_by_group_token(params[:group_token])
 

@@ -8,9 +8,12 @@
   <%= f.input :title %>
 
   <%= f.label :date %>
-  <%= f.text_field :date%>
+  <%= f.text_field :date %>
 
-  <%= f.input :time%>
+  <%= f.input :time, discard_day: true,
+                     discard_year: true,
+                     discard_month: true
+                     %>
 
   <%= f.input :description, as: :text %>
 

@@ -10,9 +10,9 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event])
     @event.group_id = params[:group_id]
     @event.addresses.new(params[:address])
+    time = [params[:event]["time(4i)"], params[:event]["time(5i)"]].map(&:to_i)
 
-    if check_time(params[:event][:date], params[:event][:time]) < Time.now
-
+    if check_time(params[:event][:date], time) < Time.now
       flash.now[:errors] = "Event must be later than now!"
       render :new
     elsif @event.save
@@ -96,7 +96,6 @@ class EventsController < ApplicationController
     full_time = []
 
     date = date.split("-").map(&:to_i)
-    time = time.split(":").map(&:to_i)
     full_time.concat(date).concat(time)
 
     DateTime.new(full_time[0], full_time[1], full_time[2], full_time[3], full_time[4])
