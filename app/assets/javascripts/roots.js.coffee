@@ -4,9 +4,12 @@
 
 jQuery ->
   $('.datepicker').datepicker({
+      dateFormat: 'yy-mm-dd',
       inline: true,
       showOtherMonths: true,
-      dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+      dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      onSelect: (dateText, inst) ->
+        console.log(dateText)
     })
 
     # Eventually I will add logic that allows a user to click on the calendar

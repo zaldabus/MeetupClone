@@ -2,11 +2,17 @@ class RootsController < ApplicationController
   def index
     if logged_in?
       events = []
-      groups = current_user.groups.includes(:events).where("events.date BETWEEN ? AND ?", Time.now, (Time.now + 1.year) )
+      groups = current_user.groups.includes(:events).where("events.date BETWEEN ? AND ?", (Time.now - 1.year), (Time.now + 1.year) )
+
       groups.each do |group|
         events.concat(group.events)
       end
-      @events = events.sort_by &:date
+
+      @events = Hash.new { |hash, key| hash[key] = []}
+      events.each do |event|
+        @events[event.date] << event
+      end
+
     else
       @groups = Group.all
     end
@@ -20,6 +26,5 @@ class RootsController < ApplicationController
     end
 
     @results = @results.includes(:searchable)
-    # @groups = Group.all
   end
 end
