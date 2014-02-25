@@ -10,6 +10,7 @@ class Event < ActiveRecord::Base
   has_many :attendees, through: :event_signups, source: :attendee
 
   has_many :comments, as: :commentable
+  has_many :notifications, as: :notificationable, dependent: :destroy
   has_many :addresses, as: :addressable, inverse_of: :addressable
 
   has_attached_file :avatar,

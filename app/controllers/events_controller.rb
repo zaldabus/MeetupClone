@@ -57,6 +57,11 @@ class EventsController < ApplicationController
     end
 
     if @event_signup.save
+      @event_signup.event.attendees.each do |attendee|
+        next if attendee.user == current_user
+        @event_signup.event.notifications.create(user_id: attendee.user.id, event_type: "New Attendee")
+      end
+
       redirect_to group_event_url(params[:group_id], params[:id])
     else
       flash[:errors] = "Already signed up for event!"
@@ -70,6 +75,11 @@ class EventsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
+      @event.attendees.each do |attendee|
+        next if attendee.user == current_user
+        @event.notifications.create(user_id: attendee.user.id, event_type: "New Comment")
+      end
+
       if request.xhr?
         render partial: "roots/comment", locals: { comment: @comment }
       else

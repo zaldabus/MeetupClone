@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140224201449) do
+ActiveRecord::Schema.define(:version => 20140225141025) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line",     :null => false
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20140224201449) do
     t.integer  "user_id",               :null => false
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.string   "event_type"
   end
 
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
