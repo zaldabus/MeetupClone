@@ -11,9 +11,9 @@
 <div class="find-groups">
   <ul class="thumbnails">
     <% if @groups %>
-      <%= render @groups %>
-    <% else %>
-      <%= render @results.map(&:searchable) %>
+      <%= render groups %>
+    <% elsif results %>
+      <%= render results.map(&:searchable) %>
     <% end %>
   </ul>
 </div>

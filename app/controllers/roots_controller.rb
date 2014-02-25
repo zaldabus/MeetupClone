@@ -32,9 +32,11 @@ class RootsController < ApplicationController
     if params[:query]
       @results = PgSearch.multisearch(params[:query])
     else
-      @results = PgSearch::Document
+      return @groups = Group.all
     end
 
     @results = @results.includes(:searchable)
   end
 end
+
+# PgSearch::Document

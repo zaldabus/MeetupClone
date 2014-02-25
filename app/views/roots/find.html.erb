@@ -1,1 +1,5 @@
-<%= render 'findmeetups', groups: @groups %>
+<% if @groups %>
+  <%= render partial: 'findmeetups', locals: { groups: @groups } %>
+<% elsif @results %>
+  <%= render partial: 'findmeetups', locals: { results: @results } %>
+<% end %>
