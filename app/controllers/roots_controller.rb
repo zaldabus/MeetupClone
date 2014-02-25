@@ -13,7 +13,7 @@ class RootsController < ApplicationController
         @events[event.date.strftime("%Y-%m-%d")] << event
       end
     else
-      @groups = Group.all
+      @groups = Group.page(params[:page]).per(12)
     end
 
     if request.xhr?

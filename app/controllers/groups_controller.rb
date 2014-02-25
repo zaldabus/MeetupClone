@@ -29,7 +29,10 @@ class GroupsController < ApplicationController
         next if id == ""
         @user = User.find(id)
         @group.notifications.create(user_id: @user.id)
-        GroupMailer.delay(run_at: 10.seconds.from_now).invite_email(@user, @group)
+        GroupMailer.invite_email(@user, @group)
+
+        # Requires worker to be turned on
+        # GroupMailer.delay(run_at: 10.seconds.from_now).invite_email(@user, @group)
       end
 
       redirect_to group_url(@group)
