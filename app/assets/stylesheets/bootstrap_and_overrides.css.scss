@@ -54,7 +54,11 @@ li {
 }
 
 .nav-right {
-  width: 300px;
+  width: 400px;
+}
+
+.user {
+  margin-top: 20px;
 }
 
 .nav-right > form {
@@ -63,6 +67,15 @@ li {
 
 .nav-right > ul > li > form {
   margin-bottom: 10px;
+}
+
+.nav-right-dropdown {
+  padding: 20px;
+}
+
+.full-list-groups {
+  border-top: 1px solid #ccc;
+  alignment: center;
 }
 
 .badge {
