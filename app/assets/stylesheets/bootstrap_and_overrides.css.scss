@@ -25,12 +25,13 @@ li {
 
 //NavBar
 .brand {
-  border-right: 1px solid lightgrey;
 
 }
 
 .logo {
-  padding: 10px 0 20px 20px;
+  float: left;
+  height: 100%;
+  padding-top: 20px;
 }
 
 .navbar {
@@ -39,10 +40,17 @@ li {
 
 .brand {
   width: 83px;
+  padding-top: 20px;
 }
 
-.nav-left > li {
-  border-right: 1px solid lightgrey;
+.nav-left {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.nav-left > a > img {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .find-link {
@@ -71,6 +79,20 @@ li {
 
 .nav-right-dropdown {
   padding: 20px;
+}
+
+.nav-menu:after {
+  content: "";
+  display: block;
+  position: absolute;
+
+  top: -9px;
+  left: 20%;
+
+  border-top: 0;
+  border-bottom: 10px solid #fff;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
 }
 
 .full-list-groups {

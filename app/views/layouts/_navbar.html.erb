@@ -1,11 +1,11 @@
 <div class="navbar">
   <div class="navbar-inner">
-    <%= link_to (image_tag "MeetUp-logo.png", class: "logo brand"), root_url %>
+    <div class="nav-left pull-left">
+      <%= link_to (image_tag "MeetUp-logo.png", class: "logo brand"), root_url %>
 
-    <ul class="nav pull-left nav-left">
-      <li><%= link_to (image_tag "find_meetup.png"), find_url, class: "find-link" %></li>
-      <li><%= link_to (image_tag "start_meetup.png"), new_group_url, class: "start-link" %></li>
-    </ul>
+      <%= link_to (image_tag "find_meetup.png"), find_url, class: "find-link" %>
+      <%= link_to (image_tag "start_meetup.png"), new_group_url, class: "start-link" %>
+    </div>
 
     <div class="nav-right pull-right">
       <ul class="nav pull-right nav-right">
@@ -18,7 +18,7 @@
                 class="dropdown-toggle"
                 data-toggle="dropdown"
                 href="#">My Groups</a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <ul class="dropdown-menu nav-menu" role="menu" aria-labelledby="dLabel">
                 <% current_user.groups.limit(10).each do |group| %>
                   <li><%= link_to group.title, group_url(group) %></li>
                 <% end %>
@@ -40,7 +40,7 @@
                 class="dropdown-toggle"
                 data-toggle="dropdown"
                 href="#">Account</a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <ul class="dropdown-menu nav-menu" role="menu" aria-labelledby="dLabel">
                 <li><%= link_to "General", account_url %></li>
                 <li>
                   <a href="/account/notifications">
