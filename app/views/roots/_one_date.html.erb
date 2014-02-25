@@ -1,0 +1,27 @@
+<section class="date-listings">
+ <time><%= date(date) %></time>
+   <% events.each do |event| %>
+     <div class="event-listing">
+       <time>
+         <%= link_to event.time.strftime("%I:%m %p"),
+         group_event_url(event.group, event) %>
+       </time>
+
+       <header>
+         <%= link_to event.group.title,
+             group_url(event.group) %>
+       </header>
+
+       <main>
+         <%= link_to event.title,
+             group_event_url(event.group, event.id) %>
+       </main>
+
+       <footer>
+         <%= event.attendees.count %>
+         <%= "Member".pluralize(event.attendees.count) %> attending
+       </footer>
+     </div>
+   <% end %>
+
+ </section>

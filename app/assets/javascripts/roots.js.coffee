@@ -9,7 +9,16 @@ jQuery ->
       showOtherMonths: true,
       dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       onSelect: (dateText, inst) ->
-        console.log(dateText)
+        $.ajax(
+          url: "",
+          type: "GET",
+          data: (date: dateText),
+          success: (events) ->
+            $('.date-listings').remove()
+            console.log(events.date)
+            $('.event-list').html(events)
+
+        )
     })
 
     # Eventually I will add logic that allows a user to click on the calendar

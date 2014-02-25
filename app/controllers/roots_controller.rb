@@ -10,11 +10,18 @@ class RootsController < ApplicationController
 
       @events = Hash.new { |hash, key| hash[key] = []}
       events.each do |event|
-        @events[event.date] << event
+        @events[event.date.strftime("%Y-%m-%d")] << event
       end
 
     else
       @groups = Group.all
+    end
+
+    if request.xhr?
+      render partial: 'one_date', locals: {
+                                    events: @events[params[:date]],
+                                    date: params[:date]
+                                  }
     end
   end
 
@@ -26,5 +33,13 @@ class RootsController < ApplicationController
     end
 
     @results = @results.includes(:searchable)
+  end
+
+  def find_date
+    @events = Hash.new { |hash, key| hash[key] = []}
+    events.each do |event|
+      @events[event.date] << event
+    end
+
   end
 end
