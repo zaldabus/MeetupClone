@@ -67,6 +67,7 @@ class GroupsController < ApplicationController
       @group = Group.find(params[:id])
 
       @group.group_members.each do |member|
+        next if member.user = current_user
         @group_member.notifications.create(user_id: member.user.id)
       end
 
@@ -83,17 +84,17 @@ class GroupsController < ApplicationController
     @group = Group.find_by_group_token(params[:group_token])
 
     if @user && @group
-      GroupMembership.create(
-        member_id: @user.id,
-        group_id: @group.id
-        )
-
       GroupMember.create(
         name: @user.name,
         email: @user.email,
         user_id: @user.id,
         group_id: @group.id
         )
+
+        @group.group_members.each do |member|
+          next if member.user = @user
+          @group_member.notifications.create(user_id: member.user.id)
+        end
 
         redirect_to group_url(@group)
     else
