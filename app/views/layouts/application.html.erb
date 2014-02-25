@@ -12,8 +12,6 @@
 <br>
 
 <div class="main-content">
-  <br>
-  <br>
   <% flash.each do |name, msg| %>
     <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
       <a class="close" data-dismiss="alert">x</a>

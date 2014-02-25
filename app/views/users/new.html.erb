@@ -20,11 +20,11 @@
 
     <%= address_form.input :zip_code %>
   <% end %>
+  <br>
 
   <%= f.input :password %>
 
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar %>
+  <%= f.input :avatar, as: :file %>
 
   <%= f.submit "Create", class: "btn-block" %>
 <% end %>

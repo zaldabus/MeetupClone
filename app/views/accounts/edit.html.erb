@@ -7,13 +7,13 @@
     <%= simple_form_for @user, url: account_url do |f| %>
       <table class="general-info pull-left">
         <tr>
-          <td>Name:</td>
-          <td><%= f.text_field :name, value: @user.name %></td>
+          <td><%= f.label :name %></td>
+          <td><%= f.input :name, value: @user.name, label: false %></td>
         </tr>
 
         <tr>
-          <td>Email address:</td>
-          <td><%= f.text_field :email, value: @user.email %></td>
+          <td><%= f.label :email %></td>
+          <td><%= f.input :email, value: @user.email, label: false %></td>
 
         <!-- Needs to be edited to actually change something -->
         <tr>
@@ -27,8 +27,15 @@
           <td><%= city_state(@user) %> <%=link_to "Change Location", change_address_account_url %></td>
 
         <tr>
-          <td>Birthday:</td>
-          <td><%= f.text_field :birthday, value: @user.birthday %></td>
+          <td><%= f.label :birthday %></td>
+          <td><%= f.input :birthday,
+                          as: :date,
+                          value: @user.birthday,
+                          label: false,
+                          order: [:month, :day, :year],
+                          start_year: (Date.today.year - 90)
+                          %>
+          </td>
         </tr>
 
       </table>
