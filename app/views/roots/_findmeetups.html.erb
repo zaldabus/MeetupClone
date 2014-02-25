@@ -9,11 +9,25 @@
 </div>
 
 <div class="find-groups">
-  <ul class="thumbnails">
+
     <% if @groups %>
-      <%= render groups %>
+
+      <%= paginate groups %>
+      <ul class="thumbnails">
+        <%= render groups %>
+      </ul>
+      <%= paginate groups %>
+
     <% elsif results %>
-      <%= render results.map(&:searchable) %>
+
+      <%= paginate results %>
+      <ul class="thumbnails">
+        <%= render results.map(&:searchable) %>
+      </ul>
+      <%= paginate results %>
+
     <% end %>
-  </ul>
+
+
+
 </div>

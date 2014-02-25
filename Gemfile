@@ -24,6 +24,7 @@ gem 'addressable'
 
 gem 'delayed_job_active_record'
 
+gem 'kaminari'
 gem 'pg_search'
 
 gem 'simple_form'
