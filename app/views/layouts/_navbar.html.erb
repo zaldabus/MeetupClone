@@ -20,7 +20,12 @@
                 href="#">Account</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 <li><%= link_to "General", account_url %></li>
-                <li><%= link_to "Notifications", notifications_account_url %>
+                <li>
+                  <a href="/account/notifications">
+                    Notifications <strong
+                    class="badge"><%= current_user.notifications.count %></strong>
+                  </a>
+                </li>
               </ul>
             </div>
           </li>

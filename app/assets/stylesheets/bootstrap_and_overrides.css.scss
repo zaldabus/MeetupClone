@@ -22,6 +22,8 @@ li {
   list-style: none;
 }
 
+
+//NavBar
 .brand {
   border-right: 1px solid lightgrey;
 
@@ -62,6 +64,17 @@ li {
 .nav-right > ul > li > form {
   margin-bottom: 10px;
 }
+
+.badge {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 7px;
+}
+//End NavBar
 
 .group-page {
   background: #e51938;
