@@ -4,4 +4,5 @@
 
 jQuery ->
   $('#event_date').datepicker
-    dateFormat: 'yy-mm-dd'
+    dateFormat: 'yy-mm-dd',
+    showAnim: "slideDown"

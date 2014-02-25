@@ -4,6 +4,5 @@
 
 jQuery ->
   $('.new-post').on("ajax:success", (event, data) ->
-    console.log(data)
     $('.posts').append(data)
     this.reset())
