@@ -18,10 +18,14 @@ class RootsController < ApplicationController
     end
 
     if request.xhr?
-      render partial: 'one_date', locals: {
-                                    events: @events[params[:date]],
-                                    date: params[:date]
-                                  }
+      if @events[params[:date]]
+        render partial: 'one_date', locals: {
+                                      events: @events[params[:date]],
+                                      date: params[:date]
+                                    }
+      else
+        flash[:error] = "No events for selected day"
+      end
     end
   end
 
