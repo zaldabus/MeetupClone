@@ -3,7 +3,6 @@ MeetupClone::Application.routes.draw do
 
   resources :roots, only: :index
   get 'find', to: 'roots#find'
-  get 'find_date', to: 'roots#find_date'
 
   resources :users, only: [:new, :create, :show] do
     post 'comment', on: :member

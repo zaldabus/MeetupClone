@@ -14,10 +14,8 @@ jQuery ->
           type: "GET",
           data: (date: dateText),
           success: (events) ->
-            console.log(events)
             $('.date-listings').remove()
             $('.event-list').html(events)
-
         )
     })
 

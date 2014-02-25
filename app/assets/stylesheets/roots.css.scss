@@ -51,6 +51,7 @@
 .event-list {
   background: white;
   margin: 20px;
+  margin-right: 0px;
   padding: 20px;
   width: 55%;
   border-radius: 5px;
@@ -68,7 +69,7 @@
   clear: both;
 }
 
-.event-listings > time {
+.date-listings > time {
   display: block;
   font-weight: bold;
   font-size: 12pt;
@@ -100,5 +101,5 @@
 
 //Calendar
 .datepicker {
-  margin: 20px 20px;
+  margin: 20px 35px 0 0;
 }
