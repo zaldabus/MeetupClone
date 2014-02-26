@@ -28,6 +28,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
 
 gem 'kaminari'
 gem 'pg_search'

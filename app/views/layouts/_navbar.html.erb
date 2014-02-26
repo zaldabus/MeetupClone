@@ -95,7 +95,7 @@
 
        <%= f.input :password %>
 
-       <p><strong>Sign in through one of these services:</strong></p>
+       <p><strong>You can also sign in through one of these services:</strong></p>
 
        <div class="auths">
          <a href="/auth/twitter" class="auth_provider pull-left">
@@ -105,6 +105,10 @@
          <a href="/auth/facebook" class="auth_provider pull-left">
            <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
            Facebook
+         </a>
+         <a href="/auth/linkedin" class="auth_provider pull-left">
+           <%= image_tag "linkedin_64.png", :size => "64x64", :alt => "Facebook" %>
+           LinkedIn
          </a>
        </div>
 
