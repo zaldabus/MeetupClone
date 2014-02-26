@@ -13,6 +13,7 @@ MeetupClone::Application.routes.draw do
   end
 
   resource :session, only: [:new, :create, :destroy]
+  match 'auth/:provider/callback' => 'authentications#create'
 
   resource :account, only: [:show, :edit, :update] do
     get 'change_password', on: :collection

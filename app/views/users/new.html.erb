@@ -25,6 +25,23 @@
   <%= f.input :password %>
 
   <%= f.input :avatar, as: :file %>
+  <br>
+  <br>
 
-  <%= f.submit "Create", class: "btn-block" %>
+  <div class="new-auths">
+    <p class="pull-left"><strong>Select one additional service for login (optional):</strong></p>
+
+    <div class="auths pull-left">
+      <a href="/auth/twitter" class="auth_provider pull-left">
+        <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
+        Twitter
+      </a>
+      <a href="/auth/facebook" class="auth_provider pull-left">
+        <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
+        Facebook
+      </a>
+    </div>
+  </div>
+
+  <%= f.submit "Create", class: "btn btn-primary btn-large pull-right submit" %>
 <% end %>

@@ -14,7 +14,11 @@ class User < ActiveRecord::Base
 
   has_many :interests
 
-  has_many :owned_groups, class_name: "Group", foreign_key: :owner_id
+  has_many :authentications
+
+  has_many :owned_groups,
+           class_name: "Group",
+           foreign_key: :owner_id
 
   has_many :group_members
   has_many :groups, through: :group_members
@@ -69,5 +73,9 @@ class User < ActiveRecord::Base
     ensure_authenticity_token
     self.save!
     self.authenticity_token
+  end
+
+  def apply_omniauth(omniauth)
+    authentications.build(provider: omniauth['provider'], uid: omniauth['uid'])
   end
 end

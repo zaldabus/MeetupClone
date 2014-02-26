@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
   def new
-    @user = User.new
+    @user ||= User.new
   end
 
   def create
     @user = User.new(params[:user])
     @user.addresses.new(params[:address])
+
+    if session[:omniauth]
+      @user.apply_omniauth(session[:omniauth])
+    end
 
     if @user.save
       login(@user)

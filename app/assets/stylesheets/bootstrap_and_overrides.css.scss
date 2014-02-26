@@ -114,7 +114,7 @@ li {
   background: #e51938;
 }
 
-.moda-header {
+.modal-header {
   border-bottom: 2px solid #d4d4d4;
 }
 
@@ -132,7 +132,7 @@ li {
 }
 
 .modal-body {
-  width: 100%;
+  width: 90%;
 }
 
 .new_user:after {
@@ -142,8 +142,31 @@ li {
 }
 
 #new_user {
-  width: 90%;
+  width: 300px;
   margin: 0;
+}
+
+.auths {
+  display: block;
+}
+
+.auths:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.auths > a {
+  padding-left: 40px;
+}
+
+.auth_provider img {
+  display: block;
+}
+
+.auth_provider {
+  text-decoration: none;
+  text-align: center;
 }
 //End NavBar
 

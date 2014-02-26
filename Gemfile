@@ -24,6 +24,11 @@ gem 'addressable'
 
 gem 'delayed_job_active_record'
 
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+
 gem 'kaminari'
 gem 'pg_search'
 

@@ -14,8 +14,8 @@
   z-index: 1;
 }
 
-.new_user {
-  width: 600px;
+#new_user {
+  width: 490px;
   background: white;
   margin: 20px auto 20px auto;
   border: 2px solid lightgrey;
@@ -25,6 +25,21 @@
 
 .new-user > h1 {
   padding-left: 10px;
+}
+
+.new-auths {
+  width: 350px;
+  margin-bottom: 20px;
+}
+
+.new-auths:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.submit {
+  margin-right: 20px;
 }
 
 .user-page {
