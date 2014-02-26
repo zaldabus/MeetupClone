@@ -109,6 +109,42 @@ li {
   font-weight: bold;
   padding: 2px 7px;
 }
+
+#myModal {
+  background: #e51938;
+}
+
+.moda-header {
+  border-bottom: 2px solid #d4d4d4;
+}
+
+.header {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background: #f9f9f9;
+  border-bottom: 2px solid #d4d4d4;
+}
+
+.modal-header:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.modal-body {
+  width: 100%;
+}
+
+.new_user:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+#new_user {
+  width: 90%;
+  margin: 0;
+}
 //End NavBar
 
 .group-page {

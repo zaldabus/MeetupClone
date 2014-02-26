@@ -1,6 +1,10 @@
 module ApplicationHelper
   require 'addressable/uri'
 
+  def new_user
+    @user ||= User.new
+  end
+
   def current_user
     return nil unless session[:token]
 

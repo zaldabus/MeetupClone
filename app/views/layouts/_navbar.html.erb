@@ -54,7 +54,12 @@
           <li><%= button_to "logout", session_url, method: :delete, class: "logout btn" %></li>
 
         <% else %>
-          <li><%= link_to "Log in", new_session_url %></li>
+          <a href="#myModal"
+             role="button"
+             class="btn"
+             data-toggle="modal">Log in</a>
+
+          <!-- <li><%#= link_to "Log in", new_session_url %></li> -->
           <li><%= link_to "Sign up", new_user_url %></li>
         <% end %>
 
@@ -71,4 +76,26 @@
     </div>
 
   </div>
+</div>
+
+
+<div id="myModal" class="modal hide fade"
+     tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+
+   <div class="modal-header header">
+     <h1 class="pull-left">Sign In</h1>
+     <button type="button" class="close pull-right" data-dismiss="modal"
+             aria-hidden="true">x</button>
+   </div>
+
+   <div class="modal-body pull-left">
+     <%= simple_form_for new_user, url: session_url do |f| %>
+       <%= f.input :email %>
+
+       <%= f.input :password %>
+
+       <%= f.submit "Sign In", class: "btn btn-large btn-primary pull-right" %>
+     <% end %>
+   </div>
 </div>
