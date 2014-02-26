@@ -12,7 +12,6 @@
 
     <% if @groups %>
 
-      <%= paginate groups %>
       <ul class="thumbnails">
         <%= render groups %>
       </ul>
@@ -20,14 +19,11 @@
 
     <% elsif results %>
 
-      <%= paginate results %>
       <ul class="thumbnails">
         <%= render results.map(&:searchable) %>
       </ul>
       <%= paginate results %>
 
     <% end %>
-
-
 
 </div>
