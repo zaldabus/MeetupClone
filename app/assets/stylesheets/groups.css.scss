@@ -78,4 +78,26 @@
 .whats_new > h4 {
   padding-bottom: 15px;
   border-bottom: 1px solid #d3d3d3;
+  margin-bottom: 0;
+}
+
+.activity {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.activity-header > span {
+  font-size: 10px;
+  color: #979797;
+  margin-left: 6px;
+}
+
+.activity-message {
+  margin-left: 20px;
+}
+
+.activity > time {
+  margin-left: 20px;
+  color: #979797;
 }

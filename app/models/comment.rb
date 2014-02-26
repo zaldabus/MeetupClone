@@ -5,4 +5,9 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :commentable, polymorphic: true
+
+  def find_event_group_member(event_commentable)
+    user = self.user
+    user.group_members.find_by_group_id(event_commentable.group.id)
+  end
 end

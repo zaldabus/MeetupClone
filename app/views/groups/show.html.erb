@@ -104,7 +104,15 @@
       <h4>What's New</h4>
 
       <% @recent_activity.each do |activity| %>
-        <%= activity %>
+        <div class="activity">
+          <div class="activity-header">
+            <%= type(activity) %>
+          </div>
+          <div class="activity-message">
+            <%= message(activity) %>
+          </div>
+          <time><%= time_since(activity.created_at) %></time>
+        </div>
       <% end %>
     </div>
   </div>
