@@ -81,6 +81,21 @@ li {
   padding: 20px;
 }
 
+.logged-out {
+  padding-top: 10px;
+  width: 380px;
+}
+
+.logged-out > ul > li > a {
+  padding-left: 20px;
+}
+
+.logged-out:after {
+  content: "";
+  display: block;
+  clear: both;
+};
+
 .nav-menu:after {
   content: "";
   display: block;
@@ -110,6 +125,12 @@ li {
   padding: 2px 7px;
 }
 
+.nav-form {
+  margin-top: 20px;
+  margin-right: 40px;
+  width: 200px;
+}
+
 #myModal {
   background: #e51938;
 }
@@ -123,6 +144,10 @@ li {
   border-top-left-radius: 5px;
   background: #f9f9f9;
   border-bottom: 2px solid #d4d4d4;
+}
+
+.header > h1 {
+  margin-left: 40px;
 }
 
 .modal-header:after {
