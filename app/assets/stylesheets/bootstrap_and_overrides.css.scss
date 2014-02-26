@@ -256,6 +256,7 @@ li {
   background: #fff;
 
   margin-bottom: 10px;
+  padding: 20px;
 
   border-radius: 5px;
 }
@@ -273,6 +274,10 @@ li {
   border-radius: 5px;
 }
 
+//.upcoming-events > h2 {
+//  text-align: center;
+//}
+
 .upcoming-events > li {
   border-top: 1px solid lightgrey;
 }
@@ -285,13 +290,21 @@ li {
   border-radius: 5px;
 }
 
+//.past-events > h2 {
+//  text-align: center;
+//}
+
 .past-events > li {
-  width: 440px;
+  width: 430px;
   border-top: 1px solid lightgrey;
 }
 
 .event-left {
-  width: 340px;
+  width: 320px;
+}
+
+.event-left > ul {
+  padding-bottom: 20px;
 }
 
 //Can be used for all comment box sections

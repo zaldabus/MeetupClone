@@ -29,4 +29,16 @@ class Group < ActiveRecord::Base
   def ensure_group_token
     self.group_token = SecureRandom::urlsafe_base64(16)
   end
+
+  def recent_activity
+    activities = []
+    activities.concat(self.group_members)
+
+    self.events.each do |event|
+      activities.concat(event.event_signups).concat(event.comments)
+    end
+
+    activities.sort_by { |activity| activity.created_at }
+  end
+
 end

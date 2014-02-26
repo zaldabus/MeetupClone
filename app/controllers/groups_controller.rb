@@ -56,6 +56,8 @@ class GroupsController < ApplicationController
 
     @past_events = @group.events.where(date: Time.now - 1.year..Time.now)
     @past_short_list = @past_events.limit(2)
+
+    @recent_activity = @group.recent_activity
   end
 
   def join
