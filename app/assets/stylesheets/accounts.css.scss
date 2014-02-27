@@ -66,16 +66,30 @@ td {
   margin-bottom: 10px;
 }
 
-.avatar > a {
+.avatar-dialog {
   float: right;
+  display: block;
+  width: 200px;
+}
+
+.avatar-dialog:after {
+  content: "";
+  display: block;
+  clear: both;
+};
+
+.avatar-dialog > a {
+  display: block;
   color: white;
   padding: 10px 20px;
+  text-align: center;
   background: blue;
 }
 
 //Needs to be changed to look better
-.avatar > a:hover {
+.avatar-dialog > a:hover {
   background: darkblue;
+  color: #f4f4f4;
   text-decoration: none;
 };
 

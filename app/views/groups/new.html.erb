@@ -2,15 +2,16 @@
   <%= image_tag "new_group_bar.jpg", class: :new_group_title_bar_pic %>
 </div>
 
-<%= simple_form_for @group, html: { class: 'form-inline new_user' } do |f| %>
-  <h1>Create a Meetup Group!</h1>
+<h1 class="new_group_header">Create a Meetup Group!</h1>
+
+<%= simple_form_for @group, html: { class: 'form-horizontal new_group' } do |f| %>
+  <h4 class="group-info">Group Info</h4>
 
   <%= f.input :title %>
 
   <%= f.input :description, as: :text %>
-  <br>
 
-  <h4>Address</h4>
+  <h4 class="address">Address</h4>
 
   <%= simple_fields_for :address do |address_form| %>
     <%= address_form.input :address_line %>
@@ -22,27 +23,25 @@
     <%= address_form.input :zip_code %>
   <% end %>
 
-  <h4>Invite users to your group!</h4>
+  <h4 class="invites">Invite users to your group!</h4>
   <div class="invitees">
     <input type="hidden" name="invitees[]">
     <% @invitees.each do |invitee| %>
       <% next if invitee == current_user %>
       <div class="invitee">
-        <label for="invitee_<%= invitee.id %>"><%= (image_tag invitee.avatar.url, size: "80x80") %><%= invitee.email %></label>
         <input
           type="checkbox"
           name="invitees[]"
           value="<%= invitee.id %>"
           id="invitee_<%= invitee.id %>">
+        <label for="invitee_<%= invitee.id %>" class="pic"><%= (image_tag invitee.avatar.url, size: "80x80") %><%= invitee.email %></label>
       </div>
 
     <% end %>
   </div>
-  <br>
 
   <%= f.label :avatar %>
   <%= f.file_field :avatar %>
-  <br>
   <br>
 
   <%= f.submit "Create", class: "btn-block" %>

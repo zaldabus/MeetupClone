@@ -65,7 +65,9 @@
         <div class="avatar pull-left">
           <%= image_tag @member.avatar_url, size: "200x200" %>
           <% if logged_in? && @member.user == current_user %>
-            <%= photo_change(@member.user) %>
+            <div class="avatar-dialog">
+              <%= photo_change(@member.user) %>
+            </div>
           <% end %>
         </div>
         <br>

@@ -37,7 +37,7 @@ module ApplicationHelper
   end
 
   def photo_change(user)
-    user.avatar.url == "/images/noPhoto_80.png" ? link_to("Add your photo", edit_account_url) : link_to("Change your photo", edit_account_url)
+    user.avatar.url == "/assets/noPhoto_80.png" ? link_to("Add a photo", edit_account_url) : link_to("Change your photo", edit_account_url)
   end
 
   def google_map(object)

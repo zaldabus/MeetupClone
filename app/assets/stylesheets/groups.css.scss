@@ -15,22 +15,46 @@
   z-index: 1;
 }
 
+.new_group_header {
+  margin: 20px auto 0 auto;
+  padding: 20px 10px;
+  width: 500px;
+  text-align: center;
+  background: #ddd;
+  border-left: 2px solid #d3d3d3;
+  border-right: 2px solid #d3d3d3;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
 .new_group {
   background: #fff;
-  width: 600px;
-  margin: 20px auto 20px auto;
+  width: 500px;
+  margin: auto;
   border: 2px solid lightgrey;
-  border-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
   padding: 10px;
 }
 
-.new_group > h1 {
-  font-size: 26pt;
+.group-info {
+  margin-left: 80px;
+  padding-top: 20px;
+}
+
+.address {
+  margin-left: 80px;
+  padding-top: 20px;
+}
+
+.invites {
+  text-align: center;
+  padding-top: 20px;
 }
 
 #group_description {
-  width: 98%;
-  height: 175px;
+  width: 82%;
+  height: 150px;
 }
 
 .invitees {
@@ -39,15 +63,30 @@
   float: left;
   margin-bottom: 20px;
   padding-top: 10px;
-  padding-left: 20px;
 }
 
 .invitee {
   width: 100px;
   margin-left: 20px;
-  margin-right: 20px;
   margin-bottom: 20px;
   float: left;
+}
+
+.pic {
+  display: block;
+  font-size: 12px;
+}
+
+.pic > img {
+  border: 3px solid transparent;
+}
+
+.invitee > input[type=checkbox] {
+  display: none;
+}
+
+.invitee > input[type=checkbox]:checked + label > img {
+  border: 3px solid blue;
 }
 
 .group-content:after {
