@@ -16,11 +16,15 @@
       </tbody>
     </table>
 
-    <%= image_tag @user.avatar.url(:big) %>
+    <div class="avatar">
+      <%= image_tag @user.avatar.url(:big) %>
 
-    <% if logged_in? && @user == current_user %>
-      <%= photo_change(@user) %>
-    <% end %>
+      <% if logged_in? && @user == current_user %>
+      <div class="avatar-dialog pull-right">
+        <%= photo_change(@user) %>
+      </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="find-groups meetups pull-left">

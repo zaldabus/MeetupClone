@@ -101,7 +101,7 @@
             <% end %>
 
             <% if @member.groups.count > 10 %>
-              <%= link_to "SEE ALL MY MEETUP GROUPS", user_groups_url(@member.user) %>
+              <div class="all-meetups"><%= link_to "SEE ALL MY MEETUP GROUPS", user_groups_url(@member.user) %></div>
             <% end %>
           </div>
         <% end %>
