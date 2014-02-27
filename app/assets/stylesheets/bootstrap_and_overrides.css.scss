@@ -131,6 +131,10 @@ li {
   width: 200px;
 }
 
+.nav-right > li > form {
+  margin-top: 10px;
+}
+
 #myModal {
   background: #e51938;
 }
@@ -228,6 +232,7 @@ li {
 .main-content {
   background: #e51938;
   padding-bottom: 20px;
+  margin-top: 20px;
 }
 
 .group-column {
@@ -309,7 +314,7 @@ li {
 //Can be used for all comment box sections
 .comments {
   background: white;
-  width: 100%;
+
   margin-top: 10px;
   padding: 20px;
   border-radius: 5px;

@@ -24,10 +24,6 @@
   padding: 10px;
 }
 
-.new-user > h1 {
-  padding-left: 10px;
-}
-
 .new-auths {
   width: 350px;
   margin-bottom: 20px;
@@ -48,18 +44,18 @@
   margin: auto;
 }
 
-#user_avatar {
-  float: left;
-  padding-bottom: 20px;
-}
-
-.user-page > h1 {
-  align: center;
-  background: white;
+.user-header {
+  background: #ddd;
+  text-align: center;
   width: 100%;
   padding: 20px;
   border-radius: 5px;
   margin-bottom: 0;
+}
+
+#user_avatar {
+  float: left;
+  padding-bottom: 20px;
 }
 
 .user-page:after {
@@ -86,13 +82,30 @@
   width: 500px;
 }
 
-.general {
+.user-comments {
   background: white;
   width: 100%;
-  padding-top: 20px;
+  margin-top: 10px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.user-comments > .new-post {
+  width: 100%;
+}
+
+.user-general {
+  background: white;
+  width: 100%;
+  padding: 20px;
   border-radius: 5px;
   margin-top: 10px;
-  margin-bottom: 0;
+}
+
+.user-general > img {
+  float: right;
+  margin-right: 20px;
+  border: 3px solid black;
 }
 
 .meetups {
@@ -107,4 +120,17 @@
   margin-top: 10px;
   margin-bottom: 0;
   border-radius: 5px;;
+}
+
+.find-groups > h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.find-groups > .thumbnails > li {
+  margin-left: 0px;
+}
+
+.find-groups > a {
+  float: right;
 }

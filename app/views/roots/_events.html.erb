@@ -1,30 +1,39 @@
-<% events.each do |date, all_events| %>
-  <section class="date-listings">
-   <time><%= date(date) %></time>
+<% if events.empty? %>
 
-   <% all_events.each do |event| %>
-     <div class="event-listing">
-       <time>
-         <%= link_to event.time.strftime("%I:%m %p"),
-         group_event_url(event.group, event) %>
-       </time>
+  <p>There are currently no events scheduled.</p>
+  <p>Try signing up for more <%= link_to "Meetup Groups!", find_url %></p>
 
-       <header>
-         <%= link_to event.group.title,
-             group_url(event.group) %>
-       </header>
+<% else %>
 
-       <main>
-         <%= link_to event.title,
-             group_event_url(event.group, event.id) %>
-       </main>
+  <% events.each do |date, all_events| %>
+    <section class="date-listings">
+     <time><%= date(date) %></time>
 
-       <footer>
-         <%= event.attendees.count %>
-         <%= "Member".pluralize(event.attendees.count) %> attending
-       </footer>
-     </div>
-   <% end %>
+     <% all_events.each do |event| %>
+       <div class="event-listing">
+         <time>
+           <%= link_to event.time.strftime("%I:%m %p"),
+           group_event_url(event.group, event) %>
+         </time>
 
- </section>
+         <header>
+           <%= link_to event.group.title,
+               group_url(event.group) %>
+         </header>
+
+         <main>
+           <%= link_to event.title,
+               group_event_url(event.group, event.id) %>
+         </main>
+
+         <footer>
+           <%= event.attendees.count %>
+           <%= "Member".pluralize(event.attendees.count) %> attending
+         </footer>
+       </div>
+     <% end %>
+
+   </section>
+  <% end %>
+
 <% end %>

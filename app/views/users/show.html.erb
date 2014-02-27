@@ -1,7 +1,7 @@
 <div class="user-page">
-  <h1 class="pull-left"><%= @user.name %></h1>
+  <h1 class="user-header pull-left"><%= @user.name %></h1>
 
-  <div class="general pull-left">
+  <div class="user-general pull-left">
     <table class="general-info pull-left">
       <thead>
         <th>Location:</th>
@@ -39,17 +39,18 @@
     <%= link_to "SEE ALL MY MEETUP GROUPS", user_groups_url(@user) %>
   </div>
 
-  <div class="interests pull-left">
+  <!-- Will implement later -->
+  <!-- <div class="interests pull-left">
     <h3>Interests</h3>
     <ul>
-    <% @interests.each do |interest| %>
-    <!-- Will need to create some sort of link here, save for later -->
-      <li><%= interest.title %></li>
-    <% end %>
+    <%# @interests.each do |interest| %>
+    Will need to create some sort of link here, save for later
+      <li><%#= interest.title %></li>
+    <%# end %>
     </ul>
-  </div>
+  </div> -->
 
-  <div class="comments pull-left">
+  <div class="user-comments pull-left">
     <h3>Greetings</h3>
 
     <% if logged_in? && current_user != @user %>

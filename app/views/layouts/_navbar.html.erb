@@ -48,7 +48,7 @@
               </ul>
             </div>
           </li>
-          <li><%= button_to "logout", session_url, method: :delete, class: "logout btn" %></li>
+          <li><%= button_to "Logout", session_url, method: :delete, class: "logout btn btn-danger" %></li>
 
         <% else %>
           <div class="logged-out">
@@ -66,7 +66,6 @@
 
         <form class="nav-form pull-right" action="<%= find_url %>" method="GET">
           <input
-            class="span3"
             type="text"
             name="query"
             value="<%= params[:query] %>"

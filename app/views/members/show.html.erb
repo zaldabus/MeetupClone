@@ -11,16 +11,22 @@
 
     <div class="member-main-content pull-left">
       <div class="member-content-left pull-left">
-        <h1><%= @member.name %></h1>
+        <h1 class="member-header"><%= @member.name %></h1>
 
-        Location:
-        <%= city_state(@member) %>
+        <table>
+          <tr>
+            <td>Location: </td>
+            <td><%= city_state(@member) %></td>
+          </tr>
 
-        Meetup member since:
-        <%= @member.created_at.strftime("%B %d, %Y") %>
+          <tr>
+            <td>Meetup member since: </td>
+            <td><%= @member.created_at.strftime("%B %d, %Y") %></td>
+          </tr>
+        </table>
 
         <div class="member-comments pull-left">
-          <h3>Greetings</h3>
+          <h3 class="member-comments-header">Greetings</h3>
 
           <% if logged_in? &&
                 current_user.groups.include?(@group) &&
