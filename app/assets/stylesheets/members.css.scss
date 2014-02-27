@@ -16,6 +16,12 @@
   padding: 20px;
 }
 
+.member-main-content:after {
+  clear: both;
+  display: block;
+  content: "";
+};
+
 .member-content-left {
   width: 320px;
 }

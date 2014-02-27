@@ -68,6 +68,24 @@
   clear: both;
 }
 
+.user-main-content {
+  background: white;
+  border-radius: 5px;
+  width: 750px;
+  margin: auto;
+  padding: 20px;
+}
+
+.user-main-content:after{
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.user-content-left {
+  width: 500px;
+}
+
 .general {
   background: white;
   width: 100%;

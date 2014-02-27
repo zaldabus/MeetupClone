@@ -22,14 +22,11 @@
                 <% current_user.groups.limit(10).each do |group| %>
                   <li><%= link_to group.title, group_url(group) %></li>
                 <% end %>
-
-                <% if current_user.groups.count > 10 %>
                   <li>
                     <%= link_to "SEE ALL GROUPS",
                         user_groups_url(current_user),
                         class: "full-list-groups"%>
                   </li>
-                <% end %>
               </ul>
             </div>
           </li>

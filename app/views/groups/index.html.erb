@@ -1,25 +1,43 @@
-<%= @user.name %>
+<div class="user-main-content">
+  <div class="user-content-left pull-left">
+    <h2><%= @user.name %>'s Meetup Group Page</h2>
 
-Location:
-<%= city_state(@user) %>
+    Location:
+    <%= city_state(@user) %>
 
-Meetup member since:
-<%= @user.created_at.strftime("%B %d, %Y") %>
+    Meetup member since:
+    <%= @user.created_at.strftime("%B %d, %Y") %>
 
-<%= image_tag @user.avatar.url(:big) %>
+    <div="user_meetups">
+      <% if @user.groups.count == 0 %>
+        <p>Currently not a member of any other group</p>
+      <% else %>
 
-<% if logged_in? && @user == current_user %>
-  <%= photo_change(@user) %>
-<% end %>
+        Member of <%= @user.groups.count %> Meetups
+        <% @groups.each do |group| %>
+          <div class="user_meetup">
+            <div class="user_meetup_avatar">
+              <%= link_to (image_tag group.avatar, size: "40x40"), group_url(group) %>
+            </div>
+            <div class="user_meetup_title">
+              <%= link_to group.title, group_url(group) %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
 
-<br>
-<br>
 
-<div="user_groups">
-  Member of <%= @user.groups.count %> Meetups
-  <ul>
-  <% @groups.each do |group| %>
-    <li><%= link_to group.title, group_url(group) %></li>
-  <% end %>
-  </ul>
+
+  <div class="member-content-right pull-right">
+    <div class="avatar pull-left">
+      <%= image_tag @user.avatar.url, size: "200x200" %>
+      <% if logged_in? && @user == current_user %>
+        <div class="avatar-dialog">
+          <%= photo_change(@user) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 </div>
