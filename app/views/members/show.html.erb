@@ -10,88 +10,127 @@
     %>
 
     <div class="member-main-content pull-left">
-      <%= @member.name %>
+      <div class="member-content-left pull-left">
+        <h1><%= @member.name %></h1>
 
-      Location:
-      <%= city_state(@member) %>
+        Location:
+        <%= city_state(@member) %>
 
-      Meetup member since:
-      <%= @member.created_at.strftime("%B %d, %Y") %>
+        Meetup member since:
+        <%= @member.created_at.strftime("%B %d, %Y") %>
 
-      <%= image_tag @member.user.avatar.url(:big) %>
+        <div class="member-comments pull-left">
+          <h3>Greetings</h3>
 
-      <% if logged_in? && @member.user == current_user %>
-        <%= photo_change(@member.user) %>
-      <% end %>
+          <% if logged_in? &&
+                current_user.groups.include?(@group) &&
+                !current_user.group_members.include?(@member) %>
 
-      <br>
-      <br>
+            <form
+              action="<%= comment_group_member_url(@group, @member) %>"
+              method="post"
+              class="new-post"
+              data-remote="true">
 
-      <% if @member.groups.count == 0 %>
-        <p>Currently not a member of any other group</p>
-      <% else %>
-        Member of <%= @member.groups.count - 1 %> other Meetups
+              <input
+                type="hidden"
+                name="authenticity_token"
+                value="<%= form_authenticity_token %>">
 
-        <ul>
-          <% @member.groups.each do |group| %>
-            <% next if group == @group %>
-            <li><%= link_to group.title, group_url(group) %></li>
+              <div class="post-box-container">
+                <label for="body"></label>
+                <textarea
+                  name="comment[body]"
+                  placeholder="Post a greeting for <%= @member.name %>"
+                  id="body"
+                  rows="2"
+                  class="post-box"></textarea>
+
+                <input type="submit" value="Post" class="btn pull-right">
+              </div>
+
+            </form>
           <% end %>
-        </ul>
 
-        <%= link_to "SEE ALL MY MEETUP GROUPS", user_groups_url(@member.user) %>
-        <br>
-        <br>
-      <% end %>
-
-      Interests
-      <ul>
-        <% @member.interests.each do |interest| %>
-        <!-- Will need to create some sort of link here, save for later -->
-          <li><%= interest.title %></li>
-        <% end %>
-      </ul>
+          <section class="posts">
+            <%= render partial: "roots/comment", collection: @comments %>
+          </section>
+        </div>
 
 
-      <div class="comments pull-left">
-        <h3>Greetings</h3>
 
-        <% if logged_in? &&
-              current_user.groups.include?(@group) &&
-              !current_user.group_members.include?(@member) %>
-
-          <form
-            action="<%= comment_group_member_url(@group, @member) %>"
-            method="post"
-            class="new-post"
-            data-remote="true">
-
-            <input
-              type="hidden"
-              name="authenticity_token"
-              value="<%= form_authenticity_token %>">
-
-            <div class="post-box-container">
-              <label for="body"></label>
-              <textarea
-                name="comment[body]"
-                placeholder="Post a greeting for <%= @member.name %>"
-                id="body"
-                rows="2"
-                class="post-box"></textarea>
-
-              <input type="submit" value="Post" class="btn pull-right">
-            </div>
-
-          </form>
-        <% end %>
-
-        <section class="posts">
-          <%= render partial: "roots/comment", collection: @comments %>
-        </section>
       </div>
 
-    </div>
+      <div class="member-content-right pull-right">
+        <div class="avatar pull-left">
+          <%= image_tag @member.avatar_url, size: "200x200" %>
+          <% if logged_in? && @member.user == current_user %>
+            <%= photo_change(@member.user) %>
+          <% end %>
+        </div>
+        <br>
+        <br>
 
+        <% if @member.groups.count == 0 %>
+          <p>Currently not a member of any other group</p>
+        <% else %>
+          <div class="member-meetups pull-right">
+            <h3>Member of <%= @member.groups.count - 1 %> other Meetups</h3>
+
+            <% @member.groups.limit(10).each do |group| %>
+              <% next if group == @group %>
+              <div class="meetup">
+                <div class="meetup-avatar pull-left">
+                  <%= link_to (image_tag group.avatar, size: "40x40"), group_url(group) %>
+                </div>
+                <div class="meetup-title pull-right">
+                   <%= link_to group.title, group_url(group) %>
+                </div>
+                <div class="meetup-member pull-right">
+                  <%= link_to "MEMBER", group_member_url(group, @member.user.find_group_member(group))%>
+                </div>
+              </div>
+            <% end %>
+
+            <% if @member.groups.count > 10 %>
+              <%= link_to "SEE ALL MY MEETUP GROUPS", user_groups_url(@member.user) %>
+            <% end %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- <div class="general pull-left">
+  <h2>General</h2>
+
+  <table class="general-info pull-left">
+    <tr>
+      <td>Name:</td>
+      <td><%#= @user.name %></td>
+    </tr>
+
+    <tr>
+      <td>Email address:</td>
+      <td><%#= @user.email %></td>
+
+    <tr>
+      <td>Password:</td>
+      <td>(Hidden)</td>
+    </tr>
+
+    <tr>
+      <td>Location:</td>
+      <td><%#= city_state(@user) %></td>
+
+    <tr>
+      <td>Birthday:</td>
+      <td><%#= birthday(@user) %></td>
+    </tr>
+
+  </table>
+
+
+</div> -->

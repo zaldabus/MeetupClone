@@ -22,7 +22,7 @@ class MembersController < ApplicationController
   end
 
   def comment
-    @member = User.find(params[:id]).group_members.find_by_group_id(params[:group_id])
+    @member = GroupMember.find(params[:id])
     @comment = @member.comments.new(params[:comment])
     @comment.user_id = current_user.id
 

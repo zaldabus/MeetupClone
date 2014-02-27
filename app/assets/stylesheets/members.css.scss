@@ -10,9 +10,18 @@
 
 .member-main-content {
   background: white;
-  margin-left: 10px;
+  width: 595px;
+  margin-left: 15px;
   border-radius: 5px;
   padding: 20px;
+}
+
+.member-content-left {
+  width: 320px;
+}
+
+.member-new-post {
+  width: 370px;
 }
 .members-page {
   width: 70%;
@@ -43,4 +52,49 @@
 
 .members-info {
   margin-left: 20px;
+}
+
+
+
+.member-meetups > h3 {
+  width: 95%;
+  background: #ddd;
+  padding-left: 10px;
+  margin: 0;
+}
+
+.member-meetups {
+  background: #eee;
+  width: 200px;
+}
+
+.meetup {
+  padding: 10px 0 10px 10px;
+  border-bottom: 1px solid #fff;
+}
+
+.meetup:after {
+  content: "";
+  display: block;
+  clear: both;
+};
+
+.meetup-avatar {
+  border: 1px solid black;
+}
+
+.meetup-title {
+  padding-left: 10px;
+  width: 130px;
+}
+
+.meetup-member {
+  width: 130px;
+  font-size: 10px;
+}
+
+.member-meetups > a {
+  font-size: 12px;
+  text-align: center;
+  padding: 10px;
 }

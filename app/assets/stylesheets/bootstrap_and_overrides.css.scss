@@ -337,12 +337,18 @@ li {
   width: 100%;
   float: left;
   border-bottom: 1px dotted #efefef;
+  padding-top: 10px;
 }
 
 .post-thumbnail {
   float: left;
   padding: 0 20px 20px 20px;
   width: 50px;
+}
+
+.post-thumbnail > a > img {
+  display: block;
+  border: 1px solid black;
 }
 
 .post-info {
@@ -398,3 +404,15 @@ li {
   border-radius: 5px;
   font-size: 16px;
 }
+
+//GROUP COLUMN
+.owner-avatar > img {
+  margin-left: 5px;
+  border: 1px solid black;
+}
+
+.column-location:after {
+  content: "";
+  display: block;
+  clear: both;
+};

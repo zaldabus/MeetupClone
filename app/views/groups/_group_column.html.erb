@@ -1,6 +1,6 @@
 <ul class="group-column pull-left">
   <li><%= image_tag group.avatar.url(:big) %></li>
-  <li class="pull-left">
+  <li class="column-location">
     <div class="pull-left">
       <%= city_state(group) %>
     </div>
@@ -16,7 +16,8 @@
   <li>
     Organizers: <%= group.owner.name %>
     <%= link_to (image_tag group.owner.avatar.url(:small), size: "40x40"),
-                group_member_url(group, group.owner.find_group_member(group)) %>
+                group_member_url(group, group.owner.find_group_member(group)),
+                class: "owner-avatar" %>
 
     <% if group.owner == current_user %>
       <%= link_to "Create Event", new_group_event_url(group) %>
