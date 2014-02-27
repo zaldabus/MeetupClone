@@ -17,6 +17,7 @@ MeetupClone::Application.routes.draw do
 
   resource :account, only: [:show, :edit, :update] do
     get 'change_password', on: :collection
+    put 'update_password', on: :collection
     get 'change_address', on: :collection
     get 'notifications', on: :collection
   end
