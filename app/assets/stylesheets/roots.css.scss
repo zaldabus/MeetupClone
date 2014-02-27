@@ -83,8 +83,15 @@
 
 .event-listing {
   display: block;
+  padding: 5px 0 5px 0;
   border-bottom: 1px solid lightgrey;
 }
+
+.event-listing:after {
+  display: block;
+  clear: both;
+  content: "";
+};
 
 .event-listing > time {
   display: block;
@@ -92,15 +99,21 @@
 }
 
 .event-listing > header {
-
+  float: left;
+  width: 83%;
+  margin-left: 20px;
 }
 
 .event-listing > main {
-
+  float: left;
+  width: 83%;
+  margin-left: 82px;
 }
 
 .event-listing > footer {
-
+  float: left;
+  width: 83%;
+  margin-left: 82px;
 }
 
 //Calendar

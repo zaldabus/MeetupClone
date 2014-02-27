@@ -13,13 +13,24 @@
   z-index: 1;
 }
 
+.new-event-header {
+  width: 380px;
+  background: #ccc;
+  margin: 20px auto 0 auto;
+  padding: 20px;
+  border: 2px solid lightgrey;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
 .new_event {
   background: white;
   width: 400px;
-  margin: 20px auto 20px auto;
-  border: 2px solid lightgrey;
-  border-radius: 5px;
+  margin: auto;
   padding: 10px;
+  border: 2px solid lightgrey;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .controls {

@@ -2,9 +2,11 @@
   <%= image_tag "new_event_bar.jpg", class: :new_event_title_bar_pic %>
 </div>
 
-<%= simple_form_for [@group, @event], class: "form-inline new_event pull-left" do |f| %>
-  <h1>Create a New Event!</h1>
+<h1 class="new-event-header">Create a New Event!</h1>
 
+<%= simple_form_for [@group, @event], class: "form-inline new_event pull-left" do |f| %>
+
+  <h4>Event Info</h4>
   <%= f.input :title %>
 
   <%= f.label :date %>
@@ -31,6 +33,8 @@
 
   <%= f.label :avatar %>
   <%= f.file_field :avatar %>
+  <br>
+  <br>
 
   <%= f.submit "Create New Event!", class: "btn-block" %>
 <% end %>
