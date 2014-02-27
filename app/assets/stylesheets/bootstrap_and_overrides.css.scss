@@ -110,6 +110,20 @@ li {
   border-right: 10px solid transparent;
 }
 
+.nav-menu:before {
+  content: "";
+  display: block;
+  position: absolute;
+
+  top: -11px;
+  left: 19.5%;
+
+  border-top: 0;
+  border-bottom: 11px solid #c2c2c2;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+}
+
 .full-list-groups {
   border-top: 1px solid #ccc;
   alignment: center;

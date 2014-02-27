@@ -51,26 +51,30 @@
           <li><%= button_to "Logout", session_url, method: :delete, class: "logout btn btn-danger" %></li>
 
         <% else %>
-          <div class="logged-out">
-            <ul>
-              <li><a href="#myModal"
-                     role="button"
-                     class="pull-right"
-                     data-toggle="modal">Log in</a></li>
+          <li>
+            <div class="logged-out">
+              <ul>
+                <li><a href="#myModal"
+                       role="button"
+                       class="pull-right"
+                       data-toggle="modal">Log in</a></li>
 
-              <!-- <li><%#= link_to "Log in", new_session_url %></li> -->
-              <li><%= link_to "Sign up", new_user_url, class: "pull-right"%></li>
-            </ul>
-          </div>
+                <!-- <li><%#= link_to "Log in", new_session_url %></li> -->
+                <li><%= link_to "Sign up", new_user_url, class: "pull-right"%></li>
+              </ul>
+            </div>
+          </li>
         <% end %>
 
-        <form class="nav-form pull-right" action="<%= find_url %>" method="GET">
-          <input
-            type="text"
-            name="query"
-            value="<%= params[:query] %>"
-            placeholder="Search">
-        </form>
+        <li>
+          <form class="nav-form pull-right" action="<%= find_url %>" method="GET">
+            <input
+              type="text"
+              name="query"
+              value="<%= params[:query] %>"
+              placeholder="Search">
+          </form>
+        </li>
 
       </ul>
     </div>

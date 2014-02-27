@@ -80,3 +80,40 @@
   border-radius: 5px;
   margin-left: 15px;
 }
+
+.events-right-column > h3 {
+  text-align: center;
+}
+
+.events-right-column > .button_to > div > input {
+  width: 100%;
+  padding: 10px 0 10px 0;
+  background: blue;
+  border: none;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 3px;
+}
+
+.attendee-count {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.attendee {
+  display: block;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.attendee > a {
+  margin-left: 20px;
+}
+
+.attendee > a > img {
+  border: 1px solid black;
+}

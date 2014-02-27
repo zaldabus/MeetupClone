@@ -69,30 +69,27 @@
       </div>
 
       <div class="events-right-column pull-left">
-        <ul>
-          <% if logged_in? && @member && !@event.attendees.include?(@member) %>
-            <li>
-              <h3>Won't you attend?</h3>
-              <%= button_to "Attend", event_signup_group_event_url(@group, @event)%>
-            </li>
-          <% end %>
+        <% if logged_in? && @member && !@event.attendees.include?(@member) %>
 
-          <li><%= @event.attendees.count %> attending</li>
+            <h3>Won't you attend?</h3>
+            <%= button_to "ATTEND", event_signup_group_event_url(@group, @event) %>
+        <% end %>
 
-          <% @event.attendees.limit(15).each do |attendee| %>
-            <li>
-              <%= link_to (image_tag attendee.avatar_url, size: "40x40"),
-                           group_member_url(@event.group, attendee
-                           )
-              %>
+        <div class="attendee-count"><%= @event.attendees.count %> attending</div>
 
-              <%= link_to attendee.name, group_member_url(@event.group, attendee) %>
+        <% @event.attendees.each do |attendee| %>
+          <div class="attendee pull-left">
+            <%= link_to (image_tag attendee.avatar_url, size: "40x40"),
+                         group_member_url(@event.group, attendee
+                         )
+            %>
 
-              <!-- Maybe add something for a group member to write a description -->
-              <%#= attendee.description %>
-            </li>
-          <% end %>
-        </ul>
+            <%= link_to attendee.name, group_member_url(@event.group, attendee) %>
+
+            <!-- Maybe add something for a group member to write a description -->
+            <%#= attendee.description %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
