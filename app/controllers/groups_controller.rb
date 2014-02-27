@@ -49,7 +49,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
 
     @members = @group.group_members
-    @member_short_list = @members.limit(10)
+    @member_short_list = @members.limit(8)
 
     @upcoming_events = @group.events.where(date: Time.now..Time.now + 1.year)
     @upcoming_short_list = @upcoming_events.limit(2)

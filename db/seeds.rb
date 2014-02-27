@@ -11,53 +11,74 @@
 # If you want to add new data, comment out previous seeded data then
 # run rake db:seed again
 #
-5.times do |i|
-  user = User.new(name: "User ##{i + 1}", email: "Email ##{i + 1}", password: 123456)
-  user.addresses.new(address_line: "Someplace", city: "NY", state: "NY", zip_code: 10003)
+50.times do |i|
+  user = User.new(name: Faker::Name.name,
+                  email: Faker::Internet.email,
+                  password: 123456)
+
+  user.avatar = File.open("./public/profile_pictures/profile_#{(i % 10) + 1}.jpeg")
+
+  user.addresses.new(address_line: Faker::Address.street_address,
+                     city: Faker::Address.city,
+                     state: Faker::Address.state,
+                     zip_code: Faker::Address.zip_code)
   user.save
 end
 
-5.times do |i|
-  Interest.create(title: "Interest ##{i + 1}", user_id: 1)
-end
-
 12.times do |i|
-  group = Group.new(title: "Group ##{i + 1}", description: "This is a group", owner_id: 1)
-  group.addresses.new(address_line: "Someplace", city: "New York", state: "NY", zip_code: 10003)
+  group = Group.new(title: Faker::Commerce.product_name, description: Faker::Lorem.sentences.join, owner_id: "#{i + 1}")
+
+  group.avatar = File.open("./public/group_pictures/group_#{(i % 10) + 1}.jpeg")
+
+  group.addresses.new(address_line: Faker::Address.street_address,
+                     city: Faker::Address.city,
+                     state: Faker::Address.state,
+                     zip_code: Faker::Address.zip_code)
   group.save
+
+  user = User.find("#{i + 1}")
+
+  GroupMember.create(user_id: user.id,
+                     group_id: group.id,
+                     name: user.name,
+                     email: user.email)
 end
 
-12.times do |i|
-  GroupMember.create(user_id: 1, group_id: (i + 1), name: "Tom", email: "Email")
+100.times do |i|
+  user = rand(50) + 1
+  GroupMember.create(user_id: user,
+                     group_id: "#{rand(12) + 1}",
+                     name: User.find(user).name,
+                     email: User.find(user).email)
 end
 
-# Upcoming Events
-
-12.times do |i|
-  event = Event.new(title: "Event ##{i + 1}", description: "This is an event", date: "2014/4/1", time: "7:00pm", group_id: (i + 1))
-  event.addresses.new(address_line: "Thisplace", city: "New York", state: "NY", zip_code: 10003)
-  event.save
-
-  event2 = Event.new(title: "Event ##{i + 20}", description: "This is also an event", date: "2014/4/1", time: "7:00pm", group_id: (i + 1))
-  event2.addresses.new(address_line: "Someplace", city: "New York", state: "NY", zip_code: 10003)
-  event2.save
+def rand_in_range(from, to)
+  rand * (to - from) + from
 end
 
-# Previous Events
-
-12.times do |i|
-  event = Event.new(title: "Event ##{i + 1}", description: "This is an event", date: "2013/4/1", time: "7:00pm", group_id: (i + 1))
-  event.addresses.new(address_line: "Someplace", city: "New York", state: "NY", zip_code: 10003)
-  event.save
-
-  event2 = Event.new(title: "Event ##{i + 20}", description: "This is an event", date: "2013/4/1", time: "7:00pm", group_id: (i + 1))
-  event2.addresses.new(address_line: "Someplace", city: "New York", state: "NY", zip_code: 10003)
-  event2.save
+def rand_time(from, to=(Time.now + 1.year))
+  Time.at(rand_in_range(from.to_f, to.to_f))
 end
 
-24.times do |i|
-  EventSignup.create(event_id: (i + 1), attendee_id: 1)
+50.times do |i|
+  event = Event.new(title: Faker::Commerce.product_name,
+                    description: Faker::Lorem.sentences.join,
+                    date: rand_time(6.months.ago),
+                    time: "#{rand(12) + 1}:#{rand(59) + 1}pm",
+                    group_id: "#{rand(12) + 1}")
+
+  event.avatar = File.open("./public/event_pictures/event_#{(i % 10) + 1}.jpeg")
+
+  event.addresses.new(address_line: Faker::Address.street_address,
+                      city: Faker::Address.city,
+                      state: Faker::Address.state,
+                      zip_code: Faker::Address.zip_code)
+  event.save!
 end
+
+# 24.times do |i|
+#   EventSignup.create(event_id: (i + 1), attendee_id: 1)
+# end
 
 
 #
