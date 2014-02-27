@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .account {
-  width: 600px;
+  width: 680px;
   margin: 20px auto;
 }
 
@@ -14,16 +14,16 @@
 };
 
 .account > h1 {
-  background: white;
-  width: 600px;
+  background: #ddd;
+  width: 650px;
   padding: 20px;
   margin: 0 auto 0 auto;
   border: 2px grey;
   border-radius: 5px;
 }
 
-.general {
-  width: 500px;
+div.general {
+  width: 650px;
   margin: 20px auto 20px auto;
   padding: 20px;
   background: white;
@@ -33,6 +33,7 @@
 
 .general > h2 {
   padding-bottom: 20px;
+  padding-left: 80px;
 }
 
 .general-info {
@@ -95,8 +96,14 @@ td {
 }
 
 .edit {
+  margin-top: 25px;
+  margin-right: 25px;
+}
+
+.update {
   float: right;
-  margin-top: 20px;
+  margin-top: 90px;
+  margin-right: 10px;
 }
 
 //Notification Page
@@ -127,4 +134,67 @@ td {
 
 .notification > .button_to {
   float: left;
+}
+
+//Edit Page
+.account-edit {
+  margin-left: 0;
+}
+
+h1.edit-header {
+  display: block;
+  text-align: center;
+  width: 650px;
+  background: #ddd;
+  border-radius: 5px;
+}
+
+//Change Password Page
+.account-password {
+  background: white;
+  float: left;
+  padding: 20px;
+  margin-left: 100px;
+
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+h1.password-header {
+  display: block;
+  text-align: center;
+  margin-left: 100px;
+  width: 430px;
+  background: #ddd;
+  border-radius: 0;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+
+//Change Address Page
+.account {
+  padding-top: 20px;
+}
+
+h1.address-header {
+  display: block;
+  text-align: center;
+  margin-left: 100px;
+  width: 430px;
+  background: #ddd;
+  border-radius: 0;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+
+.account-address {
+  background: white;
+  float: left;
+  padding: 20px;
+  margin-left: 100px;
+
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }

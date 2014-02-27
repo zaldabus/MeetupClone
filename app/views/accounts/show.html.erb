@@ -1,5 +1,5 @@
 <div class="account">
-  <h1 ><%= @user.name %>'s Account Page</h1>
+  <h1 class="account-header"><%= @user.name %>'s Account Page</h1>
 
   <div class="general pull-left">
     <h2>General</h2>
@@ -25,28 +25,30 @@
 
       <tr>
         <td>Birthday:</td>
-        <td><%= birthday(@user).strftime("%B %d, %Y") %></td>
+        <td><%= birthday(@user) %></td>
       </tr>
 
     </table>
 
     <div class="avatar">
       <%= image_tag @user.avatar.url(:big), size: "200x200" %>
-      <%= photo_change(@user) %>
     </div>
+
+    <%= link_to "Edit Account", edit_account_url, class: "btn btn-large btn-primary pull-right edit" %>
   </div>
 
-  <div class="interests pull-left">
+  <!-- Implement later -->
+  <!-- <div class="interests pull-left">
     Your interests
 
     <ul>
 
-    <% @user.interests.each do |interest| %>
-      <li><%= interest.title %></li>
-    <% end %>
+    <%# @user.interests.each do |interest| %>
+      <li><%#= interest.title %></li>
+    <%# end %>
 
     </ul>
-  </div>
+  </div> -->
 
-  <%= link_to "Edit Account", edit_account_url, class: "btn edit" %>
+
 </div>

@@ -1,10 +1,10 @@
 <div class="account">
-  <h1 >Update your Account</h1>
+  <h1 class="edit-header">Update your Account</h1>
 
   <div class="general pull-left">
     <h2>General</h2>
 
-    <%= simple_form_for @user, url: account_url do |f| %>
+    <%= simple_form_for @user, url: account_url, html: { class: "account-edit" } do |f| %>
       <table class="general-info pull-left">
         <tr>
           <td><%= f.label :name %></td>
@@ -44,9 +44,13 @@
         <%= image_tag @user.avatar.url(:big), size: "200x200" %>
         <%= f.file_field :avatar %>
       </div>
+
+        <%= f.submit "Update Account", class: "btn btn-large btn-primary pull-right update" %>
+      <% end %>
+
     </div>
 
-
+    <!-- Implement later
     <div class="interests pull-left">
       Your interests
 
@@ -57,8 +61,5 @@
       <% end %>
 
       </ul>
-    </div>
-
-    <%= f.submit "Update Account", class: "btn edit" %>
-  <% end %>
+    </div> -->
 </div>

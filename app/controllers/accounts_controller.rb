@@ -48,7 +48,6 @@ class AccountsController < ApplicationController
   end
 
   def change_address
-    # Can this be changed to just current_user in form?
     @address = current_user.address
   end
 

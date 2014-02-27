@@ -6,7 +6,7 @@ module GroupsHelper
 
       "#{time} #{months} ago"
     elsif (Time.now - date).to_i / 1.hour > 24
-      time = (Time.now - time).to_i / 1.day
+      time = (Time.now - date).to_i / 1.day
       days = "day".pluralize(time)
 
       "#{time} #{days} ago"
@@ -17,9 +17,9 @@ module GroupsHelper
       "#{time} #{hours} ago"
     else
       time = (Time.now - date).to_i / 1.minute
-      hours = "minute".pluralize(time)
+      minutes = "minute".pluralize(time)
 
-      "#{time} #{hours} ago"
+      "#{time} #{minutes} ago"
     end
   end
 

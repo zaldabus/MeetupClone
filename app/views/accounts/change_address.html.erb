@@ -1,7 +1,9 @@
 <div class="account">
-  <h1 >Update your address</h1>
+  <h1 class="address-header">Update your address</h1>
 
-  <%= simple_form_for @address, url: update_address_account_url do |f| %>
+  <%= simple_form_for @address,
+      url: update_address_account_url,
+      html: { class: 'form-horizontal account-address'} do |f| %>
 
     <%= f.input :address_line, as: :string, value: @address.address_line %>
 
@@ -10,9 +12,9 @@
     <%= f.input :state, as: :string, value: @address.state %>
 
     <%= f.input :zip_code, as: :string, value: @address.zip_code %>
+    <br>
 
-    <%= f.submit "Update Address" %>
+    <%= f.submit "Update Address", class: "btn btn-large btn-primary pull-right submit" %>
 
   <% end %>
-
 </div>
