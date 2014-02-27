@@ -12,12 +12,11 @@
   <li>Members <%= members.count %></li>
   <li>Upcoming Meetups <%= upcoming_events.count %></li>
   <li>Past Meetups <%= past_events.count %></li>
-  <li>Our calendar</li> <!-- add a calendar here -->
 
   <li>
     Organizers: <%= group.owner.name %>
-    <%= image_tag group.owner.avatar.url(:small), size: "40x40" %>
-    <%= link_to "Contact", group.owner.email %>
+    <%= link_to (image_tag group.owner.avatar.url(:small), size: "40x40"),
+                group_member_url(group, group.owner.find_group_member(group)) %>
 
     <% if group.owner == current_user %>
       <%= link_to "Create Event", new_group_event_url(group) %>

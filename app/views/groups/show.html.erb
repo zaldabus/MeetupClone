@@ -47,7 +47,6 @@
 
                   <li>
                     <% event.attendees.limit(10).each do |attendee| %>
-                      <!-- This eventually needs to be changed to link to the group member, not the user -->
                       <%= link_to (image_tag attendee.avatar_url, size: "30x30"), group_member_url(@group, attendee) %>
                     <% end %>
                   </li>
@@ -59,10 +58,10 @@
 
               <!-- right side -->
               <div class="event-right pull-right">
-                <%= event.date.strftime("%a %b %d") %>
-                <%= event.time.strftime("%I:%m %p") %>
-                <%= link_to "RSVP", group_event_url(@group, event) %>
-                <%= event.attendees.count %> attending
+                <date><%= event.date.strftime("%a %b %d") %></date>
+                <time><%= event.time.strftime("%I:%m %p") %></time><br>
+                <%= link_to "RSVP", group_event_url(@group, event) %><br>
+                <%= event.attendees.count %> <%= link_to "attending", group_event_url(@group, event) %>
                 <!-- comments count will go here -->
               </div>
             </li>

@@ -79,4 +79,8 @@ class User < ActiveRecord::Base
     authentications.build(provider: omniauth['provider'], uid: omniauth['uid'])
   end
 
+  def find_group_member(group)
+    self.group_members.find_by_group_id(group.id)
+  end
+
 end

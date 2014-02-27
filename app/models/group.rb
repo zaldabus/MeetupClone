@@ -40,5 +40,4 @@ class Group < ActiveRecord::Base
 
     activities.sort_by { |activity| activity.created_at }
   end
-
 end

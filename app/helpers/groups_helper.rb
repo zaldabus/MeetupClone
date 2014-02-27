@@ -50,7 +50,7 @@ module GroupsHelper
     when Comment
       "<a href='#{group_member_url(activity.commentable.group, activity.find_event_group_member(activity.commentable))}'
           >#{activity.find_event_group_member(activity.commentable).name}
-          </a>commented on<a
+          </a>commented on <a
           href='#{group_event_url(activity.commentable.group, activity.commentable)}'
           >#{activity.commentable.title}</a>".html_safe
     end
