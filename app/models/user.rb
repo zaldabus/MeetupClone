@@ -55,15 +55,6 @@ class User < ActiveRecord::Base
     SecureRandom::urlsafe_base64(16)
   end
 
-  def has_password?(secret)
-    BCrypt::Password.new(self.password_digest).is_password?(secret)
-  end
-
-  def password=(secret)
-    @password = secret
-
-    self.password_digest = BCrypt::Password.create(secret)
-  end
 
   def ensure_authenticity_token
     self.authenticity_token = User.generate_token if self.authenticity_token.nil?
@@ -74,6 +65,39 @@ class User < ActiveRecord::Base
     self.save!
     self.authenticity_token
   end
+
+
+  def has_password?(secret)
+    BCrypt::Password.new(self.password_digest).is_password?(secret)
+  end
+
+  def password=(secret)
+    @password = secret
+
+    self.password_digest = BCrypt::Password.create(secret)
+  end
+
+
+  def address
+    self.addresses.first
+  end
+
+  def address_line
+    self.addresses.first.address_line
+  end
+
+  def city
+    self.addresses.first.city
+  end
+
+  def state
+    self.addresses.first.state
+  end
+
+  def zip_code
+    self.addresses.first.zip_code
+  end
+
 
   def apply_omniauth(omniauth)
     authentications.build(provider: omniauth['provider'], uid: omniauth['uid'])

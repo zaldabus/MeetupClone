@@ -46,4 +46,21 @@ class AccountsController < ApplicationController
       render :change_password
     end
   end
+
+  def change_address
+    # Can this be changed to just current_user in form?
+    @address = current_user.address
+  end
+
+  def update_address
+    @address = current_user.address
+
+    if @address.update_attributes(params[:address])
+      flash[:notice] = "Address Updated!"
+      redirect_to account_url
+    else
+      flash.now[:errors] = "An Error Occurred!"
+      render :change_address
+    end
+  end
 end

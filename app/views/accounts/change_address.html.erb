@@ -1,0 +1,18 @@
+<div class="account">
+  <h1 >Update your address</h1>
+
+  <%= simple_form_for @address, url: update_address_account_url do |f| %>
+
+    <%= f.input :address_line, as: :string, value: @address.address_line %>
+
+    <%= f.input :city, as: :string, value: @address.city %>
+
+    <%= f.input :state, as: :string, value: @address.state %>
+
+    <%= f.input :zip_code, as: :string, value: @address.zip_code %>
+
+    <%= f.submit "Update Address" %>
+
+  <% end %>
+
+</div>
