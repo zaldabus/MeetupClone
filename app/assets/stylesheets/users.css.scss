@@ -14,18 +14,45 @@
   z-index: 1;
 }
 
+.user-header {
+  background: #ddd;
+  text-align: center;
+  width: 410px;
+  margin: 20px auto 0 auto;
+  padding: 20px;
+  border: 2px solid lightgrey;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
 #new_user {
-  width: 490px;
+  width: 430px;
   background: white;
-  margin: 20px auto 20px auto;
+  margin: auto;
   padding-right: 20px;
   border: 2px solid lightgrey;
-  border-radius: 5px;
+  border-top: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   padding: 10px;
 }
 
+.user-info {
+  margin-left: 90px;
+  padding-top: 20px;
+}
+
+.user-address {
+  margin-left: 90px;
+}
+
+.user-password {
+  margin-left: 90px;
+}
+
 .new-auths {
-  width: 350px;
+  width: 100%;
+  margin: auto;
   margin-bottom: 20px;
 }
 
@@ -35,6 +62,25 @@
   clear: both;
 }
 
+.new-auths-prompt {
+  text-align: center;
+}
+
+.new-auths-icons {
+  margin: auto;
+}
+
+.new-auths-icons:after {
+  display: block;
+  clear: both;
+  content: "";
+};
+
+.new-auth_provider {
+  width: 70px;
+  margin-left: 50px;
+}
+
 .submit {
   margin-right: 30px;
 }
@@ -42,15 +88,6 @@
 .user-page {
   width: 650px;
   margin: auto;
-}
-
-.user-header {
-  background: #ddd;
-  text-align: center;
-  width: 100%;
-  padding: 20px;
-  border-radius: 5px;
-  margin-bottom: 0;
 }
 
 #user_avatar {

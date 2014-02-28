@@ -24,6 +24,7 @@ class AuthenticationsController < ApplicationController
     else
       @user = User.new
       session[:omniauth] = omniauth.except('extra')
+      flash[:notice] = "Authentication added!"
       redirect_to new_user_url
     end
   end

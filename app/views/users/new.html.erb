@@ -2,14 +2,35 @@
   <%= image_tag "new_user_bar.jpg", class: :new_user_title_bar_pic %>
 </div>
 
-<%= simple_form_for @user, html: { class: 'form-vertical new_user' } do |f| %>
-  <h1>Create a new user!</h1>
+<h1 class="user-header">Create a new user!</h1>
+
+<%= simple_form_for @user, html: { class: 'form-horizontal new_user' } do |f| %>
+  <div class="new-auths">
+    <p class="new-auths-prompt"><strong>Select an additional service for login (optional):</strong></p>
+
+    <div class="new-auths-icons">
+      <a href="/auth/twitter" class="new-auth_provider pull-left">
+        <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
+        Twitter
+      </a>
+      <a href="/auth/facebook" class="new-auth_provider pull-left">
+        <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
+        Facebook
+      </a>
+      <a href="/auth/linkedin" class="new-auth_provider pull-left">
+        <%= image_tag "linkedin_64.png", :size => "64x64", :alt => "Facebook" %>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+
+  <h4 class="user-info">User Info</h4>
 
   <%= f.input :name %>
   <%= f.input :email %>
   <br>
 
-  <h4>Address</h4>
+  <h4 class="user-address">Address</h4>
 
   <%= simple_fields_for :address do |address_form| %>
     <%= address_form.input :address_line %>
@@ -22,31 +43,12 @@
   <% end %>
   <br>
 
-  <h4>Password</h4>
-  <%= f.input :password, label: false %>
+  <h4 class="user-password">Password</h4>
+  <%= f.input :password %>
 
   <%= f.input :avatar, as: :file %>
   <br>
   <br>
-
-  <div class="new-auths">
-    <p class="pull-left"><strong>Select an additional service for login (optional):</strong></p>
-
-    <div class="auths pull-left">
-      <a href="/auth/twitter" class="auth_provider pull-left">
-        <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
-        Twitter
-      </a>
-      <a href="/auth/facebook" class="auth_provider pull-left">
-        <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
-        Facebook
-      </a>
-      <a href="/auth/linkedin" class="auth_provider pull-left">
-        <%= image_tag "linkedin_64.png", :size => "64x64", :alt => "Facebook" %>
-        LinkedIn
-      </a>
-    </div>
-  </div>
 
   <%= f.submit "Create", class: "btn btn-primary btn-large pull-right submit" %>
 <% end %>
