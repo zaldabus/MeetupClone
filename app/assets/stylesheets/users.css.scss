@@ -171,3 +171,60 @@
 .find-groups > a {
   float: right;
 }
+
+//Group Index Page
+.user_meetups {
+  width: 550px;
+}
+
+.user_meetups:after {
+  display: block;
+  clear: both;
+  content: "";
+};
+
+.user_meetup {
+  width: 250px;
+  float: left;
+  margin: 10px 10px 0 0;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted #ccc;
+}
+
+.user_meetup:after {
+  content: "";
+  display: block;
+  clear: both;
+};
+
+.user_meetup_header:after {
+  content: "";
+  display: block;
+  clear: both;
+};
+
+.user_meetup_avatar {
+  margin-top: 5px;
+  border: 1px solid black;
+}
+
+.user_meetup_title {
+  padding-left: 10px;
+  width: 130px;
+}
+
+.user_meetup_member {
+  width: 130px;
+  font-size: 10px;
+  margin-left: 50px;
+}
+
+.user_member_meetups > a {
+  font-size: 12px;
+  text-align: center;
+  padding: 10px;
+}
+
+.user-content-right {
+
+}

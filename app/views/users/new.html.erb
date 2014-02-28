@@ -1,6 +1,8 @@
-<div class="new-user-title-bar">
-  <%= image_tag "new_user_bar.jpg", class: :new_user_title_bar_pic %>
-</div>
+<% content_for :head do %>
+  <div class="new-user-title-bar">
+    <%= image_tag "new_user_bar.jpg", class: :new_user_title_bar_pic %>
+  </div>
+<% end %>
 
 <h1 class="user-header">Create a new user!</h1>
 

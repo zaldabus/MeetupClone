@@ -38,6 +38,6 @@ class Group < ActiveRecord::Base
       activities.concat(event.event_signups).concat(event.comments)
     end
 
-    activities.sort_by { |activity| activity.created_at }
+    activities.sort_by { |activity| activity.created_at }.reverse
   end
 end

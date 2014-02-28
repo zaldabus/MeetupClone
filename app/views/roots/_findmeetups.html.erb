@@ -1,12 +1,14 @@
-<div class="find-title-bar">
-  <div class="title-text">
-    <h1>Meetups are</h1>
-    <p>neighbors getting together to learn something,</p>
-    <p>do something, share something...</p>
-  </div>
+<% content_for :head do %>
+  <div class="find-title-bar">
+    <div class="title-text">
+      <h1>Meetups are</h1>
+      <p>neighbors getting together to learn something,</p>
+      <p>do something, share something...</p>
+    </div>
 
-  <%= image_tag "find_title_bar.jpg", class: :find_title_bar_pic %>
-</div>
+    <%= image_tag "find_title_bar.jpg", class: :find_title_bar_pic %>
+  </div>
+<% end %>
 
 <div class="find-groups">
 

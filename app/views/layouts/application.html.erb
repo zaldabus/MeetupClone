@@ -12,6 +12,9 @@
 <br>
 
 <div class="main-content">
+
+  <%= yield :head %>
+
   <% flash.each do |name, msg| %>
     <% break if name == :modal %>
     <div class="alert alert-<%= name == :notice ? "success" : "error" %>">

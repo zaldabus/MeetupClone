@@ -8,28 +8,35 @@
     Meetup member since:
     <%= @user.created_at.strftime("%B %d, %Y") %>
 
-    <div="user_meetups">
+    <div class="user_meetups">
       <% if @user.groups.count == 0 %>
-        <p>Currently not a member of any other group</p>
+        <p>Currently not a member of any group</p>
       <% else %>
 
-        Member of <%= @user.groups.count %> Meetups
+        <p>Member of <%= @user.groups.count %> Meetups</p>
         <% @groups.each do |group| %>
           <div class="user_meetup">
-            <div class="user_meetup_avatar">
-              <%= link_to (image_tag group.avatar, size: "40x40"), group_url(group) %>
+            <div class="user_meetup_header">
+              <div class="user_meetup_avatar pull-left">
+                <%= link_to (image_tag group.avatar, size: "40x40"), group_url(group) %>
+              </div>
+              <div class="user_meetup_title pull-left">
+                <%= link_to group.title, group_url(group) %>
+              </div>
             </div>
-            <div class="user_meetup_title">
-              <%= link_to group.title, group_url(group) %>
+
+            <div class="user_meetup_member pull-left">
+              <%= link_to "MEMBER", group_member_url(group, @user.find_group_member(group))%>
             </div>
           </div>
         <% end %>
       <% end %>
     </div>
+  </div>
 
 
 
-  <div class="member-content-right pull-right">
+  <div class="user-content-right pull-right">
     <div class="avatar pull-left">
       <%= image_tag @user.avatar.url, size: "200x200" %>
       <% if logged_in? && @user == current_user %>
