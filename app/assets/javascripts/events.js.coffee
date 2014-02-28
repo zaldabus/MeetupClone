@@ -6,3 +6,8 @@ jQuery ->
   $('#event_date').datepicker
     dateFormat: 'yy-mm-dd',
     showAnim: "slideDown"
+
+jQuery ->
+  $('.event-new-post').on("ajax:success", (event, data) ->
+    $('.posts').append(data)
+    this.reset())
