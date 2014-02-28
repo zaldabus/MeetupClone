@@ -46,11 +46,15 @@
 
 .members-header {
   width: 100%;
-  border-bottom: 1px solid #ddd;
 }
 
 .members-header > h1 {
-  margin-left: 20px;
+  margin-left: 250px;
+  background: #ddd;
+  width: 590px;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .members-list {
@@ -60,8 +64,10 @@
 
 .members-member {
   padding: 20px;
-//  Some weird styling things going on here
-//  border-bottom: 1px solid #ddd;
+  display: block;
+  width: 87%;
+  margin-left: 20px;
+  border-bottom: 1px dotted #ccc;
 }
 
 .members-info {

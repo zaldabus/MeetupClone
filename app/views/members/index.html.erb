@@ -10,10 +10,12 @@
                                           }
     %>
 
+    <div class="members-header">
+      <h1>Members</h1>
+    </div>
+
     <div class="members-page pull-left">
-      <div class="members-header pull-left">
-        <h1>Members</h1>
-      </div>
+
 
       <div class="members-search pull-left">
         <!-- If there's time add an extra search for group members -->
@@ -22,7 +24,7 @@
       <div class="members-list pull-left">
 
         <% @members.each do |member| %>
-          <div class="members-member">
+          <div class="members-member pull-left">
             <div class="members-thumbnail pull-left">
               <%= link_to (image_tag member.avatar_url, size: "60x60"),
                            group_member_url(@group, member
