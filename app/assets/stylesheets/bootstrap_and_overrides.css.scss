@@ -412,8 +412,15 @@ li {
 
 //End DatePicker
 
+.thumbnails {
+  margin-left: 20px;
+}
+
 .thumbnail {
   background: white;
+  width: 100px;
+  height: 140px;
+  margin-left: 50px;
   border: 2px solid black;
 }
 

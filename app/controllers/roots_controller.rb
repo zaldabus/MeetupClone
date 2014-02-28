@@ -13,7 +13,7 @@ class RootsController < ApplicationController
         @events[event.date.strftime("%Y-%m-%d")] << event
       end
     else
-      @groups = Group.page(params[:page]).per(12)
+      @groups = Group.page(params[:page]).per(10)
     end
 
     if request.xhr?
@@ -32,9 +32,9 @@ class RootsController < ApplicationController
     if params[:query]
       @results = PgSearch.multisearch(params[:query])
     else
-      return @groups = Group.page(params[:page]).per(12)
+      return @groups = Group.page(params[:page]).per(10)
     end
 
-    @results = @results.includes(:searchable).page(params[:page]).per(12)
+    @results = @results.includes(:searchable).page(params[:page]).per(10)
   end
 end
