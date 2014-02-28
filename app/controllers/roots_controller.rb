@@ -12,7 +12,6 @@ class RootsController < ApplicationController
       events.each do |event|
         @events[event.date.strftime("%Y-%m-%d")] << event
       end
-      @events.keys.sort
     else
       @groups = Group.page(params[:page]).per(10)
     end

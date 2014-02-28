@@ -11,7 +11,7 @@
     %>
     <div class="group-middle pull-left">
       <div class="event-header">
-        <li><h2><%= @group.description %></h2></li>
+        <li><h2 class="event-header-header"><%= @group.description %></h2></li>
 
         <% unless logged_in? && @members.find_by_user_id(current_user.id) %>
 
