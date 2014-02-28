@@ -67,13 +67,23 @@
         <% end %>
       </ul>
 
-      <form class="nav-form pull-right" action="<%= find_url %>" method="GET">
-        <input
-          type="text"
-          name="query"
-          value="<%= params[:query] %>"
-          placeholder="Search">
-      </form>
+      <% if session[:token] %>
+        <form class="nav-form2 pull-right" action="<%= find_url %>" method="GET">
+          <input
+            type="text"
+            name="query"
+            value="<%= params[:query] %>"
+            placeholder="Search">
+        </form>
+      <% else %>
+        <form class="nav-form pull-right" action="<%= find_url %>" method="GET">
+          <input
+            type="text"
+            name="query"
+            value="<%= params[:query] %>"
+            placeholder="Search">
+        </form>
+      <% end %>
     </div>
   </div>
 </div>
