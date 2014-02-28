@@ -13,11 +13,14 @@
 
 <div class="main-content">
   <% flash.each do |name, msg| %>
+    <% break if name == :modal %>
     <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
       <a class="close" data-dismiss="alert">x</a>
       <%= msg %>
     </div>
   <% end %>
+
+  <%= render partial: "layouts/modal" %>
 
   <%= yield %>
 </div>

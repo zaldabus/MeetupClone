@@ -13,13 +13,9 @@ class SessionsController < ApplicationController
       login(@user)
       redirect_to root_url
     else
-      flash[:errors] = "Email or Password is Incorrect!"
-      redirect_to new_session_url
+      flash[:modal] = true
+      redirect_to :back
     end
-  end
-
-  def authenticate
-
   end
 
   def destroy

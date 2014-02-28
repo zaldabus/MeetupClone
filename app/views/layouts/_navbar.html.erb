@@ -78,45 +78,5 @@
 
       </ul>
     </div>
-
   </div>
-</div>
-
-
-<div id="myModal" class="modal hide fade"
-     tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
-
-   <div class="modal-header header">
-     <h1 class="pull-left">Sign In</h1>
-     <button type="button" class="close pull-right" data-dismiss="modal"
-             aria-hidden="true">x</button>
-   </div>
-
-   <div class="modal-body pull-left">
-     <%= simple_form_for new_user, url: session_url, class: "modal-form" do |f| %>
-       <%= f.input :email %>
-
-       <%= f.input :password %>
-
-       <p><strong>You can also sign in through one of these services:</strong></p>
-
-       <div class="auths">
-         <a href="/auth/twitter" class="auth_provider pull-left">
-           <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
-           Twitter
-         </a>
-         <a href="/auth/facebook" class="auth_provider pull-left">
-           <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
-           Facebook
-         </a>
-         <a href="/auth/linkedin" class="auth_provider pull-left">
-           <%= image_tag "linkedin_64.png", :size => "64x64", :alt => "Facebook" %>
-           LinkedIn
-         </a>
-       </div>
-
-       <%= f.submit "Sign In", class: "btn btn-large btn-primary pull-right" %>
-     <% end %>
-   </div>
 </div>
