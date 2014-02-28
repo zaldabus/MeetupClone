@@ -12,7 +12,7 @@ class RootsController < ApplicationController
       events.each do |event|
         @events[event.date.strftime("%Y-%m-%d")] << event
       end
-      @events.page(params[:page]).per(10)
+      @events.keys.sort
     else
       @groups = Group.page(params[:page]).per(10)
     end

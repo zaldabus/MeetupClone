@@ -5,9 +5,7 @@
 
 <% else %>
 
-  <%= paginate events %>
-
-  <% events.each do |date, all_events| %>
+  <% events.sort.map do |date, all_events| %>
     <section class="date-listings">
      <time><%= date(date) %></time>
 
