@@ -65,18 +65,15 @@
             </div>
           </li>
         <% end %>
-
-        <li>
-          <form class="nav-form pull-right" action="<%= find_url %>" method="GET">
-            <input
-              type="text"
-              name="query"
-              value="<%= params[:query] %>"
-              placeholder="Search">
-          </form>
-        </li>
-
       </ul>
+
+      <form class="nav-form pull-right" action="<%= find_url %>" method="GET">
+        <input
+          type="text"
+          name="query"
+          value="<%= params[:query] %>"
+          placeholder="Search">
+      </form>
     </div>
   </div>
 </div>
