@@ -12,7 +12,7 @@ MeetupClone::Application.routes.draw do
     end
   end
 
-  resource :session, only: [:new, :create, :destroy]
+  resource :session, only: [:create, :destroy]
   match 'auth/:provider/callback' => 'authentications#create'
 
   resource :account, only: [:show, :edit, :update] do
