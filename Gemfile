@@ -35,6 +35,8 @@ gem 'pg_search'
 
 gem 'simple_form'
 
+gem 'faker'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -57,7 +59,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'faker'
   gem 'rspec-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
