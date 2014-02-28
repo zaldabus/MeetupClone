@@ -72,7 +72,7 @@ class GroupsController < ApplicationController
       @group = Group.find(params[:id])
 
       @group.group_members.each do |member|
-        next if member.user = current_user
+        next if member.user == current_user
         @group_member.notifications.create(user_id: member.user.id)
       end
 

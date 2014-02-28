@@ -1,4 +1,6 @@
 <div class="notification">
-  <%= link_to(notification.message, notification_url(notification)) %>
-  <%= button_to "Delete", notification_url(notification), method: :delete %>
+  <tr>
+    <td><%= link_to(notification.message, notification_url(notification)) %></td>
+    <td><%= button_to "Delete", notification_url(notification), method: :delete, class: "btn btn-danger notification" %></td>
+  <tr>
 </div>
