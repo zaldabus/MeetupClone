@@ -1,14 +1,7 @@
 module GroupsHelper
 
   def time_since(date)
-    time_units = {
-      months_from_day: [:day, :month, 30],
-      days_from_hours: [:hour, :day, 24],
-      hours_from_minutes: [:minute, :hour, 60],
-      minutes_from_seconds: [:second, :minute, 60],
-      seconds_from_seconds: [:second, :second, 1]
-    }
-
+    time_units = time_from_time
     time = (Time.now - date).to_i
     returned = false
 
@@ -24,6 +17,16 @@ module GroupsHelper
     end
 
     returned
+  end
+
+  def time_from_time
+    {
+      months_from_day: [:day, :month, 30],
+      days_from_hours: [:hour, :day, 24],
+      hours_from_minutes: [:minute, :hour, 60],
+      minutes_from_seconds: [:second, :minute, 60],
+      seconds_from_seconds: [:second, :second, 1]
+    }
   end
 
   def type(activity)
