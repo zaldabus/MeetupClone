@@ -1,25 +1,12 @@
 module GroupsHelper
 
   def time_since(date)
-    time_units = time_from_time
     time = (Time.now - date).to_i
-    returned = false
 
-    until returned
-      time_units.each do |_, time_unit|
-        if time / 1.send(time_unit[0]) > time_unit[2]
-          time /= 1.send(time_unit[1])
-          units = time_unit[1].to_s.pluralize(time)
-
-          returned = "#{time} #{units} ago"
-        end
-      end
-    end
-
-    returned
+    check_times(time)
   end
 
-  def time_from_time
+  def time_units
     {
       months_from_day: [:day, :month, 30],
       days_from_hours: [:hour, :day, 24],
@@ -27,6 +14,17 @@ module GroupsHelper
       minutes_from_seconds: [:second, :minute, 60],
       seconds_from_seconds: [:second, :second, 1]
     }
+  end
+
+  def check_times(time)
+    time_units.each do |_, time_unit|
+      if time / 1.send(time_unit[0]) > time_unit[2]
+        time /= 1.send(time_unit[1])
+        units = time_unit[1].to_s.pluralize(time)
+
+        return "#{time} #{units} ago"
+      end
+    end
   end
 
   def type(activity)
